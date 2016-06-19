@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<maxCompilerManager>
+<enginePart internalEngineSubproject="fpga_mlmc_EngineCode" isSrcBin="false" isUseDefaultSelected="false" outputLocation="/fpga_mlmc_EngineCode/bin" projectName="fpga_mlmc"/>
+<cpuPart internalCpuSubproject="fpga_mlmc_CPUCode"/>
+<watchedFiles/>
+</maxCompilerManager>

@@ -1,0 +1,30 @@
+% State Variables
+v
+u
+
+% State Initialisation
+v_{0} = -50.0
+u_{0} = 10.0
+
+% Model Parameters
+Simulations = 32768
+Steps = 2048
+a = 0.02
+b = 0.3
+c = -54.0
+d = 1.0
+I = 3.0
+
+% State Index
+t \in [1..Steps]
+
+% Random Source
+r \sim R[0.18,0.2]
+
+% State Update
+v_{t + 1} = v_{t} >= 30 ? c : v_{t} + r_{t} * (0.04 * v_{t} * v_{t} + 5 * v_{t} + 140 - u_{t} + I)
+u_{t + 1} = v_{t} >= 30 ? u_{t} + d : u_{t} + r_{t} * (a * (b * v_{t} - u_{t}))
+
+% Output
+v_{t}
+

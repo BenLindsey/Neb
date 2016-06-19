@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ManagerGraph version="2013.2.2" design_name="Manager_NebStream" compilation_phase="Original" hardwareBuild="false">
+	<Node id="2" instanceName="r" type="InputFlexibleClock">
+		<Output clock="STREAM" name="r" type="PULL el=1 ael=8" width="128">
+			<Stream name="Stream_3" sink="0" />
+		</Output>
+	</Node>
+	<Node id="0" instanceName="NebStreamKernel" type="Kernel">
+		<PxgFile phase="original">NebStream_NebStreamKernel_original.pxg</PxgFile>
+		<PxgFile phase="final-simulation">NebStream_NebStreamKernel_final-simulation.pxg</PxgFile>
+		<Input clock="STREAM" name="r" type="PULL el=1 ael=2" width="32">
+			<Stream name="Stream_1" source="2" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PUSH 5" width="32">
+			<Stream name="Stream_4" sink="5" />
+		</Output>
+	</Node>
+	<Node id="5" instanceName="output" type="OutputFlexibleClock">
+		<Input clock="STREAM" name="output" type="PUSH 64" width="128">
+			<Stream name="Stream_6" source="0" />
+		</Input>
+	</Node>
+</ManagerGraph>

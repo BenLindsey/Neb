@@ -1,0 +1,27 @@
+% State Variables
+logspot
+
+% State Initialisations
+logspot_{0} = 100.0
+
+% Model Parameters
+Accuracy = 0.05
+T = 2.0
+r = 0.05
+\sigma = 0.3
+K = 100.0
+
+% Random Sources
+random \sim N[0,1]
+
+% State Updates
+h = T / n
+dW = \sqrt{h} * random_{t}
+logspot_{t + 1} = logspot_{t} + r * h + \sigma * logspot_{t} * dW + \frac{1}{2} * \sigma^2 * (dW^2 - h) 
+
+% Payoffs
+P = \exp{-r * t} * \max{0}{logspot_{n} - K}
+
+% Sensitivities
+Delta = \frac{dP}{dlogspot_{0}}
+Vega = \frac{dP}{d\sigma}

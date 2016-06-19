@@ -1,0 +1,43 @@
+Tue 12:06: ########################################## 
+Tue 12:06: Compiling.
+Tue 12:06: ########################################## 
+
+Tue 12:06: MaxCompiler version: 2013.2.2.
+Tue 12:06: Build Simulation run rule for fpga start time: Tue Feb 09 12:06:29 GMT 2016.
+Tue 12:06: Project location: /homes/bl2312/DSL/DSL/fpga.
+Tue 12:06: Detailed build log: /homes/bl2312/DSL/DSL/fpga/RunRules/Simulation/build.log.
+
+Tue 12:06: Compiling Engine Code.
+Tue 12:06: Engine building skipped (no changes on .max files).
+Tue 12:06: Compiling CPU Code.
+Tue 12:06: Run CPU project make files updating
+Tue 12:06: Executing command:
+Tue 12:06: java -jar /vol/cc/opt/maxeler/maxcompiler-2013.2.2/lib/MaxIDE/projectAdmin.jar -u /homes/bl2312/DSL/DSL/fpga Simulation 
+Tue 12:07: Command output:
+
+Tue 12:07: MaxCompiler Project Admin Tool Version 2013.2.2
+Tue 12:07:  Copyright Maxeler Technologies 2010 - 2013. All rights reserved.
+
+Tue 12:07: Updating RunRule dependant Makefiles for RunRule 'Simulation'
+Tue 12:07: Found makefiles: 1
+Tue 12:07: 	Updated: Simulation
+Tue 12:07: Run CPU make.
+Tue 12:07: make RUNRULE=Simulation 
+Tue 12:07: Command output:
+Tue 12:07: make -f Makefile ../RunRules/Simulation/binaries/NebStream
+Tue 12:07: make[1]: Entering directory `/homes/bl2312/DSL/DSL/fpga/CPUCode'
+Tue 12:07: cc -g -O3 -Wall -Wextra -fmessage-length=0 -I ../RunRules/Simulation/include -I. -I/vol/cc/opt/maxeler/maxcompiler-2013.2.2/lib/maxeleros-sim/include -I/vol/cc/opt/maxeler/maxcompiler-2013.2.2/include/slic -D_XOPEN_SOURCE=600  -std=c99 -DBUILDNAME_MAXFILE_1=NebStream -DMAXFILE_1="NebStream.max"  -o "../RunRules/Simulation/objects/NebStreamCpuCode.o" -c "NebStreamCpuCode.c"
+Tue 12:07: cc -g -O3 -Wall -Wextra -fmessage-length=0 -I ../RunRules/Simulation/include -I. -I/vol/cc/opt/maxeler/maxcompiler-2013.2.2/lib/maxeleros-sim/include -I/vol/cc/opt/maxeler/maxcompiler-2013.2.2/include/slic -D_XOPEN_SOURCE=600  -std=c99 -DBUILDNAME_MAXFILE_1=NebStream -DMAXFILE_1="NebStream.max"  -MM -MP -MT "../RunRules/Simulation/objects/NebStreamCpuCode.o" "NebStreamCpuCode.c" > "../RunRules/Simulation/objects/NebStreamCpuCode.d"
+Tue 12:07: cc ../RunRules/Simulation/objects/NebStreamCpuCode.o ../RunRules/Simulation/objects/slic_NebStream.o  -L/vol/cc/opt/maxeler/maxcompiler-2013.2.2/lib -L/vol/cc/opt/maxeler/maxcompiler-2013.2.2/lib/maxeleros-sim/lib -lslic -lmaxeleros -lm -lpthread  -o "../RunRules/Simulation/binaries/NebStream"
+Tue 12:07: make[1]: Leaving directory `/homes/bl2312/DSL/DSL/fpga/CPUCode'
+Tue 12:07: Build completed: Tue Feb 09 12:07:08 GMT 2016
+
+
+Tue 12:07: ########################################## 
+Tue 12:07: Running
+Tue 12:07: ########################################## 
+Tue 12:07: Executing command:
+Tue 12:07: '/homes/bl2312/DSL/DSL/fpga/RunRules/Simulation/binaries/NebStream' 
+Tue 12:07: Command output:
+Tue 12:07: Running on DFE.
+Tue 12:07: Done.

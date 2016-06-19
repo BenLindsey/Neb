@@ -1,0 +1,2625 @@
+NODE WAS REMOVED!
+NodeID     : 0
+Node       : 0.0
+Node type  : NodeConstantDouble
+Removed by : [FoldConstantsPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:89)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:19)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 1
+Node       : {HWFloat:8, 24}
+Node type  : NodeCast
+Removed by : [FoldConstantsPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.cast(DFEVar.java:160)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:19)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 194
+  Node       : {HWFloat:8, 24}\n0x00000000; 0.0
+  Node type  : NodeConstantRawBits
+  Creator    : FoldConstantsPass
+
+------------
+NodeID     : 2
+Node       : Scalar input (l)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:992)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:33)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 3
+Node       : Scalar input (N)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:992)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:34)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 4
+Node       : Scalar input (nc)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:992)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:36)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 5
+Node       : 2.0
+Node type  : NodeConstantDouble
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:861)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:37)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 6
+Node       : *
+Node type  : NodeMul
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:861)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:37)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 195
+  Node       : <{HWOffsetFix:32, 1, UNSIGNED}>
+  Node type  : NodeReinterpret
+  Creator    : OptimiseNodesPass
+
+  NodeID     : 196
+  Node       : {HWOffsetFix:32, 0, UNSIGNED}
+  Node type  : NodeCast
+  Creator    : OptimiseNodesPass
+
+------------
+NodeID     : 7
+Node       : {HWFloat:8, 24}
+Node type  : NodeCast
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.cast(DFEVar.java:160)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:39)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 8
+Node       : 1.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.divAsRHS(DFEVar.java:910)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:39)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 274
+  Node       : {HWFloat:8, 24}\n0x3f800000; 1.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 9
+Node       : /
+Node type  : NodeDiv
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.divAsRHS(DFEVar.java:910)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:39)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 10
+Node       : {HWFloat:8, 24}
+Node type  : NodeCast
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.cast(DFEVar.java:160)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:40)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 11
+Node       : 1.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.divAsRHS(DFEVar.java:910)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:40)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 259
+  Node       : {HWFloat:8, 24}\n0x3f800000; 1.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 12
+Node       : /
+Node type  : NodeDiv
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.divAsRHS(DFEVar.java:910)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:40)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 13
+Node       : EvalStreamOffset(loopLength)
+Node type  : NodeEvalStreamOffset
+Removed by : [SubstituteEqPlaceholders]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream$OffsetExpr.getDFEVar(Stream.java:176)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:43)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 197
+  Node       : EvalStreamOffset(loopLength)
+  Node type  : NodeEvalStreamOffset
+  Removed by : [SubstituteEqPlaceholders]
+  Creator    : SubstituteEqPlaceholders
+
+  NODE WAS REMOVED!
+  NodeID     : 200
+  Node       : EvalStreamOffset(108)
+  Node type  : NodeEvalStreamOffset
+  Removed by : [ReplaceEvalStreamOffsetNodes]
+  Creator    : SubstituteEqPlaceholders
+
+  NodeID     : 250
+  Node       : {HWOffsetFix:32, 0, UNSIGNED}\n0x0000006c; 108.0
+  Node type  : NodeConstantRawBits
+  Creator    : ReplaceEvalStreamOffsetNodes
+
+------------
+NodeID     : 14
+Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+Node type  : NodeConstantRawBits
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Count.makeCounterChain(Count.java:467)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:45)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 15
+Node       : Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0
+Node type  : NodeCounterV1
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:523)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:46)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 16
+Node       : Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0
+Node type  : NodeCounterV1
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:523)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:47)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 203
+  Node       : FIFO(1)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NODE WAS REMOVED!
+NodeID     : 17
+Node       : 2.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:501)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:48)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 284
+  Node       : {HWOffsetFix:2, 0, UNSIGNED}\n0x2; 2.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 18
+Node       : Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0
+Node type  : NodeCounterV1
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:501)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:48)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 19
+Node       : Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0
+Node type  : NodeCounterV1
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:523)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:49)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 20
+Node       : 0.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 272
+  Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x0; 0.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 21
+Node       : ==
+Node type  : NodeEq
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 210
+  Node       : FIFO(1)
+  Node type  : NodeFIFO
+  Removed by : [TapFIFOsPass]
+  Creator    : ScheduleApplier
+
+------------
+NODE WAS REMOVED!
+NodeID     : 22
+Node       : 1.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 271
+  Node       : {HWOffsetFix:32, 0, UNSIGNED}\n0x00000001; 1.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 23
+Node       : -
+Node type  : NodeSub
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 24
+Node       : ==
+Node type  : NodeEq
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:531)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 211
+  Node       : FIFO(1)
+  Node type  : NodeFIFO
+  Removed by : [TapFIFOsPass]
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 25
+Node       : &
+Node type  : NodeAnd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 26
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 27
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 28
+Node       : <{HWOffsetFix:1, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 29
+Node       : Scalar input (io_r1_force_disabled)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 30
+Node       : ~
+Node type  : NodeNot
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 31
+Node       : &
+Node type  : NodeAnd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 32
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 33
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 34
+Node       : <{HWOffsetFix:1, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 35
+Node       : Input(r1)
+Node type  : NodeInput
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 36
+Node       : 0.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 267
+  Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x0; 0.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 37
+Node       : ==
+Node type  : NodeEq
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 217
+  Node       : FIFO(1)
+  Node type  : NodeFIFO
+  Removed by : [TapFIFOsPass]
+  Creator    : ScheduleApplier
+
+------------
+NODE WAS REMOVED!
+NodeID     : 38
+Node       : 1.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 266
+  Node       : {HWOffsetFix:32, 0, UNSIGNED}\n0x00000001; 1.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 39
+Node       : -
+Node type  : NodeSub
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 40
+Node       : ==
+Node type  : NodeEq
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:531)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 218
+  Node       : FIFO(1)
+  Node type  : NodeFIFO
+  Removed by : [TapFIFOsPass]
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 41
+Node       : &
+Node type  : NodeAnd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 42
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 43
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 44
+Node       : <{HWOffsetFix:1, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 45
+Node       : Scalar input (io_r2_force_disabled)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 46
+Node       : ~
+Node type  : NodeNot
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 47
+Node       : &
+Node type  : NodeAnd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 48
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 49
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 50
+Node       : <{HWOffsetFix:1, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 51
+Node       : Input(r2)
+Node type  : NodeInput
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 219
+  Node       : FIFO(8)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 52
+Node       : sqrt
+Node type  : NodeSqrt
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath.sqrt(KernelMath.java:363)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:54)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 53
+Node       : {HWFloat:8, 24}
+Node type  : NodeCast
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath.sqrt(KernelMath.java:363)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:54)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 54
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:54)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 55
+Node       : sqrt
+Node type  : NodeSqrt
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath.sqrt(KernelMath.java:363)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:55)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 56
+Node       : {HWFloat:8, 24}
+Node type  : NodeCast
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath.sqrt(KernelMath.java:363)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:55)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 57
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:55)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 58
+Node       : +
+Node type  : NodeAdd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:56)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 232
+  Node       : FIFO(8)
+  Node type  : NodeFIFO
+  Removed by : [TapFIFOsPass]
+  Creator    : ScheduleApplier
+
+------------
+NODE WAS REMOVED!
+NodeID     : 59
+Node       : 0.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:62)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 277
+  Node       : {HWOffsetFix:32, 0, UNSIGNED}\n0x00000000; 0.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 60
+Node       : ==
+Node type  : NodeEq
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:62)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 61
+Node       : {HWFloat:8, 24}\n0x42c80000; 100.0
+Node type  : NodeConstantRawBits
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1041)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:62)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 62
+Node       : MUX
+Node type  : NodeMux
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1041)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:62)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 207
+  Node       : FIFO(1)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NODE WAS REMOVED!
+NodeID     : 63
+Node       : 0.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:63)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 262
+  Node       : {HWOffsetFix:32, 0, UNSIGNED}\n0x00000000; 0.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 64
+Node       : ==
+Node type  : NodeEq
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:63)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 65
+Node       : {HWFloat:8, 24}\n0x42c80000; 100.0
+Node type  : NodeConstantRawBits
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1041)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:63)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 66
+Node       : MUX
+Node type  : NodeMux
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1041)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:63)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 228
+  Node       : FIFO(1)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NODE WAS REMOVED!
+NodeID     : 67
+Node       : 0.05000000074505806
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 275
+  Node       : {HWFloat:8, 24}\n0x3d4ccccd; 0.05000000074505806
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 68
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 69
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 70
+Node       : +
+Node type  : NodeAdd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 208
+  Node       : FIFO(16)
+  Node type  : NodeFIFO
+  Removed by : [TapFIFOsPass]
+  Creator    : ScheduleApplier
+
+  NodeID     : 244
+  Node       : FIFO(4)
+  Node type  : NodeFIFO
+  Creator    : TapFIFOsPass
+
+------------
+NODE WAS REMOVED!
+NodeID     : 71
+Node       : 0.30000001192092896
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 273
+  Node       : {HWFloat:8, 24}\n0x3e99999a; 0.30000001192092896
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 72
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 209
+  Node       : FIFO(12)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 73
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 212
+  Node       : FIFO(8)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 74
+Node       : +
+Node type  : NodeAdd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 75
+Node       : 0.04500000178813934
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 270
+  Node       : {HWFloat:8, 24}\n0x3d3851ec; 0.04500000178813934
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 76
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 213
+  Node       : FIFO(16)
+  Node type  : NodeFIFO
+  Removed by : [TapFIFOsPass]
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 77
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 78
+Node       : -
+Node type  : NodeSub
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:812)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 79
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 214
+  Node       : FIFO(8)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 80
+Node       : +
+Node type  : NodeAdd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 81
+Node       : 0.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 278
+  Node       : {HWOffsetFix:32, 0, TWOSCOMPLEMENT}\n0x00000000; 0.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 82
+Node       : ==
+Node type  : NodeEq
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 83
+Node       : 0.05000000074505806
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 269
+  Node       : {HWFloat:8, 24}\n0x3d4ccccd; 0.05000000074505806
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 84
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 85
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 86
+Node       : +
+Node type  : NodeAdd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 215
+  Node       : FIFO(16)
+  Node type  : NodeFIFO
+  Removed by : [TapFIFOsPass]
+  Creator    : ScheduleApplier
+
+  NodeID     : 245
+  Node       : FIFO(12)
+  Node type  : NodeFIFO
+  Creator    : TapFIFOsPass
+
+------------
+NODE WAS REMOVED!
+NodeID     : 87
+Node       : 0.30000001192092896
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 268
+  Node       : {HWFloat:8, 24}\n0x3e99999a; 0.30000001192092896
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 88
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 216
+  Node       : FIFO(4)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 89
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 220
+  Node       : FIFO(44)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 90
+Node       : +
+Node type  : NodeAdd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 221
+  Node       : FIFO(8)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NODE WAS REMOVED!
+NodeID     : 91
+Node       : 0.04500000178813934
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 265
+  Node       : {HWFloat:8, 24}\n0x3d3851ec; 0.04500000178813934
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 92
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 222
+  Node       : FIFO(24)
+  Node type  : NodeFIFO
+  Removed by : [TapFIFOsPass]
+  Creator    : ScheduleApplier
+
+  NodeID     : 246
+  Node       : FIFO(8)
+  Node type  : NodeFIFO
+  Creator    : TapFIFOsPass
+
+------------
+NodeID     : 93
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 223
+  Node       : FIFO(44)
+  Node type  : NodeFIFO
+  Removed by : [TapFIFOsPass]
+  Creator    : ScheduleApplier
+
+  NODE WAS REMOVED!
+  NodeID     : 224
+  Node       : FIFO(44)
+  Node type  : NodeFIFO
+  Removed by : [TapFIFOsPass]
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 94
+Node       : -
+Node type  : NodeSub
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:812)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 95
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 96
+Node       : +
+Node type  : NodeAdd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 97
+Node       : MUX
+Node type  : NodeMux
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1021)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 225
+  Node       : FIFO(52)
+  Node type  : NodeFIFO
+  Removed by : [TapFIFOsPass]
+  Creator    : ScheduleApplier
+
+  NodeID     : 247
+  Node       : FIFO(28)
+  Node type  : NodeFIFO
+  Creator    : TapFIFOsPass
+
+------------
+NODE WAS REMOVED!
+NodeID     : 98
+Node       : 0.05000000074505806
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 260
+  Node       : {HWFloat:8, 24}\n0x3d4ccccd; 0.05000000074505806
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 99
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 229
+  Node       : FIFO(12)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 100
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 101
+Node       : +
+Node type  : NodeAdd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 230
+  Node       : FIFO(28)
+  Node type  : NodeFIFO
+  Removed by : [TapFIFOsPass]
+  Creator    : ScheduleApplier
+
+  NodeID     : 249
+  Node       : FIFO(4)
+  Node type  : NodeFIFO
+  Creator    : TapFIFOsPass
+
+------------
+NODE WAS REMOVED!
+NodeID     : 102
+Node       : 0.30000001192092896
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 258
+  Node       : {HWFloat:8, 24}\n0x3e99999a; 0.30000001192092896
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 103
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 231
+  Node       : FIFO(24)
+  Node type  : NodeFIFO
+  Removed by : [TapFIFOsPass]
+  Creator    : ScheduleApplier
+
+  NodeID     : 248
+  Node       : FIFO(12)
+  Node type  : NodeFIFO
+  Creator    : TapFIFOsPass
+
+------------
+NodeID     : 104
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 105
+Node       : +
+Node type  : NodeAdd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 106
+Node       : 0.04500000178813934
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 257
+  Node       : {HWFloat:8, 24}\n0x3d3851ec; 0.04500000178813934
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 107
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 233
+  Node       : FIFO(28)
+  Node type  : NodeFIFO
+  Removed by : [TapFIFOsPass]
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 108
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 109
+Node       : -
+Node type  : NodeSub
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:812)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 110
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 234
+  Node       : FIFO(16)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 111
+Node       : +
+Node type  : NodeAdd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 235
+  Node       : FIFO(8)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NODE WAS REMOVED!
+NodeID     : 112
+Node       : stream offset: -loopLength
+Node type  : NodeStreamOffset
+Removed by : [SubstituteEqPlaceholders]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.offset(Stream.java:259)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:69)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 198
+  Node       : stream offset: -loopLength
+  Node type  : NodeStreamOffset
+  Removed by : [SubstituteEqPlaceholders]
+  Creator    : SubstituteEqPlaceholders
+
+  NodeID     : 201
+  Node       : stream offset: -108
+  Node type  : NodeStreamOffset
+  Creator    : SubstituteEqPlaceholders
+
+------------
+NODE WAS REMOVED!
+NodeID     : 113
+Node       : 1.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:69)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 276
+  Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 114
+Node       : ==
+Node type  : NodeEq
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:69)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 115
+Node       : stream offset: -loopLength
+Node type  : NodeStreamOffset
+Removed by : [SubstituteEqPlaceholders]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.offset(Stream.java:259)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:70)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 199
+  Node       : stream offset: -loopLength
+  Node type  : NodeStreamOffset
+  Removed by : [SubstituteEqPlaceholders]
+  Creator    : SubstituteEqPlaceholders
+
+  NodeID     : 202
+  Node       : stream offset: -108
+  Node type  : NodeStreamOffset
+  Creator    : SubstituteEqPlaceholders
+
+  NodeID     : 227
+  Node       : FIFO(33)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NODE WAS REMOVED!
+NodeID     : 116
+Node       : 1.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:70)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 261
+  Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 117
+Node       : ==
+Node type  : NodeEq
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:70)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 118
+Node       : 80.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:820)
+nebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:72)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 264
+  Node       : {HWFloat:8, 24}\n0x42a00000; 80.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 119
+Node       : -
+Node type  : NodeSub
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:820)
+nebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:72)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 120
+Node       : >
+Node type  : NodeGt
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath.max(KernelMath.java:846)
+nebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:72)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 121
+Node       : MUX
+Node type  : NodeMux
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath.max(KernelMath.java:846)
+nebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:72)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 226
+  Node       : FIFO(2)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NODE WAS REMOVED!
+NodeID     : 122
+Node       : 0.9512294237919928
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:869)
+nebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:72)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 279
+  Node       : {HWFloat:8, 24}\n0x3f7383c6; 0.951229453086853
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 123
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:869)
+nebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:72)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 124
+Node       : 80.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:820)
+nebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:73)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 256
+  Node       : {HWFloat:8, 24}\n0x42a00000; 80.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 125
+Node       : -
+Node type  : NodeSub
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:820)
+nebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:73)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 236
+  Node       : FIFO(33)
+  Node type  : NodeFIFO
+  Removed by : [TapFIFOsPass]
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 126
+Node       : >
+Node type  : NodeGt
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath.max(KernelMath.java:846)
+nebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:73)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 127
+Node       : MUX
+Node type  : NodeMux
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath.max(KernelMath.java:846)
+nebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:73)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 237
+  Node       : FIFO(2)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NODE WAS REMOVED!
+NodeID     : 128
+Node       : 0.9512294237919928
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:869)
+nebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:73)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 263
+  Node       : {HWFloat:8, 24}\n0x3f7383c6; 0.951229453086853
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 129
+Node       : *
+Node type  : NodeMul
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:869)
+nebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:73)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 130
+Node       : 0.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:75)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 280
+  Node       : {HWOffsetFix:32, 0, TWOSCOMPLEMENT}\n0x00000000; 0.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 131
+Node       : ==
+Node type  : NodeEq
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:75)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 132
+Node       : -
+Node type  : NodeSub
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:812)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:75)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 133
+Node       : MUX
+Node type  : NodeMux
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1021)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:75)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 238
+  Node       : FIFO(12)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NODE WAS REMOVED!
+NodeID     : 134
+Node       : 1.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 283
+  Node       : {HWOffsetFix:32, 0, UNSIGNED}\n0x00000001; 1.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 135
+Node       : -
+Node type  : NodeSub
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 136
+Node       : ==
+Node type  : NodeEq
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:531)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 137
+Node       : 1.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 282
+  Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 138
+Node       : ==
+Node type  : NodeEq
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 204
+  Node       : FIFO(1)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 139
+Node       : &
+Node type  : NodeAnd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 140
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 141
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 142
+Node       : <{HWOffsetFix:1, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 143
+Node       : 1.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 281
+  Node       : {HWOffsetFix:32, 0, UNSIGNED}\n0x00000001; 1.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 144
+Node       : -
+Node type  : NodeSub
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 145
+Node       : ==
+Node type  : NodeEq
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:531)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 205
+  Node       : FIFO(1)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 146
+Node       : &
+Node type  : NodeAnd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 147
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 148
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 206
+  Node       : FIFO(1)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 149
+Node       : <{HWOffsetFix:1, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 150
+Node       : Scalar input (io_diff_force_disabled)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 151
+Node       : ~
+Node type  : NodeNot
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 152
+Node       : &
+Node type  : NodeAnd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 153
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 154
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 155
+Node       : <{HWOffsetFix:1, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 156
+Node       : Output(diff)
+Node type  : NodeOutput
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 239
+  Node       : FIFO(141)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NODE WAS REMOVED!
+NodeID     : 157
+Node       : 1.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 255
+  Node       : {HWOffsetFix:32, 0, UNSIGNED}\n0x00000001; 1.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 158
+Node       : -
+Node type  : NodeSub
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 159
+Node       : ==
+Node type  : NodeEq
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:531)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 160
+Node       : 1.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 254
+  Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 161
+Node       : ==
+Node type  : NodeEq
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 240
+  Node       : FIFO(1)
+  Node type  : NodeFIFO
+  Removed by : [TapFIFOsPass]
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 162
+Node       : &
+Node type  : NodeAnd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 163
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 164
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 165
+Node       : <{HWOffsetFix:1, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 166
+Node       : 1.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 253
+  Node       : {HWOffsetFix:32, 0, UNSIGNED}\n0x00000001; 1.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 167
+Node       : -
+Node type  : NodeSub
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 168
+Node       : ==
+Node type  : NodeEq
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:531)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NODE WAS REMOVED!
+  NodeID     : 241
+  Node       : FIFO(1)
+  Node type  : NodeFIFO
+  Removed by : [TapFIFOsPass]
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 169
+Node       : &
+Node type  : NodeAnd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 170
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 171
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 242
+  Node       : FIFO(1)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NodeID     : 172
+Node       : <{HWOffsetFix:1, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 173
+Node       : Scalar input (io_fine_force_disabled)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 174
+Node       : ~
+Node type  : NodeNot
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 175
+Node       : &
+Node type  : NodeAnd
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 176
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 177
+Node       : <{HWRawBits:1}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 178
+Node       : <{HWOffsetFix:1, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+------------
+NodeID     : 179
+Node       : Output(fine)
+Node type  : NodeOutput
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Led to:
+  NodeID     : 243
+  Node       : FIFO(128)
+  Node type  : NodeFIFO
+  Creator    : ScheduleApplier
+
+------------
+NODE WAS REMOVED!
+NodeID     : 182
+Node       : 1.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)
+
+Led to:
+  NodeID     : 252
+  Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 183
+Node       : {HWOffsetFix:49, 0, UNSIGNED}\n0x1000000000000; 2.81474976710656E14
+Node type  : NodeConstantRawBits
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)
+
+------------
+NodeID     : 184
+Node       : Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0
+Node type  : NodeCounterV1
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)
+
+------------
+NodeID     : 185
+Node       : stream offset: 1
+Node type  : NodeStreamOffset
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)
+
+------------
+NodeID     : 186
+Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+Node type  : NodeConstantRawBits
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)
+
+------------
+NodeID     : 187
+Node       : Scalar output (current_run_cycle_count)
+Node type  : NodeOutputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)
+
+------------
+NODE WAS REMOVED!
+NodeID     : 188
+Node       : 1.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)
+
+Led to:
+  NodeID     : 251
+  Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 189
+Node       : {HWOffsetFix:49, 0, UNSIGNED}\n0x1000000000000; 2.81474976710656E14
+Node type  : NodeConstantRawBits
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)
+
+------------
+NodeID     : 190
+Node       : Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0
+Node type  : NodeCounterV1
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)
+
+------------
+NodeID     : 191
+Node       : flush on trigger
+Node type  : NodeFlush
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)
+
+------------
+NodeID     : 192
+Node       : Scalar input (run_cycle_count)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)
+
+------------
+NodeID     : 193
+Node       : ==
+Node type  : NodeEq
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)
+
+------------

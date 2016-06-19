@@ -1,0 +1,20 @@
+digraph NebMLMCStreamKernel_illegalLoop{
+	NodeMux33 [color=red, style="bold", shape=invtrapezium, label="MUX\nID: 33", height=0.5];
+	NodeRAM59 [color=red, style="bold", label="RAM(RAM_TWO_PORT)\nID: 59"];
+	NodeStreamOffset34 [color=red, style="bold", shape=diamond, label="-1\nID: 34"];
+	NodeEq31 [shape=point];
+	NodeEq31 -> NodeMux33[label="(1)" headport="w" color="/dark28/1" photon_data="EDGE,SrcNode:31,SrcNodePort:result"];
+	NodeRAM59 -> NodeMux33[label="(2)" color="/dark28/2" photon_data="EDGE,SrcNode:59,SrcNodePort:doutb"];
+	NodeConstantRawBits32 [shape=point];
+	NodeConstantRawBits32 -> NodeMux33[label="(0)" color="/dark28/3" photon_data="EDGE,SrcNode:32,SrcNodePort:value"];
+	NodeSub38 [shape=point];
+	NodeMux33 -> NodeSub38 [label="(1)"];
+	NodeCounterV115 [shape=point];
+	NodeCounterV115 -> NodeRAM59[label="(0)" color="/dark28/4" photon_data="EDGE,SrcNode:15,SrcNodePort:count"];
+	NodeStreamOffset34 -> NodeRAM59[label="(-1)" color="/dark28/5" photon_data="EDGE,SrcNode:34,SrcNodePort:output"];
+	NodeEq36 [shape=point];
+	NodeEq36 -> NodeRAM59[label="(1)" color="/dark28/6" photon_data="EDGE,SrcNode:36,SrcNodePort:result"];
+	NodeCounterV115 [shape=point];
+	NodeCounterV115 -> NodeRAM59[label="(0)" color="/dark28/7" photon_data="EDGE,SrcNode:15,SrcNodePort:count"];
+	NodeMux33 -> NodeStreamOffset34[label="(1)" headport="n", tailport="s", color=red photon_data="EDGE,SrcNode:33,SrcNodePort:result"];
+}

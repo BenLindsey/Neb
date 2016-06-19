@@ -1,0 +1,25 @@
+digraph manager_compiler_graph {
+NebMLMCStreamKernel[shape=plaintext, label=<<TABLE  BORDER="1" CELLPADDING="1" CELLSPACING="1"><TR><TD BGCOLOR="white" BORDER="0" PORT="inputs" ROWSPAN="1" COLSPAN="1"><TABLE  BORDER="1" CELLPADDING="1" CELLSPACING="4"><TR><TD BGCOLOR="white" BORDER="1" PORT="r1" ROWSPAN="1" COLSPAN="1">r1<BR/>clk=STREAM<BR/>width=32<BR/>PULL el=1 ael=2</TD><TD BGCOLOR="white" BORDER="1" PORT="r2" ROWSPAN="1" COLSPAN="1">r2<BR/>clk=STREAM<BR/>width=32<BR/>PULL el=1 ael=2</TD></TR></TABLE></TD></TR><TR><TD BGCOLOR="white" BORDER="0" PORT="node_info" ROWSPAN="1" COLSPAN="1">Kernel : NebMLMCStreamKernel</TD></TR><TR><TD BGCOLOR="white" BORDER="0" PORT="outputs" ROWSPAN="1" COLSPAN="1"><TABLE  BORDER="1" CELLPADDING="1" CELLSPACING="4"><TR><TD BGCOLOR="white" BORDER="1" PORT="diff" ROWSPAN="1" COLSPAN="1">diff<BR/>clk=STREAM<BR/>width=32<BR/>PUSH 5</TD><TD BGCOLOR="white" BORDER="1" PORT="fine" ROWSPAN="1" COLSPAN="1">fine<BR/>clk=STREAM<BR/>width=32<BR/>PUSH 5</TD></TR></TABLE></TD></TR></TABLE>>];
+NebMLMCStreamKernel_assign -> diff_assign[color=green headport="assignment_2" tailport="assignment_14"];
+NebMLMCStreamKernel_assign -> fine_assign[color=green headport="assignment_5" tailport="assignment_14"];
+NebMLMCStreamKernel_assign -> r2_assign[color=green headport="assignment_8" tailport="assignment_14"];
+NebMLMCStreamKernel_assign[shape=plaintext, label=<<TABLE  BORDER="0" CELLPADDING="0" CELLSPACING="0"><TR><TD BGCOLOR="green" BORDER="1" PORT="assignment_14" ROWSPAN="1" COLSPAN="1">9600 : width_in_r1=32 width_in_r2=32 width_out_diff=32 width_out_fine=32 clk=STREAM </TD></TR></TABLE>>];
+NebMLMCStreamKernel_assign -> NebMLMCStreamKernel[color=gray];
+r1[shape=plaintext, label=<<TABLE  BORDER="1" CELLPADDING="1" CELLSPACING="1"><TR><TD BGCOLOR="white" BORDER="0" PORT="node_info" ROWSPAN="1" COLSPAN="1">PCIe_From_Host_fwd : r1</TD></TR><TR><TD BGCOLOR="white" BORDER="0" PORT="outputs" ROWSPAN="1" COLSPAN="1"><TABLE  BORDER="1" CELLPADDING="1" CELLSPACING="4"><TR><TD BGCOLOR="white" BORDER="1" PORT="r1" ROWSPAN="1" COLSPAN="1">r1<BR/>clk=STREAM<BR/>width=128<BR/>PULL el=1 ael=8</TD></TR></TABLE></TD></TR></TABLE>>];
+r1_assign -> NebMLMCStreamKernel_assign[color=green headport="assignment_14" tailport="assignment_17"];
+r1_assign[shape=plaintext, label=<<TABLE  BORDER="0" CELLPADDING="0" CELLSPACING="0"><TR><TD BGCOLOR="green" BORDER="1" PORT="assignment_17" ROWSPAN="1" COLSPAN="1">22400 : width=128 clk=STREAM </TD></TR></TABLE>>];
+r1_assign -> r1[color=gray];
+r2[shape=plaintext, label=<<TABLE  BORDER="1" CELLPADDING="1" CELLSPACING="1"><TR><TD BGCOLOR="white" BORDER="0" PORT="node_info" ROWSPAN="1" COLSPAN="1">PCIe_From_Host_fwd : r2</TD></TR><TR><TD BGCOLOR="white" BORDER="0" PORT="outputs" ROWSPAN="1" COLSPAN="1"><TABLE  BORDER="1" CELLPADDING="1" CELLSPACING="4"><TR><TD BGCOLOR="white" BORDER="1" PORT="r2" ROWSPAN="1" COLSPAN="1">r2<BR/>clk=STREAM<BR/>width=128<BR/>PULL el=1 ael=8</TD></TR></TABLE></TD></TR></TABLE>>];
+r2_assign[shape=plaintext, label=<<TABLE  BORDER="0" CELLPADDING="0" CELLSPACING="0"><TR><TD BGCOLOR="green" BORDER="1" PORT="assignment_8" ROWSPAN="1" COLSPAN="1">0 : width=128 clk=STREAM </TD></TR></TABLE>>];
+r2_assign -> r2[color=gray];
+diff[shape=plaintext, label=<<TABLE  BORDER="1" CELLPADDING="1" CELLSPACING="1"><TR><TD BGCOLOR="white" BORDER="0" PORT="inputs" ROWSPAN="1" COLSPAN="1"><TABLE  BORDER="1" CELLPADDING="1" CELLSPACING="4"><TR><TD BGCOLOR="white" BORDER="1" PORT="diff" ROWSPAN="1" COLSPAN="1">diff<BR/>clk=STREAM<BR/>width=128<BR/>PUSH 64</TD></TR></TABLE></TD></TR><TR><TD BGCOLOR="white" BORDER="0" PORT="node_info" ROWSPAN="1" COLSPAN="1">PCIe_To_Host_fwd : diff</TD></TR></TABLE>>];
+diff_assign[shape=plaintext, label=<<TABLE  BORDER="0" CELLPADDING="0" CELLSPACING="0"><TR><TD BGCOLOR="green" BORDER="1" PORT="assignment_2" ROWSPAN="1" COLSPAN="1">0 : width=128 clk=STREAM </TD></TR></TABLE>>];
+diff_assign -> diff[color=gray];
+fine[shape=plaintext, label=<<TABLE  BORDER="1" CELLPADDING="1" CELLSPACING="1"><TR><TD BGCOLOR="white" BORDER="0" PORT="inputs" ROWSPAN="1" COLSPAN="1"><TABLE  BORDER="1" CELLPADDING="1" CELLSPACING="4"><TR><TD BGCOLOR="white" BORDER="1" PORT="fine" ROWSPAN="1" COLSPAN="1">fine<BR/>clk=STREAM<BR/>width=128<BR/>PUSH 64</TD></TR></TABLE></TD></TR><TR><TD BGCOLOR="white" BORDER="0" PORT="node_info" ROWSPAN="1" COLSPAN="1">PCIe_To_Host_fwd : fine</TD></TR></TABLE>>];
+fine_assign[shape=plaintext, label=<<TABLE  BORDER="0" CELLPADDING="0" CELLSPACING="0"><TR><TD BGCOLOR="green" BORDER="1" PORT="assignment_5" ROWSPAN="1" COLSPAN="1">0 : width=128 clk=STREAM </TD></TR></TABLE>>];
+fine_assign -> fine[color=gray];
+r1 -> NebMLMCStreamKernel [headport="r1" tailport="r1" label="{D{data:1}}"]
+r2 -> NebMLMCStreamKernel [headport="r2" tailport="r2" label="{D{data:1}}"]
+NebMLMCStreamKernel -> diff [headport="diff" tailport="diff" label="{D{data:1}}"]
+NebMLMCStreamKernel -> fine [headport="fine" tailport="fine" label="{D{data:1}}"]
+}

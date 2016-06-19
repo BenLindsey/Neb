@@ -1,0 +1,57 @@
+package nebstream;
+
+import static com.maxeler.maxcompiler.v2.managers.standard.Manager.link;
+import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
+import com.maxeler.maxcompiler.v2.managers.BuildConfig;
+import com.maxeler.maxcompiler.v2.managers.engine_interfaces.CPUTypes;
+import com.maxeler.maxcompiler.v2.managers.engine_interfaces.EngineInterface;
+import com.maxeler.maxcompiler.v2.managers.engine_interfaces.InterfaceParam;
+import com.maxeler.maxcompiler.v2.managers.standard.IOLink.IODestination;
+import com.maxeler.maxcompiler.v2.managers.standard.Manager;
+
+public class NebStreamManager {
+
+  private static final String s_kernelName = "NebStreamKernel";
+  private static final int Simulations = 64;
+  private static final int Steps = 64;
+
+  public static void main(String[] args) {
+    NebStreamEngineParameters params = new NebStreamEngineParameters(args);
+    Manager manager = new Manager(params);
+    Kernel kernel = new NebStreamKernel(manager.makeKernelParameters(s_kernelName));
+    manager.setKernel(kernel);
+    manager.setIO(
+      link("r", IODestination.CPU),
+      link("output", IODestination.CPU));
+
+    manager.createSLiCinterface(interfaceDefault());
+
+    configBuild(manager, params);
+
+    manager.build();
+  }
+
+  private static EngineInterface interfaceDefault() {
+    EngineInterface engine_interface = new EngineInterface();
+    CPUTypes type = CPUTypes.FLOAT;
+    int size = type.sizeInBytes();
+
+    InterfaceParam loopLength = engine_interface.getAutoLoopOffset(s_kernelName, "loopLength");
+    engine_interface.setTicks(s_kernelName, Simulations * Steps * loopLength);
+
+    engine_interface.setStream("r", CPUTypes.FLOAT, Simulations * Steps * CPUTypes.FLOAT.sizeInBytes());
+    engine_interface.setStream("output", type, Simulations * Steps * size);
+
+    engine_interface.ignoreAutoLoopOffset(s_kernelName, "loopLength");
+
+    return engine_interface;
+  }
+
+  private static void configBuild(Manager manager, NebStreamEngineParameters params) {
+    manager.setEnableStreamStatusBlocks(false);
+    BuildConfig buildConfig = manager.getBuildConfig();
+    buildConfig.setMPPRCostTableSearchRange(params.getMPPRStartCT(), params.getMPPREndCT());
+    buildConfig.setMPPRParallelism(params.getMPPRThreads());
+    buildConfig.setMPPRRetryNearMissesThreshold(params.getMPPRRetryThreshold());
+  }
+}

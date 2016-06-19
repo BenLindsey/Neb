@@ -1,0 +1,19 @@
+.viewport-example h1 {
+  background-color: purple
+}
+
+.CodeMirror {
+  height: auto;
+  width: 100%;
+}
+
+.viewport-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.viewport-centered > select{
+  margin-bottom: 10px;
+}

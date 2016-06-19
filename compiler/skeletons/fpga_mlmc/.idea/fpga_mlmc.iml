@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="CPP_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/include/Maxfiles.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/include/NebMLMCStream.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/stdkernel_headers.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/NebMLMCStreamKernel.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/PushSync.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/FilePullSource.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/Watch.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/DualAspectReg.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/IFPGARegs.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/HWRawBits_decl.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/stdsimheader.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/HWFloat_impl.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/HWRawBits_impl.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/HWSingle_Specialization_decl.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/HWOffsetFix_decl.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/MappedElements.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/StreamStatus.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/HWOffsetFix_impl.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/NebMLMCStreamKernel.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/HWSingle_Specialization_impl.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/DualAspectMux.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/HWTypes.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/AsyncHelpers.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/Data.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/ManagerInfrastructure.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/AddressGenerator.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/max_shared_fifo.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/Connections.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/PullSync.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/Demux.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/FDStream.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/MemoryControllerPro.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/Timestamp.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/SimTerminator.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/toe_internal_regs.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/HWExceptionDispatch.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/Debuggable.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/StructToGroupDummy.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/MemoryControllerCommand.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/MemoryControllerStreams.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/tmp_resource_dump/NebMLMCStreamKernel_exec0.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/tmp_resource_dump/NebMLMCStreamKernel_Templates.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/tmp_resource_dump/NebMLMCStreamKernel.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/tmp_resource_dump/NebMLMCStreamKernel.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/PushAsync.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/FilePushSink.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/MaxFile.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/Fifos.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/AddressGeneratorStrings.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/Ethernet.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/PCIe.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/TCP.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/NebMLMCStreamKernel_Templates.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/RunLengthExpander.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/HWDouble_Specialization_decl.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/PullAsync.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/HWDouble_Specialization_impl.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/MemoryControllerStrings.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/varint_s.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/Loops.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/SharedFIFO.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/MemoryControllerConfig.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/PullPushAdapter.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/HWFloat_decl.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/DynamicVarUInt.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/ManagerBlock.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/Fanout.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/NebMLMCStreamKernel_exec0.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/KernelManagerBlockSync.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/Mux.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/MemoryControllerRAM.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/max_msi.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/CapRegs.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/ManagerSync.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/ManagerAsync.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/ChecksumMem.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/varint_u.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/DebugStreams.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/software-sim/build/SimException.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/NebMLMCStreamKernel_Assertions.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/NebMLMCStream.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/NebMLMCStreamKernel_StreamOffsetEqs.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM/scratch/NebMLMCStreamKernel_IODistances.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RunRules/DFE/include/Maxfiles.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CPUCode/NebMLMCStreamCpuCode.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Header Search Paths">
+        <CLASSES>
+          <root url="file:///vol/cc/opt/intel/composer_xe_2011_sp1.10.319/composer_xe_2011_sp1.10.319/mkl/include" />
+          <root url="file:///vol/cc/opt/intel/composer_xe_2011_sp1.10.319/composer_xe_2011_sp1.10.319/tbb/include" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+          <root url="file:///usr/include" />
+          <root url="file:///usr/local/include" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file:///vol/cc/opt/intel/composer_xe_2011_sp1.10.319/composer_xe_2011_sp1.10.319/mkl/include" />
+          <root url="file:///vol/cc/opt/intel/composer_xe_2011_sp1.10.319/composer_xe_2011_sp1.10.319/tbb/include" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+          <root url="file:///usr/include" />
+          <root url="file:///usr/local/include" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>

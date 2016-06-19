@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ManagerGraph version="2013.2.2" design_name="Manager_NebMLMCStream" compilation_phase="Final" hardwareBuild="false">
+	<Node id="2" instanceName="r1" type="InputFlexibleClock">
+		<Output clock="STREAM" name="r1" type="PULL el=1 ael=8" width="128">
+			<Stream name="Stream_3" sink="13" />
+		</Output>
+	</Node>
+	<Node id="5" instanceName="r2" type="InputFlexibleClock">
+		<Output clock="STREAM" name="r2" type="PULL el=1 ael=8" width="128">
+			<Stream name="Stream_6" sink="17" />
+		</Output>
+	</Node>
+	<Node id="13" instanceName="Stream_1" type="DualAspectMux">
+		<Input clock="STREAM" name="input" type="PULL el=1 ael=0" width="128">
+			<Stream name="Stream_14" source="2" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PUSH 2" width="32">
+			<Stream name="Stream_15" sink="37" />
+		</Output>
+	</Node>
+	<Node id="17" instanceName="Stream_4" type="DualAspectMux">
+		<Input clock="STREAM" name="input" type="PULL el=1 ael=0" width="128">
+			<Stream name="Stream_18" source="5" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PUSH 2" width="32">
+			<Stream name="Stream_19" sink="41" />
+		</Output>
+	</Node>
+	<Node id="37" instanceName="Stream_16" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 2" width="32">
+			<Stream name="Stream_38" source="13" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="32">
+			<Stream name="Stream_39" sink="0" />
+		</Output>
+	</Node>
+	<Node id="41" instanceName="Stream_20" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 2" width="32">
+			<Stream name="Stream_42" source="17" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="32">
+			<Stream name="Stream_43" sink="0" />
+		</Output>
+	</Node>
+	<Node id="0" instanceName="NebMLMCStreamKernel" type="Kernel">
+		<PxgFile phase="original">NebMLMCStream_NebMLMCStreamKernel_original.pxg</PxgFile>
+		<PxgFile phase="final-simulation">NebMLMCStream_NebMLMCStreamKernel_final-simulation.pxg</PxgFile>
+		<Input clock="STREAM" name="r1" type="PULL el=1 ael=2" width="32">
+			<Stream name="Stream_40" source="37" />
+		</Input>
+		<Input clock="STREAM" name="r2" type="PULL el=1 ael=2" width="32">
+			<Stream name="Stream_44" source="41" />
+		</Input>
+		<Output clock="STREAM" name="diff" type="PUSH 5" width="32">
+			<Stream name="Stream_7" sink="45" />
+		</Output>
+		<Output clock="STREAM" name="fine" type="PUSH 5" width="32">
+			<Stream name="Stream_10" sink="49" />
+		</Output>
+	</Node>
+	<Node id="45" instanceName="Stream_22" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="32">
+			<Stream name="Stream_46" source="0" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=0" width="32">
+			<Stream name="Stream_47" sink="21" />
+		</Output>
+	</Node>
+	<Node id="49" instanceName="Stream_26" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="32">
+			<Stream name="Stream_50" source="0" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=0" width="32">
+			<Stream name="Stream_51" sink="25" />
+		</Output>
+	</Node>
+	<Node id="21" instanceName="Stream_9" type="DualAspectReg">
+		<Input clock="STREAM" name="input" type="PULL el=1 ael=0" width="32">
+			<Stream name="Stream_48" source="45" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=0" width="128">
+			<Stream name="Stream_23" sink="29" />
+		</Output>
+	</Node>
+	<Node id="25" instanceName="Stream_12" type="DualAspectReg">
+		<Input clock="STREAM" name="input" type="PULL el=1 ael=0" width="32">
+			<Stream name="Stream_52" source="49" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=0" width="128">
+			<Stream name="Stream_27" sink="33" />
+		</Output>
+	</Node>
+	<Node id="29" instanceName="Stream_24" type="PullPushAdapter">
+		<Input clock="STREAM" name="input" type="PULL el=1 ael=0" width="128">
+			<Stream name="Stream_30" source="21" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PUSH 1" width="128">
+			<Stream name="Stream_31" sink="8" />
+		</Output>
+	</Node>
+	<Node id="33" instanceName="Stream_28" type="PullPushAdapter">
+		<Input clock="STREAM" name="input" type="PULL el=1 ael=0" width="128">
+			<Stream name="Stream_34" source="25" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PUSH 1" width="128">
+			<Stream name="Stream_35" sink="11" />
+		</Output>
+	</Node>
+	<Node id="8" instanceName="diff" type="OutputFlexibleClock">
+		<Input clock="STREAM" name="diff" type="PUSH 64" width="128">
+			<Stream name="Stream_32" source="29" />
+		</Input>
+	</Node>
+	<Node id="11" instanceName="fine" type="OutputFlexibleClock">
+		<Input clock="STREAM" name="fine" type="PUSH 64" width="128">
+			<Stream name="Stream_36" source="33" />
+		</Input>
+	</Node>
+</ManagerGraph>

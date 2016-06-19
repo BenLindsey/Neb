@@ -1,0 +1,148 @@
+NodeAdd + {HWFloat:8, 24} ID: 80
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(28) {HWFloat:8, 24} 28 ID: 247
+	FIFO(12) {HWFloat:8, 24} 12 ID: 245
+	FIFO(8) {HWFloat:8, 24} 8 ID: 246
+	FIFO(4) {HWFloat:8, 24} 4 ID: 216
+
+NodeMul * {HWFloat:8, 24} ID: 57
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:55)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(44) {HWFloat:8, 24} 44 ID: 220
+
+NodeAdd + {HWFloat:8, 24} ID: 111
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(33) {HWFloat:8, 24} 33 ID: 227
+
+NodeMux MUX {HWFloat:8, 24} ID: 66
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1041)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:63)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(12) {HWFloat:8, 24} 12 ID: 229
+	FIFO(12) {HWFloat:8, 24} 12 ID: 248
+	FIFO(4) {HWFloat:8, 24} 4 ID: 249
+
+NodeMux MUX {HWFloat:8, 24} ID: 62
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1041)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:62)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(12) {HWFloat:8, 24} 12 ID: 209
+	FIFO(4) {HWFloat:8, 24} 4 ID: 244
+
+NodeMul * {HWFloat:8, 24} ID: 107
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(16) {HWFloat:8, 24} 16 ID: 234
+
+NodeMul * {HWFloat:8, 24} ID: 123
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:869)
+nebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:72)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(12) {HWFloat:8, 24} 12 ID: 238
+
+NodeMul * {HWFloat:8, 24} ID: 54
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:54)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(8) {HWFloat:8, 24} 8 ID: 212
+
+NodeMul * {HWFloat:8, 24} ID: 76
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(8) {HWFloat:8, 24} 8 ID: 214
+
+NodeMul * {HWFloat:8, 24} ID: 89
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(8) {HWFloat:8, 24} 8 ID: 221
+
+NodeAdd + {HWFloat:8, 24} ID: 105
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)
+nebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(8) {HWFloat:8, 24} 8 ID: 235
+
+NodeReinterpret <{HWOffsetFix:1, 0, UNSIGNED}> {HWOffsetFix:1, 0, UNSIGNED} ID: 155
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(141) {HWOffsetFix:1, 0, UNSIGNED} 141 ID: 239
+
+NodeReinterpret <{HWOffsetFix:1, 0, UNSIGNED}> {HWOffsetFix:1, 0, UNSIGNED} ID: 178
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(128) {HWOffsetFix:1, 0, UNSIGNED} 128 ID: 243
+
+NodeSub - {HWFloat:8, 24} ID: 119
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:820)
+nebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:72)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(2) {HWFloat:8, 24} 2 ID: 226
+
+NodeSub - {HWFloat:8, 24} ID: 125
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:820)
+nebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:73)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(2) {HWFloat:8, 24} 2 ID: 237
+
+NodeCounterV1 Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0 {HWOffsetFix:32, 0, UNSIGNED} ID: 19
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:523)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:49)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(1) {HWOffsetFix:32, 0, UNSIGNED} 1 ID: 205
+
+NodeReinterpret <{HWOffsetFix:1, 0, UNSIGNED}> {HWOffsetFix:1, 0, UNSIGNED} ID: 50
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(8) {HWOffsetFix:1, 0, UNSIGNED} 8 ID: 219
+
+NodeCounterV1 Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0 {HWOffsetFix:1, 0, UNSIGNED} ID: 18
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:501)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:48)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(1) {HWOffsetFix:1, 0, UNSIGNED} 1 ID: 203
+	FIFO(1) {HWOffsetFix:1, 0, UNSIGNED} 1 ID: 204
+
+NodeEq == {HWOffsetFix:1, 0, UNSIGNED} ID: 145
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:531)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(1) {HWOffsetFix:1, 0, UNSIGNED} 1 ID: 206
+
+NodeEq == {HWOffsetFix:1, 0, UNSIGNED} ID: 60
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:62)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(1) {HWOffsetFix:1, 0, UNSIGNED} 1 ID: 207
+
+NodeEq == {HWOffsetFix:1, 0, UNSIGNED} ID: 64
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:63)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(1) {HWOffsetFix:1, 0, UNSIGNED} 1 ID: 228
+
+NodeEq == {HWOffsetFix:1, 0, UNSIGNED} ID: 168
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:531)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	FIFO(1) {HWOffsetFix:1, 0, UNSIGNED} 1 ID: 242
+

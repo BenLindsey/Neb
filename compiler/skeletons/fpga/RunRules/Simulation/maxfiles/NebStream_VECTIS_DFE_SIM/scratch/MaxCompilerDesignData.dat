@@ -1,0 +1,1154 @@
+#ifdef MAXCOMPILER_VERSION_INFO
+#define MAXCOMPILER_VERSION_INFO_PRESENT 1
+#define MAXFILE_MAXCOMPILER_VERSION_YEAR         2013
+#define MAXFILE_MAXCOMPILER_VERSION_NUM          2
+#define MAXFILE_MAXCOMPILER_VERSION_POINT        2
+#define MAXFILE_MAXCOMPILER_VERSION_PATCH        ""
+#define MAXFILE_MAXCOMPILER_VERSION_REV          37772
+#define MAXFILE_MAXCOMPILER_VERSION_RELEASE_MODE true
+#endif
+
+#ifdef MAXFILE_BUILD_INFO
+#define MAXFILE_BUILD_INFO_PRESENT 1
+#define MAXFILE_BUILD_NAME "NebStream"
+#define MAXFILE_BUILD_DIR  "/homes/bl2312/DSL/DSL/fpga/RunRules/Simulation/maxfiles/NebStream_VECTIS_DFE_SIM"
+#define MAXFILE_BUILD_DATE  20160313
+#define MAXFILE_BUILD_REV   1
+#endif
+
+#ifdef PARAM
+#define PARAM_PRESENT 1
+PARAM(APP_ID, 0)
+PARAM(REV_ID, 0)
+PARAM(CHAIN_LENGTH, 35)
+PARAM(IS_SIMULATION, 1)
+PARAM(MEC_SUPPORTED, 1)
+PARAM(PCIE_SLAVE_STREAMING, 0)
+PARAM(PCIE_ALIGNMENT, 16)
+PARAM(NUM_IFPGA_LINKS, 0)
+#endif
+
+#ifdef STRING_PARAM
+#define STRING_PARAM_PRESENT 1
+STRING_PARAM(BOARD_MODEL, "MAX3424A")
+#endif
+
+
+#ifdef INCLUDE_GENERATED_CPP_HEADERS
+#include "NebStreamKernel.h"
+#endif
+
+
+
+
+
+
+
+
+#ifdef STREAM_OFFSET_AUTO_LOOP_VAR
+#define STREAM_OFFSET_AUTO_LOOP_VAR_PRESENT 1
+STREAM_OFFSET_AUTO_LOOP_VAR(NebStreamKernel, loopLength, 1)
+#endif
+
+
+#ifdef MANAGER_NODE
+#define MANAGER_NODE_PRESENT 1
+MANAGER_NODE(NebStreamKernel, Kernel)
+MANAGER_NODE(r, PCIe_From_Host_fwd)
+MANAGER_NODE(output, PCIe_To_Host_fwd)
+MANAGER_NODE(Stream_1, DualAspectMux)
+MANAGER_NODE(Stream_6, DualAspectReg)
+MANAGER_NODE(Stream_14, StreamPullPushAdapter)
+MANAGER_NODE(Stream_10, Fifo)
+MANAGER_NODE(Stream_12, Fifo)
+#endif
+
+#ifdef MANAGER_NODE_IO
+#define MANAGER_NODE_IO_PRESENT 1
+MANAGER_NODE_IO(NebStreamKernel, r, IN, STREAM, 32, PULL)
+MANAGER_NODE_IO(NebStreamKernel, output, OUT, STREAM, 32, PUSH)
+MANAGER_NODE_IO(r, r, OUT, STREAM, 128, PULL)
+MANAGER_NODE_IO(output, output, IN, STREAM, 128, PUSH)
+MANAGER_NODE_IO(Stream_1, input, IN, STREAM, 128, PULL)
+MANAGER_NODE_IO(Stream_1, output, OUT, STREAM, 32, PUSH)
+MANAGER_NODE_IO(Stream_6, input, IN, STREAM, 32, PULL)
+MANAGER_NODE_IO(Stream_6, output, OUT, STREAM, 128, PULL)
+MANAGER_NODE_IO(Stream_14, input, IN, STREAM, 128, PULL)
+MANAGER_NODE_IO(Stream_14, output, OUT, STREAM, 128, PUSH)
+MANAGER_NODE_IO(Stream_10, input, IN, STREAM, 32, PUSH)
+MANAGER_NODE_IO(Stream_10, output, OUT, STREAM, 32, PULL)
+MANAGER_NODE_IO(Stream_12, input, IN, STREAM, 32, PUSH)
+MANAGER_NODE_IO(Stream_12, output, OUT, STREAM, 32, PULL)
+#endif
+
+#ifdef MANAGER_STREAM
+#define MANAGER_STREAM_PRESENT 1
+MANAGER_STREAM(r, r, Stream_1, input, 128)
+MANAGER_STREAM(NebStreamKernel, output, Stream_12, input, 32)
+MANAGER_STREAM(Stream_1, output, Stream_10, input, 32)
+MANAGER_STREAM(Stream_6, output, Stream_14, input, 128)
+MANAGER_STREAM(Stream_14, output, output, output, 128)
+MANAGER_STREAM(Stream_10, output, NebStreamKernel, r, 32)
+MANAGER_STREAM(Stream_12, output, Stream_6, input, 32)
+#endif
+
+#ifdef MANAGER_NODE_PROPERTY
+#define MANAGER_NODE_PROPERTY_PRESENT 1
+MANAGER_NODE_PROPERTY(NebStreamKernel, control_pipelining_depth, 2)
+#endif
+
+
+#ifdef KERNEL_CORE
+#define KERNEL_CORE_PRESENT 1
+KERNEL_CORE(NebStreamKernel)
+#endif
+
+#ifdef KERNEL_HOST_CONTROLLED
+#define KERNEL_HOST_CONTROLLED_PRESENT 1
+KERNEL_HOST_CONTROLLED(NebStreamKernel, NebStreamKernel)
+#endif
+
+#ifdef DEBUG_INPUT_BITS
+#define DEBUG_INPUT_BITS_PRESENT 1
+DEBUG_INPUT_BITS(NebStreamKernel, r, 0)
+#endif
+
+#ifdef DEBUG_OUTPUT_BITS
+#define DEBUG_OUTPUT_BITS_PRESENT 1
+DEBUG_OUTPUT_BITS(NebStreamKernel, output, 0)
+#endif
+
+#ifdef MANAGER_NODE_CPP_SIM_MODEL_CTOR
+#define MANAGER_NODE_CPP_SIM_MODEL_CTOR_PRESENT 1
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(r, PCIePullSourceSyncMax3, "r")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_1, DualAspectMuxSync, "Stream_1", 32, 4)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_10, FifoPushToPullSync, "Stream_10", false, 512, 32)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(NebStreamKernel, NebStreamKernel, "NebStreamKernel")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_12, FifoPushToPullSync, "Stream_12", false, 512, 32)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_6, DualAspectRegSync, "Stream_6", 32, 4)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_14, PullToPushAdapterSync, "Stream_14")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(output, PCIePushSinkSyncMax3, "output")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(CapabilityReg, CapRegs, "CapabilityReg", 0, 1, 1, 0, 0, 0, 0, 0, 35)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(ifpga, IFPGARegs)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(sfa, SFARegs)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(ChecksumMemory, ChecksumMem, "ChecksumMemory", "5468ad2a7921211192fc5735be6ee5b086f19738b3c45e0a7f4113f74114d571")
+#endif
+
+#ifdef MANAGER_NODE_CPP_SIM_MODEL_SETUP
+#define MANAGER_NODE_CPP_SIM_MODEL_SETUP_PRESENT 1
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebStreamKernel, addDebugRegister, reg_dbg_ctld_almost_empty, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebStreamKernel, addDebugRegister, reg_dbg_ctld_done, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebStreamKernel, addDebugRegister, reg_dbg_ctld_empty, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebStreamKernel, addDebugRegister, reg_dbg_ctld_read, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebStreamKernel, addDebugRegister, reg_dbg_ctld_read_pipe_dbg, 3, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebStreamKernel, addDebugRegister, reg_dbg_ctld_request, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebStreamKernel, addDebugRegister, reg_dbg_done_out, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebStreamKernel, addDebugRegister, reg_dbg_fill_level, 5, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebStreamKernel, addDebugRegister, reg_dbg_flush_level, 5, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebStreamKernel, addDebugRegister, reg_dbg_flush_start, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebStreamKernel, addDebugRegister, reg_dbg_flush_start_level, 5, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebStreamKernel, addDebugRegister, reg_dbg_flushing, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebStreamKernel, addDebugRegister, reg_dbg_full_level, 5, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebStreamKernel, addDebugRegister, reg_dbg_out_stall, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebStreamKernel, addDebugRegister, reg_dbg_out_valid, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebStreamKernel, addDebugRegister, reg_dbg_stall_vector, 1, 0)
+#endif
+
+#ifdef PCIE_STREAM
+#define PCIE_STREAM_PRESENT 1
+PCIE_STREAM(r, STREAM_FROM_HOST, 0)
+PCIE_STREAM(output, STREAM_TO_HOST, 0)
+#endif
+
+#ifdef REG
+#define REG_PRESENT 1
+REG(NebStreamKernel.io_r_force_disabled, 0x0, 1, hwOffsetFix(1, 0, UNSIGNED))
+REG(NebStreamKernel.io_output_force_disabled, 0x1, 1, hwOffsetFix(1, 0, UNSIGNED))
+REG(NebStreamKernel.run_cycle_count, 0x2, 6, hwOffsetFix(48, 0, UNSIGNED))
+REG(NebStreamKernel.current_run_cycle_count, 0x8, 6, hwOffsetFix(48, 0, UNSIGNED))
+REG(NebStreamKernel.dbg_ctld_almost_empty, 0xe, 1, hwBits(1))
+REG(NebStreamKernel.dbg_ctld_done, 0xf, 1, hwBits(1))
+REG(NebStreamKernel.dbg_ctld_empty, 0x10, 1, hwBits(1))
+REG(NebStreamKernel.dbg_ctld_read, 0x11, 1, hwBits(1))
+REG(NebStreamKernel.dbg_ctld_read_pipe_dbg, 0x12, 1, hwBits(3))
+REG(NebStreamKernel.dbg_ctld_request, 0x13, 1, hwBits(1))
+REG(NebStreamKernel.dbg_done_out, 0x14, 1, hwBits(1))
+REG(NebStreamKernel.dbg_fill_level, 0x15, 1, hwBits(5))
+REG(NebStreamKernel.dbg_flush_level, 0x16, 1, hwBits(5))
+REG(NebStreamKernel.dbg_flush_start, 0x17, 1, hwBits(1))
+REG(NebStreamKernel.dbg_flush_start_level, 0x18, 1, hwBits(5))
+REG(NebStreamKernel.dbg_flushing, 0x19, 1, hwBits(1))
+REG(NebStreamKernel.dbg_full_level, 0x1a, 1, hwBits(5))
+REG(NebStreamKernel.dbg_out_stall, 0x1b, 1, hwBits(1))
+REG(NebStreamKernel.dbg_out_valid, 0x1c, 1, hwBits(1))
+REG(NebStreamKernel.dbg_stall_vector, 0x1d, 1, hwBits(1))
+REG(ifpga.ifpga_ctrl, 0x1e, 1, hwBits(8))
+REG(SignalForwardingAdapter.SFA_FORWARD_EN, 0x1f, 4, hwBits(32))
+#endif
+
+#ifdef REG_V2
+#define REG_V2_PRESENT 1
+REG_V2(NebStreamKernel.io_r_force_disabled, 0x0, 1, hwOffsetFix(1, 0, UNSIGNED), HOST_WRITE_ONLY, true)
+REG_V2(NebStreamKernel.io_output_force_disabled, 0x1, 1, hwOffsetFix(1, 0, UNSIGNED), HOST_WRITE_ONLY, true)
+REG_V2(NebStreamKernel.run_cycle_count, 0x2, 6, hwOffsetFix(48, 0, UNSIGNED), HOST_WRITE_ONLY, false)
+REG_V2(NebStreamKernel.current_run_cycle_count, 0x8, 6, hwOffsetFix(48, 0, UNSIGNED), HOST_READ_ONLY, false)
+REG_V2(NebStreamKernel.dbg_ctld_almost_empty, 0xe, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(NebStreamKernel.dbg_ctld_done, 0xf, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(NebStreamKernel.dbg_ctld_empty, 0x10, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(NebStreamKernel.dbg_ctld_read, 0x11, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(NebStreamKernel.dbg_ctld_read_pipe_dbg, 0x12, 1, hwBits(3), HOST_READ_ONLY, false)
+REG_V2(NebStreamKernel.dbg_ctld_request, 0x13, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(NebStreamKernel.dbg_done_out, 0x14, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(NebStreamKernel.dbg_fill_level, 0x15, 1, hwBits(5), HOST_READ_ONLY, false)
+REG_V2(NebStreamKernel.dbg_flush_level, 0x16, 1, hwBits(5), HOST_READ_ONLY, false)
+REG_V2(NebStreamKernel.dbg_flush_start, 0x17, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(NebStreamKernel.dbg_flush_start_level, 0x18, 1, hwBits(5), HOST_READ_ONLY, false)
+REG_V2(NebStreamKernel.dbg_flushing, 0x19, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(NebStreamKernel.dbg_full_level, 0x1a, 1, hwBits(5), HOST_READ_ONLY, false)
+REG_V2(NebStreamKernel.dbg_out_stall, 0x1b, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(NebStreamKernel.dbg_out_valid, 0x1c, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(NebStreamKernel.dbg_stall_vector, 0x1d, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(ifpga.ifpga_ctrl, 0x1e, 1, hwBits(8), HOST_READ_WRITE, false)
+REG_V2(SignalForwardingAdapter.SFA_FORWARD_EN, 0x1f, 4, hwBits(32), HOST_READ_WRITE, false)
+#endif
+
+
+
+
+#ifdef CHECKSUM
+#define CHECKSUM_PRESENT 1
+CHECKSUM("5468ad2a7921211192fc5735be6ee5b086f19738b3c45e0a7f4113f74114d571")
+#endif
+
+#ifdef CAPABILITY
+#define CAPABILITY_PRESENT 1
+CAPABILITY(MAX3REV, MAX3REVA)
+CAPABILITY(MAX3RAM, DDR3_24GB)
+CAPABILITY(MAX3FPGA, SXT475_2ES)
+#endif
+
+#ifdef DEFINE_DESIGN_NAME
+#define DESIGN_NAME NebStream
+#endif /* DEFINE_DESIGN_NAME */
+
+#ifndef SLIC_NO_DECLARATIONS
+/**\file */
+#ifndef SLIC_DECLARATIONS_NebStream_H
+#define SLIC_DECLARATIONS_NebStream_H
+#include "MaxSLiCInterface.h"
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
+
+
+/*----------------------------------------------------------------------------*/
+/*---------------------------- Interface default -----------------------------*/
+/*----------------------------------------------------------------------------*/
+
+
+
+/**
+ * \brief Basic static function for the interface 'default'.
+ * 
+ * \param [in] instream_r The stream should be of size 16384 bytes.
+ * \param [out] outstream_output The stream should be of size 16384 bytes.
+ */
+void NebStream(
+	const float *instream_r,
+	float *outstream_output);
+
+/**
+ * \brief Basic static non-blocking function for the interface 'default'.
+ * 
+ * Schedule to run on an engine and return immediately.
+ * The status of the run can be checked either by ::max_wait or ::max_nowait;
+ * note that one of these *must* be called, so that associated memory can be released.
+ * 
+ * 
+ * \param [in] instream_r The stream should be of size 16384 bytes.
+ * \param [out] outstream_output The stream should be of size 16384 bytes.
+ * \return A handle on the execution status, or NULL in case of error.
+ */
+max_run_t *NebStream_nonblock(
+	const float *instream_r,
+	float *outstream_output);
+
+/**
+ * \brief Advanced static interface, structure for the engine interface 'default'
+ * 
+ */
+typedef struct { 
+	const float *instream_r; /**<  [in] The stream should be of size 16384 bytes. */
+	float *outstream_output; /**<  [out] The stream should be of size 16384 bytes. */
+} NebStream_actions_t;
+
+/**
+ * \brief Advanced static function for the interface 'default'.
+ * 
+ * \param [in] engine The engine on which the actions will be executed.
+ * \param [in,out] interface_actions Actions to be executed.
+ */
+void NebStream_run(
+	max_engine_t *engine,
+	NebStream_actions_t *interface_actions);
+
+/**
+ * \brief Advanced static non-blocking function for the interface 'default'.
+ *
+ * Schedule the actions to run on the engine and return immediately.
+ * The status of the run can be checked either by ::max_wait or ::max_nowait;
+ * note that one of these *must* be called, so that associated memory can be released.
+ *
+ * 
+ * \param [in] engine The engine on which the actions will be executed.
+ * \param [in] interface_actions Actions to be executed.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *NebStream_run_nonblock(
+	max_engine_t *engine,
+	NebStream_actions_t *interface_actions);
+
+/**
+ * \brief Group run advanced static function for the interface 'default'.
+ * 
+ * \param [in] group Group to use.
+ * \param [in,out] interface_actions Actions to run.
+ *
+ * Run the actions on the first device available in the group.
+ */
+void NebStream_run_group(max_group_t *group, NebStream_actions_t *interface_actions);
+
+/**
+ * \brief Group run advanced static non-blocking function for the interface 'default'.
+ * 
+ *
+ * Schedule the actions to run on the first device available in the group and return immediately.
+ * The status of the run must be checked with ::max_wait. 
+ * Note that use of ::max_nowait is prohibited with non-blocking running on groups:
+ * see the ::max_run_group_nonblock documentation for more explanation.
+ *
+ * \param [in] group Group to use.
+ * \param [in] interface_actions Actions to run.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *NebStream_run_group_nonblock(max_group_t *group, NebStream_actions_t *interface_actions);
+
+/**
+ * \brief Array run advanced static function for the interface 'default'.
+ * 
+ * \param [in] engarray The array of devices to use.
+ * \param [in,out] interface_actions The array of actions to run.
+ *
+ * Run the array of actions on the array of engines.  The length of interface_actions
+ * must match the size of engarray.
+ */
+void NebStream_run_array(max_engarray_t *engarray, NebStream_actions_t *interface_actions[]);
+
+/**
+ * \brief Array run advanced static non-blocking function for the interface 'default'.
+ * 
+ *
+ * Schedule to run the array of actions on the array of engines, and return immediately.
+ * The length of interface_actions must match the size of engarray.
+ * The status of the run can be checked either by ::max_wait or ::max_nowait;
+ * note that one of these *must* be called, so that associated memory can be released.
+ *
+ * \param [in] engarray The array of devices to use.
+ * \param [in] interface_actions The array of actions to run.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *NebStream_run_array_nonblock(max_engarray_t *engarray, NebStream_actions_t *interface_actions[]);
+
+/**
+ * \brief Converts a static-interface action struct into a dynamic-interface max_actions_t struct.
+ *
+ * Note that this is an internal utility function used by other functions in the static interface.
+ *
+ * \param [in] maxfile The maxfile to use.
+ * \param [in] interface_actions The interface-specific actions to run.
+ * \return The dynamic-interface actions to run, or NULL in case of error.
+ */
+max_actions_t* NebStream_convert(max_file_t *maxfile, NebStream_actions_t *interface_actions);
+
+/**
+ * \brief Initialise a maxfile.
+ */
+max_file_t* NebStream_init(void);
+
+/* Error handling functions */
+int NebStream_has_errors(void);
+const char* NebStream_get_errors(void);
+void NebStream_clear_errors(void);
+/* Free statically allocated maxfile data */
+void NebStream_free(void);
+/* returns: -1 = error running command; 0 = no error reported */
+int NebStream_simulator_start(void);
+/* returns: -1 = error running command; 0 = no error reported */
+int NebStream_simulator_stop(void);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
+#endif /* SLIC_DECLARATIONS_NebStream_H */
+
+#endif /* SLIC_NO_DECLARATIONS */
+
+#ifdef PHOTON_NODE_DATA
+#define PHOTON_NODE_DATA_PRESENT 1
+PHOTON_NODE_DATA(NebStreamKernel, 1, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Count.makeCounterChain(Count.java:467)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:23)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 54, NodeConstantRawBits, "{HWOffsetFix:8, 0, UNSIGNED}\n0x01; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream$OffsetExpr.getDFEVar(Stream.java:176)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:21)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 6, NodeCounterV1, "Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:523)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:26)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 49, NodeFIFO, "FIFO(1)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:531)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:38)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 61, NodeConstantRawBits, "{HWOffsetFix:8, 0, UNSIGNED}\n0x01; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:38)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 24, NodeSub, "-", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:38)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 25, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:531)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:38)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 29, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:38)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 26, NodeInputMappedReg, "Scalar input (io_output_force_disabled)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:38)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 27, NodeNot, "~", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:38)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 30, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:38)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 28, NodeAnd, "&", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:38)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 31, NodeReinterpret, "<{HWOffsetFix:1, 0, UNSIGNED}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:38)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 53, NodeFIFO, "FIFO(17)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:38)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 60, NodeConstantRawBits, "{HWOffsetFix:7, 0, UNSIGNED}\n0x40; 64.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:501)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:25)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 5, NodeCounterV1, "Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:501)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:25)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 59, NodeConstantRawBits, "{HWOffsetFix:7, 0, UNSIGNED}\n0x40; 64.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:501)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:24)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 3, NodeCounterV1, "Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:501)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:24)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 58, NodeConstantRawBits, "{HWOffsetFix:6, 0, UNSIGNED}\n0x00; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:31)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 18, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:31)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 48, NodeStreamOffset, "stream offset: -64", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.offset(Stream.java:259)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:36)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 50, NodeFIFO, "FIFO(46)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1038)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:31)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 19, NodeConstantRawBits, "{HWFloat:8, 24}\n0x42c80000; 100.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1038)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:31)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 20, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1038)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:31)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 52, NodeFIFO, "FIFO(5)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:33)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 57, NodeConstantRawBits, "{HWOffsetFix:8, 0, UNSIGNED}\n0x01; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:28)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 8, NodeSub, "-", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:28)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 9, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:531)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:28)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 13, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:28)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 10, NodeInputMappedReg, "Scalar input (io_r_force_disabled)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:28)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 11, NodeNot, "~", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:28)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 14, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:28)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 12, NodeAnd, "&", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:28)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 15, NodeReinterpret, "<{HWOffsetFix:1, 0, UNSIGNED}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:28)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 16, NodeInput, "Input(r)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:28)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 21, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:33)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 32, NodeOutput, "Output(output)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:38)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:21)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 37, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:31)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 56, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:31)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 34, NodeConstantRawBits, "{HWOffsetFix:49, 0, UNSIGNED}\n0x1000000000000; 2.81474976710656E14", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:31)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 35, NodeCounterV1, "Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:31)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 36, NodeStreamOffset, "stream offset: 1", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:31)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 38, NodeOutputMappedReg, "Scalar output (current_run_cycle_count)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:31)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 55, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:31)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 40, NodeConstantRawBits, "{HWOffsetFix:49, 0, UNSIGNED}\n0x1000000000000; 2.81474976710656E14", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:31)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 41, NodeCounterV1, "Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:31)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 43, NodeInputMappedReg, "Scalar input (run_cycle_count)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:31)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 44, NodeEq, "==", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:31)\n")
+PHOTON_NODE_DATA(NebStreamKernel, 42, NodeFlush, "flush on trigger", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebstream.NebStreamManager.main(NebStreamManager.maxj:31)\n")
+#endif
+
+#ifdef SLIC_USE_DEFINITIONS
+#include <stdio.h>
+#include <math.h>
+#include <pthread.h>
+#include <string.h>
+#include <unistd.h>
+static max_file_t *stored_maxfile = NULL;
+static max_engine_t *stored_engine = NULL;
+static char *stored_error = NULL;
+static int stored_has_error = 0;
+static pthread_once_t slic_bs_is_initialised = PTHREAD_ONCE_INIT;
+
+static void set_error(const char *error_str)
+{
+	stored_has_error = 1; 
+	if(stored_error == NULL) {
+		stored_error = strdup(error_str);
+	} else {
+		char *nerr = malloc(strlen(stored_error) + strlen(error_str) + 2);
+		sprintf(nerr, "%s\n%s", stored_error, error_str);
+		free(stored_error);
+		stored_error = nerr;
+	}
+}
+static void set_error_and_free(char *error_str){
+	set_error(error_str);
+	free(error_str);
+}
+int NebStream_has_errors(void)
+{	return stored_has_error; }
+const char* NebStream_get_errors(void)
+{	return stored_error; }
+void NebStream_clear_errors(void)
+{
+	free(stored_error);
+	stored_error = NULL;
+	stored_has_error = 0;
+}
+
+static char NebStream_use_simulation[16];
+static void NebStream_def_use_simulation(void)
+{
+	long pid = ((long) getpid()) % 100000;
+	snprintf(NebStream_use_simulation, 16, "NebStrea_%05ld_", pid);
+}
+static const char *NebStream_check_use_simulation(void)
+{
+	NebStream_def_use_simulation();
+	const char *use_sim = max_config_get_string(MAX_CONFIG_USE_SIMULATION);
+	if (use_sim == NULL) {
+		use_sim = NebStream_use_simulation;
+		max_config_set_string(MAX_CONFIG_USE_SIMULATION, use_sim);
+	}
+	return use_sim;
+}
+
+static int NebStream_simulation_launch = 0;
+int NebStream_simulator_start(void)
+{
+	int retval = 0;
+	const char *use_sim = NebStream_check_use_simulation();
+	char buff[1024];
+	snprintf(buff, 1024, "PATH=simutils:$PATH maxcompilersim -d 1 -n %s -c MAX3424A -S simutils restart", use_sim);
+	FILE *pipe_fp = popen(buff, "r");
+	if (pipe_fp == NULL) {
+		strncat(buff, " : failed to execute.", (1024 - strlen(buff)));
+		set_error(buff);
+		return -1;
+	}
+	while (fgets(buff, 1024, pipe_fp) != NULL) {
+		/* Uncomment this to get simulator command output */
+		/* fprintf(stderr, buff); */
+		if (strstr(buff, "Error")) {
+			set_error(buff);
+			retval = -1;
+		}
+	}
+	pclose(pipe_fp);
+	return retval;
+}
+
+int NebStream_simulator_stop(void)
+{
+	const char *use_sim = NebStream_check_use_simulation();
+	char buff[1024];
+	snprintf(buff, 1024, "PATH=simutils:$PATH maxcompilersim -d 1 -n %s -c MAX3424A -S simutils stop", use_sim);
+	FILE *pipe_fp = popen(buff, "r");
+	if (pipe_fp == NULL) {
+		strncat(buff, " : failed to execute.", (1024 - strlen(buff)));
+		set_error(buff);
+		return -1;
+	}
+	while (fgets(buff, 1024, pipe_fp) != NULL) {
+		/* Uncomment this to get simulator command output */
+		/* fprintf(stderr, buff); */
+		;
+	}
+	pclose(pipe_fp);
+	return 0;
+}
+
+static void NebStream_static_init(void) 
+{
+	stored_maxfile = NebStream_init();
+	if (stored_maxfile == NULL || !max_ok(stored_maxfile->errors)) {
+		stored_maxfile = NULL;
+		if(max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR)) abort();
+		else { set_error("Unable to load maxfile"); return; }
+	}
+	if(!max_ok(max_global_errors())) {
+		set_error_and_free(max_errors_trace(max_global_errors()));
+		return;
+	}
+	if(!max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR))
+		max_errors_mode(stored_maxfile->errors, 0);
+	time_t timeout_previous = max_load_timeout(stored_maxfile, 30);
+	const char *use_sim = NebStream_check_use_simulation();
+	if (max_ping_daemon(stored_maxfile, use_sim) == 0) {
+		int sim_stat = NebStream_simulator_start();
+		if ((sim_stat == 0) && (max_ping_daemon(stored_maxfile, use_sim) == 1)) {
+			NebStream_simulation_launch = 1;
+		} else {
+			set_error("Error: unable to launch simulator.");
+			max_file_free(stored_maxfile);
+			stored_maxfile = NULL;
+			return;
+		}
+	}
+	stored_engine = max_load(stored_maxfile, "*");
+	if (!max_ok(stored_maxfile->errors)) {
+		if(max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR)) {
+			fprintf(stderr, "\nUnable to load engine: aborting now.\n\n");
+			fflush(stderr);
+			abort();
+		} else {
+			set_error_and_free(max_errors_trace(stored_maxfile->errors));
+			max_file_free(stored_maxfile);
+			stored_maxfile = NULL;
+			return;
+		} 
+	} 
+	max_load_timeout(stored_maxfile, timeout_previous);
+}
+void NebStream_free(void)
+{
+	if (stored_engine != NULL) {
+		max_unload(stored_engine);
+		stored_engine = NULL;
+	}
+	if (stored_maxfile != NULL) {
+		max_file_free(stored_maxfile);
+		stored_maxfile = NULL;
+	}
+	if (stored_error != NULL) {
+		free(stored_error);
+		stored_error = NULL;
+	}
+	if (NebStream_simulation_launch == 1) {
+		int sim_stat = NebStream_simulator_stop();
+		if (sim_stat != 0 ) {
+			fprintf(stderr, "Error stopping simulator.");
+		}
+		NebStream_simulation_launch = 0;
+	}
+}
+
+
+
+/*----------------------------------------------------------------------------*/
+/*---------------------------- Interface default -----------------------------*/
+/*----------------------------------------------------------------------------*/
+
+
+#define CHECK_ERRORS_ST(ST, RET) if(!max_ok(ST->errors)) { if(max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR)) abort(); set_error_and_free(max_errors_trace(ST->errors)); return RET; } 
+#define CHECK_NULL(VALUE, MESSAGE, RET) if(VALUE == NULL) { if (max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR)) abort(); set_error(MESSAGE); return RET; }
+
+ 
+static max_actions_t* NebStream_convert_internal(max_file_t *maxfile, NebStream_actions_t *interface_actions, int is_internal_call)
+{
+	max_actions_t *actions = max_actions_init(maxfile, NULL);
+	if(actions == NULL) return NULL;
+
+#define CHECK_ERRORS if(!max_ok(actions->errors)) { set_error_and_free(max_errors_trace(actions->errors)); return NULL; } 
+	int32_t param_NebStreamKernel_loopLength = max_get_offset_auto_loop_size( actions, "NebStreamKernel", "loopLength" );
+	
+
+	/* temporary variables */
+	int64_t tmp_0 = (param_NebStreamKernel_loopLength * 4096);
+
+	/* code for scalar NebStreamKernel.run_cycle_count */
+	uint64_t ticks_NebStreamKernel = tmp_0;
+	max_set_ticks(actions, "NebStreamKernel", tmp_0);
+	CHECK_ERRORS;
+	/* end of code for scalar NebStreamKernel.run_cycle_count*/
+	
+	/* code for stream r */
+	size_t instream_size_r = 16384;
+	if (instream_size_r > 0) {
+		max_queue_input(actions, "r", interface_actions->instream_r,instream_size_r);
+		CHECK_ERRORS;
+	}
+	/* end of code for stream r */
+	
+	/* code for stream output */
+	size_t outstream_size_output = 16384;
+	if (outstream_size_output > 0) {
+		max_queue_output(actions, "output", interface_actions->outstream_output,outstream_size_output);
+		CHECK_ERRORS;
+	}
+	/* end of code for stream output */
+	
+	return actions;
+#undef CHECK_ERRORS
+}
+
+void NebStream(
+	const float *instream_r,
+	float *outstream_output)
+{
+	(void) pthread_once(&slic_bs_is_initialised, NebStream_static_init);
+	CHECK_NULL(stored_maxfile, "Maxfile was not loaded", );
+	max_run_t *run = NebStream_nonblock(instream_r, outstream_output);
+	CHECK_NULL(run, "Unable to run actions", );
+	max_wait(run);
+}
+
+max_run_t *NebStream_nonblock(
+	const float *instream_r,
+	float *outstream_output)
+{
+	NebStream_actions_t interface_actions;
+	interface_actions.instream_r = instream_r;
+	interface_actions.outstream_output = outstream_output;
+	(void) pthread_once(&slic_bs_is_initialised, NebStream_static_init);
+	CHECK_NULL(stored_maxfile, "Maxfile was not loaded", NULL);
+	max_actions_t *actions[1];
+	actions[0] = NebStream_convert_internal(stored_maxfile, &interface_actions, 1);
+	CHECK_NULL(actions[0], "Unable to build actions", NULL);
+	max_validate(actions[0]);
+	CHECK_ERRORS_ST(actions[0], NULL);
+	CHECK_ERRORS_ST(stored_engine, NULL);
+	max_run_t *run = max_run_multi_nonblock(stored_engine, actions, 1);
+	CHECK_NULL(run, "Unable to run actions", NULL);
+	CHECK_ERRORS_ST(actions[0], NULL);
+	max_actions_free(actions[0]);
+	return run;
+}
+
+void NebStream_run(
+	max_engine_t *engine,
+	NebStream_actions_t *interface_actions)
+{
+	max_run_t *run = NebStream_run_nonblock(engine, interface_actions);
+	CHECK_NULL(run, "Unable to run actions", );
+	max_wait(run);
+}
+
+max_run_t *NebStream_run_nonblock(
+	max_engine_t *engine,
+	NebStream_actions_t *interface_actions)
+{
+	max_file_t *maxfile = max_engine_get_max_file(engine); 
+	max_actions_t *actions[1];
+	actions[0] = NebStream_convert(maxfile, interface_actions);
+	CHECK_ERRORS_ST(actions[0], NULL);
+	max_run_t *run = max_run_multi_nonblock(engine, actions, 1);
+	CHECK_NULL(run, "Unable to run actions", NULL);
+	max_actions_free(actions[0]);
+	return run;
+}
+
+
+/**
+ * \brief Group run advanced static function for the interface 'default'.
+ * 
+ * \param [in] group Group to use.
+ * \param [in,out] interface_actions Actions to run.
+ *
+ * Run the actions on the first device available in the group.
+ */
+void NebStream_run_group(max_group_t *group, NebStream_actions_t *interface_actions)
+{
+	/* Not strictly correct, because explicitly locking an engine here. */
+	max_engine_t *engine = max_lock_any(group);
+	if(engine == NULL) return;
+	NebStream_run(engine, interface_actions);
+	max_unlock(engine);
+}
+
+
+/**
+ * \brief Group run advanced static non-blocking function for the interface 'default'.
+ * 
+ *
+ * Schedule the actions to run on the first device available in the group and return immediately.
+ * The status of the run must be checked with ::max_wait. 
+ * Note that use of ::max_nowait is prohibited with non-blocking running on groups:
+ * see the ::max_run_group_nonblock documentation for more explanation.
+ *
+ * \param [in] group Group to use.
+ * \param [in] interface_actions Actions to run.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *NebStream_run_group_nonblock(max_group_t *group, NebStream_actions_t *interface_actions)
+{
+	max_file_t *maxfile = max_group_get_max_file(group);
+	max_actions_t *actions = NebStream_convert(maxfile, interface_actions);
+	if(actions == NULL) return NULL;
+	if(!max_ok(actions->errors)) return NULL;
+	max_validate(actions);
+	max_run_t *run = max_run_group_nonblock(group, actions);
+	max_actions_free(actions);
+	return run;
+}
+
+
+/**
+ * \brief Array run advanced static function for the interface 'default'.
+ * 
+ * \param [in] engarray The array of devices to use.
+ * \param [in,out] interface_actions The array of actions to run.
+ *
+ * Run the array of actions on the array of engines.  The length of interface_actions
+ * must match the size of engarray.
+ */
+void NebStream_run_array(max_engarray_t *engarray, NebStream_actions_t *interface_actions[])
+{
+	max_run_t *run = NebStream_run_array_nonblock(engarray, interface_actions);
+	CHECK_NULL(run, "Unable to run actions", );
+	max_wait(run);
+}
+
+
+/**
+ * \brief Array run advanced static non-blocking function for the interface 'default'.
+ * 
+ *
+ * Schedule to run the array of actions on the array of engines, and return immediately.
+ * The length of interface_actions must match the size of engarray.
+ * The status of the run can be checked either by ::max_wait or ::max_nowait;
+ * note that one of these *must* be called, so that associated memory can be released.
+ *
+ * \param [in] engarray The array of devices to use.
+ * \param [in] interface_actions The array of actions to run.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *NebStream_run_array_nonblock(max_engarray_t *engarray, NebStream_actions_t *interface_actions[])
+{
+	max_file_t *maxfile = max_engarray_get_max_file(engarray);
+	int i;
+	max_actarray_t *arr_actarray[1];
+	max_actions_t **arr_actions[1];
+	arr_actarray[0] = max_actarray_init(maxfile, engarray->size);
+	if(arr_actarray[0] == NULL) return NULL;
+	arr_actions[0] = malloc(engarray->size * sizeof(max_actions_t*));
+	for(i=0; i < arr_actarray[0]->size; i++) {
+		max_actions_t *actions = NebStream_convert(maxfile, interface_actions[i]);
+		if(actions == NULL) return NULL;
+		arr_actions[0][i] = actions;
+		max_set_action(arr_actarray[0], i, actions);
+	}
+	max_run_t *run = max_run_array_multi_nonblock(engarray, arr_actarray, 1 );
+	for (i=0; i < arr_actarray[0]->size; i++) { max_actions_free(arr_actions[0][i]); }
+	max_actarray_free(arr_actarray[0]);
+	free(arr_actions[0]);
+	return run;
+}
+
+
+/**
+ * \brief Converts a static-interface action struct into a dynamic-interface max_actions_t struct.
+ *
+ * Note that this is an internal utility function used by other functions in the static interface.
+ *
+ * \param [in] maxfile The maxfile to use.
+ * \param [in] interface_actions The interface-specific actions to run.
+ * \return The dynamic-interface actions to run, or NULL in case of error.
+ */
+max_actions_t* NebStream_convert(max_file_t *maxfile, NebStream_actions_t *interface_actions)
+{
+	return NebStream_convert_internal(maxfile, interface_actions, 0);
+}
+
+#undef CHECK_ERRORS_ST
+#undef CHECK_NULL
+
+
+
+#endif /* SLIC_USE_DEFINITIONS */
+
+#ifdef SLIC_DYNAMIC_CODE
+SLIC_MODE_START(default)	
+SLIC_AUTO_LOOP_OFFSET(int32_t, NebStreamKernel, loopLength, param_NebStreamKernel_loopLength)	
+SLIC_TEMP_VAR(int64_t tmp_0 = (param_NebStreamKernel_loopLength * 4096);)	
+SLIC_SET_TICKS(NebStreamKernel, tmp_0)	
+SLIC_STREAM(r, 16384)	
+SLIC_STREAM(output, 16384)	
+SLIC_MODE_END(default)
+
+#endif /* SLIC_DYNAMIC_CODE */
+
+#ifdef SKIN_META_DATA
+PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PG1h
+eGZpbGUgZm9ybWF0LXZlcnNpb249IjIwMTIwMjAwIiBoZWFkZXI9Ik5lYlN0cmVhbS5oIiBuYW1l
+PSJOZWJTdHJlYW0iPjxlbmdpbmVtb2RlIG5hbWU9ImRlZmF1bHQiPjxmdW5jdGlvbiBuYW1lPSJO
+ZWJTdHJlYW0iIHJldHVybi12YWx1ZT0idm9pZCI+PGFycmF5IGRlc2M9IlRoZSBzdHJlYW0gc2hv
+dWxkIGJlIG9mIHNpemUgMTYzODQgYnl0ZXMuIiBkaXJlY3Rpb249IklucHV0IiBuYW1lPSJpbnN0
+cmVhbV9yIiBzaXplPSIxNjM4NCIgdHJhbnNwb3NlPSJ0cnVlIiB0eXBlPSJmbG9hdCI+PGRpbWVu
+c2lvbiBpbmRleD0iMCI+PGxlbmd0aD48ZnVuY3Rpb25DYWxsPjxudW1CaW5hcnlPcGVyYXRvciBv
+cGVyYXRvcj0iLyIgdmFsdWU9IigxNjM4NCAvIDQpIj48Y29uc3RhbnRWYWx1ZSB2YWx1ZT0iMTYz
+ODQiLz48Y29uc3RhbnRWYWx1ZSB2YWx1ZT0iNCIvPjwvbnVtQmluYXJ5T3BlcmF0b3I+PC9mdW5j
+dGlvbkNhbGw+PC9sZW5ndGg+PC9kaW1lbnNpb24+PC9hcnJheT48YXJyYXkgZGVzYz0iVGhlIHN0
+cmVhbSBzaG91bGQgYmUgb2Ygc2l6ZSAxNjM4NCBieXRlcy4iIGRpcmVjdGlvbj0iT3V0cHV0IiBu
+YW1lPSJvdXRzdHJlYW1fb3V0cHV0IiBzaXplPSIxNjM4NCIgdHJhbnNwb3NlPSJ0cnVlIiB0eXBl
+PSJmbG9hdCI+PGRpbWVuc2lvbiBpbmRleD0iMCI+PGxlbmd0aD48ZnVuY3Rpb25DYWxsPjxudW1C
+aW5hcnlPcGVyYXRvciBvcGVyYXRvcj0iLyIgdmFsdWU9IigxNjM4NCAvIDQpIj48Y29uc3RhbnRW
+YWx1ZSB2YWx1ZT0iMTYzODQiLz48Y29uc3RhbnRWYWx1ZSB2YWx1ZT0iNCIvPjwvbnVtQmluYXJ5
+T3BlcmF0b3I+PC9mdW5jdGlvbkNhbGw+PC9sZW5ndGg+PC9kaW1lbnNpb24+PC9hcnJheT48L2Z1
+bmN0aW9uPjwvZW5naW5lbW9kZT48L21heGZpbGU+
+#endif /* SKIN_META_DATA */
+
+#ifdef SLIC_B64_DEFINITIONS
+I2luY2x1ZGUgPHN0ZGlvLmg+CiNpbmNsdWRlIDxtYXRoLmg+CiNpbmNsdWRlIDxwdGhyZWFkLmg+
+CiNpbmNsdWRlIDxzdHJpbmcuaD4KI2luY2x1ZGUgPHVuaXN0ZC5oPgpzdGF0aWMgbWF4X2ZpbGVf
+dCAqc3RvcmVkX21heGZpbGUgPSBOVUxMOwpzdGF0aWMgbWF4X2VuZ2luZV90ICpzdG9yZWRfZW5n
+aW5lID0gTlVMTDsKc3RhdGljIGNoYXIgKnN0b3JlZF9lcnJvciA9IE5VTEw7CnN0YXRpYyBpbnQg
+c3RvcmVkX2hhc19lcnJvciA9IDA7CnN0YXRpYyBwdGhyZWFkX29uY2VfdCBzbGljX2JzX2lzX2lu
+aXRpYWxpc2VkID0gUFRIUkVBRF9PTkNFX0lOSVQ7CgpzdGF0aWMgdm9pZCBzZXRfZXJyb3IoY29u
+c3QgY2hhciAqZXJyb3Jfc3RyKQp7CglzdG9yZWRfaGFzX2Vycm9yID0gMTsgCglpZihzdG9yZWRf
+ZXJyb3IgPT0gTlVMTCkgewoJCXN0b3JlZF9lcnJvciA9IHN0cmR1cChlcnJvcl9zdHIpOwoJfSBl
+bHNlIHsKCQljaGFyICpuZXJyID0gbWFsbG9jKHN0cmxlbihzdG9yZWRfZXJyb3IpICsgc3RybGVu
+KGVycm9yX3N0cikgKyAyKTsKCQlzcHJpbnRmKG5lcnIsICIlc1xuJXMiLCBzdG9yZWRfZXJyb3Is
+IGVycm9yX3N0cik7CgkJZnJlZShzdG9yZWRfZXJyb3IpOwoJCXN0b3JlZF9lcnJvciA9IG5lcnI7
+Cgl9Cn0Kc3RhdGljIHZvaWQgc2V0X2Vycm9yX2FuZF9mcmVlKGNoYXIgKmVycm9yX3N0cil7Cglz
+ZXRfZXJyb3IoZXJyb3Jfc3RyKTsKCWZyZWUoZXJyb3Jfc3RyKTsKfQppbnQgTmViU3RyZWFtX2hh
+c19lcnJvcnModm9pZCkKewlyZXR1cm4gc3RvcmVkX2hhc19lcnJvcjsgfQpjb25zdCBjaGFyKiBO
+ZWJTdHJlYW1fZ2V0X2Vycm9ycyh2b2lkKQp7CXJldHVybiBzdG9yZWRfZXJyb3I7IH0Kdm9pZCBO
+ZWJTdHJlYW1fY2xlYXJfZXJyb3JzKHZvaWQpCnsKCWZyZWUoc3RvcmVkX2Vycm9yKTsKCXN0b3Jl
+ZF9lcnJvciA9IE5VTEw7CglzdG9yZWRfaGFzX2Vycm9yID0gMDsKfQoKc3RhdGljIGNoYXIgTmVi
+U3RyZWFtX3VzZV9zaW11bGF0aW9uWzE2XTsKc3RhdGljIHZvaWQgTmViU3RyZWFtX2RlZl91c2Vf
+c2ltdWxhdGlvbih2b2lkKQp7Cglsb25nIHBpZCA9ICgobG9uZykgZ2V0cGlkKCkpICUgMTAwMDAw
+OwoJc25wcmludGYoTmViU3RyZWFtX3VzZV9zaW11bGF0aW9uLCAxNiwgIk5lYlN0cmVhXyUwNWxk
+XyIsIHBpZCk7Cn0Kc3RhdGljIGNvbnN0IGNoYXIgKk5lYlN0cmVhbV9jaGVja191c2Vfc2ltdWxh
+dGlvbih2b2lkKQp7CglOZWJTdHJlYW1fZGVmX3VzZV9zaW11bGF0aW9uKCk7Cgljb25zdCBjaGFy
+ICp1c2Vfc2ltID0gbWF4X2NvbmZpZ19nZXRfc3RyaW5nKE1BWF9DT05GSUdfVVNFX1NJTVVMQVRJ
+T04pOwoJaWYgKHVzZV9zaW0gPT0gTlVMTCkgewoJCXVzZV9zaW0gPSBOZWJTdHJlYW1fdXNlX3Np
+bXVsYXRpb247CgkJbWF4X2NvbmZpZ19zZXRfc3RyaW5nKE1BWF9DT05GSUdfVVNFX1NJTVVMQVRJ
+T04sIHVzZV9zaW0pOwoJfQoJcmV0dXJuIHVzZV9zaW07Cn0KCnN0YXRpYyBpbnQgTmViU3RyZWFt
+X3NpbXVsYXRpb25fbGF1bmNoID0gMDsKaW50IE5lYlN0cmVhbV9zaW11bGF0b3Jfc3RhcnQodm9p
+ZCkKewoJaW50IHJldHZhbCA9IDA7Cgljb25zdCBjaGFyICp1c2Vfc2ltID0gTmViU3RyZWFtX2No
+ZWNrX3VzZV9zaW11bGF0aW9uKCk7CgljaGFyIGJ1ZmZbMTAyNF07CglzbnByaW50ZihidWZmLCAx
+MDI0LCAiUEFUSD1zaW11dGlsczokUEFUSCBtYXhjb21waWxlcnNpbSAtZCAxIC1uICVzIC1jIE1B
+WDM0MjRBIC1TIHNpbXV0aWxzIHJlc3RhcnQiLCB1c2Vfc2ltKTsKCUZJTEUgKnBpcGVfZnAgPSBw
+b3BlbihidWZmLCAiciIpOwoJaWYgKHBpcGVfZnAgPT0gTlVMTCkgewoJCXN0cm5jYXQoYnVmZiwg
+IiA6IGZhaWxlZCB0byBleGVjdXRlLiIsICgxMDI0IC0gc3RybGVuKGJ1ZmYpKSk7CgkJc2V0X2Vy
+cm9yKGJ1ZmYpOwoJCXJldHVybiAtMTsKCX0KCXdoaWxlIChmZ2V0cyhidWZmLCAxMDI0LCBwaXBl
+X2ZwKSAhPSBOVUxMKSB7CgkJLyogVW5jb21tZW50IHRoaXMgdG8gZ2V0IHNpbXVsYXRvciBjb21t
+YW5kIG91dHB1dCAqLwoJCS8qIGZwcmludGYoc3RkZXJyLCBidWZmKTsgKi8KCQlpZiAoc3Ryc3Ry
+KGJ1ZmYsICJFcnJvciIpKSB7CgkJCXNldF9lcnJvcihidWZmKTsKCQkJcmV0dmFsID0gLTE7CgkJ
+fQoJfQoJcGNsb3NlKHBpcGVfZnApOwoJcmV0dXJuIHJldHZhbDsKfQoKaW50IE5lYlN0cmVhbV9z
+aW11bGF0b3Jfc3RvcCh2b2lkKQp7Cgljb25zdCBjaGFyICp1c2Vfc2ltID0gTmViU3RyZWFtX2No
+ZWNrX3VzZV9zaW11bGF0aW9uKCk7CgljaGFyIGJ1ZmZbMTAyNF07CglzbnByaW50ZihidWZmLCAx
+MDI0LCAiUEFUSD1zaW11dGlsczokUEFUSCBtYXhjb21waWxlcnNpbSAtZCAxIC1uICVzIC1jIE1B
+WDM0MjRBIC1TIHNpbXV0aWxzIHN0b3AiLCB1c2Vfc2ltKTsKCUZJTEUgKnBpcGVfZnAgPSBwb3Bl
+bihidWZmLCAiciIpOwoJaWYgKHBpcGVfZnAgPT0gTlVMTCkgewoJCXN0cm5jYXQoYnVmZiwgIiA6
+IGZhaWxlZCB0byBleGVjdXRlLiIsICgxMDI0IC0gc3RybGVuKGJ1ZmYpKSk7CgkJc2V0X2Vycm9y
+KGJ1ZmYpOwoJCXJldHVybiAtMTsKCX0KCXdoaWxlIChmZ2V0cyhidWZmLCAxMDI0LCBwaXBlX2Zw
+KSAhPSBOVUxMKSB7CgkJLyogVW5jb21tZW50IHRoaXMgdG8gZ2V0IHNpbXVsYXRvciBjb21tYW5k
+IG91dHB1dCAqLwoJCS8qIGZwcmludGYoc3RkZXJyLCBidWZmKTsgKi8KCQk7Cgl9CglwY2xvc2Uo
+cGlwZV9mcCk7CglyZXR1cm4gMDsKfQoKc3RhdGljIHZvaWQgTmViU3RyZWFtX3N0YXRpY19pbml0
+KHZvaWQpIAp7CglzdG9yZWRfbWF4ZmlsZSA9IE5lYlN0cmVhbV9pbml0KCk7CglpZiAoc3RvcmVk
+X21heGZpbGUgPT0gTlVMTCB8fCAhbWF4X29rKHN0b3JlZF9tYXhmaWxlLT5lcnJvcnMpKSB7CgkJ
+c3RvcmVkX21heGZpbGUgPSBOVUxMOwoJCWlmKG1heF9jb25maWdfZ2V0X2Jvb2woTUFYX0NPTkZJ
+R19TVEFUSUNfSU5URVJGQUNFX0FCT1JUX09OX0VSUk9SKSkgYWJvcnQoKTsKCQllbHNlIHsgc2V0
+X2Vycm9yKCJVbmFibGUgdG8gbG9hZCBtYXhmaWxlIik7IHJldHVybjsgfQoJfQoJaWYoIW1heF9v
+ayhtYXhfZ2xvYmFsX2Vycm9ycygpKSkgewoJCXNldF9lcnJvcl9hbmRfZnJlZShtYXhfZXJyb3Jz
+X3RyYWNlKG1heF9nbG9iYWxfZXJyb3JzKCkpKTsKCQlyZXR1cm47Cgl9CglpZighbWF4X2NvbmZp
+Z19nZXRfYm9vbChNQVhfQ09ORklHX1NUQVRJQ19JTlRFUkZBQ0VfQUJPUlRfT05fRVJST1IpKQoJ
+CW1heF9lcnJvcnNfbW9kZShzdG9yZWRfbWF4ZmlsZS0+ZXJyb3JzLCAwKTsKCXRpbWVfdCB0aW1l
+b3V0X3ByZXZpb3VzID0gbWF4X2xvYWRfdGltZW91dChzdG9yZWRfbWF4ZmlsZSwgMzApOwoJY29u
+c3QgY2hhciAqdXNlX3NpbSA9IE5lYlN0cmVhbV9jaGVja191c2Vfc2ltdWxhdGlvbigpOwoJaWYg
+KG1heF9waW5nX2RhZW1vbihzdG9yZWRfbWF4ZmlsZSwgdXNlX3NpbSkgPT0gMCkgewoJCWludCBz
+aW1fc3RhdCA9IE5lYlN0cmVhbV9zaW11bGF0b3Jfc3RhcnQoKTsKCQlpZiAoKHNpbV9zdGF0ID09
+IDApICYmIChtYXhfcGluZ19kYWVtb24oc3RvcmVkX21heGZpbGUsIHVzZV9zaW0pID09IDEpKSB7
+CgkJCU5lYlN0cmVhbV9zaW11bGF0aW9uX2xhdW5jaCA9IDE7CgkJfSBlbHNlIHsKCQkJc2V0X2Vy
+cm9yKCJFcnJvcjogdW5hYmxlIHRvIGxhdW5jaCBzaW11bGF0b3IuIik7CgkJCW1heF9maWxlX2Zy
+ZWUoc3RvcmVkX21heGZpbGUpOwoJCQlzdG9yZWRfbWF4ZmlsZSA9IE5VTEw7CgkJCXJldHVybjsK
+CQl9Cgl9CglzdG9yZWRfZW5naW5lID0gbWF4X2xvYWQoc3RvcmVkX21heGZpbGUsICIqIik7Cglp
+ZiAoIW1heF9vayhzdG9yZWRfbWF4ZmlsZS0+ZXJyb3JzKSkgewoJCWlmKG1heF9jb25maWdfZ2V0
+X2Jvb2woTUFYX0NPTkZJR19TVEFUSUNfSU5URVJGQUNFX0FCT1JUX09OX0VSUk9SKSkgewoJCQlm
+cHJpbnRmKHN0ZGVyciwgIlxuVW5hYmxlIHRvIGxvYWQgZW5naW5lOiBhYm9ydGluZyBub3cuXG5c
+biIpOwoJCQlmZmx1c2goc3RkZXJyKTsKCQkJYWJvcnQoKTsKCQl9IGVsc2UgewoJCQlzZXRfZXJy
+b3JfYW5kX2ZyZWUobWF4X2Vycm9yc190cmFjZShzdG9yZWRfbWF4ZmlsZS0+ZXJyb3JzKSk7CgkJ
+CW1heF9maWxlX2ZyZWUoc3RvcmVkX21heGZpbGUpOwoJCQlzdG9yZWRfbWF4ZmlsZSA9IE5VTEw7
+CgkJCXJldHVybjsKCQl9IAoJfSAKCW1heF9sb2FkX3RpbWVvdXQoc3RvcmVkX21heGZpbGUsIHRp
+bWVvdXRfcHJldmlvdXMpOwp9CnZvaWQgTmViU3RyZWFtX2ZyZWUodm9pZCkKewoJaWYgKHN0b3Jl
+ZF9lbmdpbmUgIT0gTlVMTCkgewoJCW1heF91bmxvYWQoc3RvcmVkX2VuZ2luZSk7CgkJc3RvcmVk
+X2VuZ2luZSA9IE5VTEw7Cgl9CglpZiAoc3RvcmVkX21heGZpbGUgIT0gTlVMTCkgewoJCW1heF9m
+aWxlX2ZyZWUoc3RvcmVkX21heGZpbGUpOwoJCXN0b3JlZF9tYXhmaWxlID0gTlVMTDsKCX0KCWlm
+IChzdG9yZWRfZXJyb3IgIT0gTlVMTCkgewoJCWZyZWUoc3RvcmVkX2Vycm9yKTsKCQlzdG9yZWRf
+ZXJyb3IgPSBOVUxMOwoJfQoJaWYgKE5lYlN0cmVhbV9zaW11bGF0aW9uX2xhdW5jaCA9PSAxKSB7
+CgkJaW50IHNpbV9zdGF0ID0gTmViU3RyZWFtX3NpbXVsYXRvcl9zdG9wKCk7CgkJaWYgKHNpbV9z
+dGF0ICE9IDAgKSB7CgkJCWZwcmludGYoc3RkZXJyLCAiRXJyb3Igc3RvcHBpbmcgc2ltdWxhdG9y
+LiIpOwoJCX0KCQlOZWJTdHJlYW1fc2ltdWxhdGlvbl9sYXVuY2ggPSAwOwoJfQp9CgoKCi8qLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLSovCi8qLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSBJbnRlcmZh
+Y2UgZGVmYXVsdCAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSovCi8qLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLSovCgoKI2RlZmluZSBDSEVDS19FUlJPUlNfU1QoU1QsIFJFVCkgaWYoIW1heF9vayhT
+VC0+ZXJyb3JzKSkgeyBpZihtYXhfY29uZmlnX2dldF9ib29sKE1BWF9DT05GSUdfU1RBVElDX0lO
+VEVSRkFDRV9BQk9SVF9PTl9FUlJPUikpIGFib3J0KCk7IHNldF9lcnJvcl9hbmRfZnJlZShtYXhf
+ZXJyb3JzX3RyYWNlKFNULT5lcnJvcnMpKTsgcmV0dXJuIFJFVDsgfSAKI2RlZmluZSBDSEVDS19O
+VUxMKFZBTFVFLCBNRVNTQUdFLCBSRVQpIGlmKFZBTFVFID09IE5VTEwpIHsgaWYgKG1heF9jb25m
+aWdfZ2V0X2Jvb2woTUFYX0NPTkZJR19TVEFUSUNfSU5URVJGQUNFX0FCT1JUX09OX0VSUk9SKSkg
+YWJvcnQoKTsgc2V0X2Vycm9yKE1FU1NBR0UpOyByZXR1cm4gUkVUOyB9CgogCnN0YXRpYyBtYXhf
+YWN0aW9uc190KiBOZWJTdHJlYW1fY29udmVydF9pbnRlcm5hbChtYXhfZmlsZV90ICptYXhmaWxl
+LCBOZWJTdHJlYW1fYWN0aW9uc190ICppbnRlcmZhY2VfYWN0aW9ucywgaW50IGlzX2ludGVybmFs
+X2NhbGwpCnsKCW1heF9hY3Rpb25zX3QgKmFjdGlvbnMgPSBtYXhfYWN0aW9uc19pbml0KG1heGZp
+bGUsIE5VTEwpOwoJaWYoYWN0aW9ucyA9PSBOVUxMKSByZXR1cm4gTlVMTDsKCiNkZWZpbmUgQ0hF
+Q0tfRVJST1JTIGlmKCFtYXhfb2soYWN0aW9ucy0+ZXJyb3JzKSkgeyBzZXRfZXJyb3JfYW5kX2Zy
+ZWUobWF4X2Vycm9yc190cmFjZShhY3Rpb25zLT5lcnJvcnMpKTsgcmV0dXJuIE5VTEw7IH0gCglp
+bnQzMl90IHBhcmFtX05lYlN0cmVhbUtlcm5lbF9sb29wTGVuZ3RoID0gbWF4X2dldF9vZmZzZXRf
+YXV0b19sb29wX3NpemUoIGFjdGlvbnMsICJOZWJTdHJlYW1LZXJuZWwiLCAibG9vcExlbmd0aCIg
+KTsKCQoKCS8qIHRlbXBvcmFyeSB2YXJpYWJsZXMgKi8KCWludDY0X3QgdG1wXzAgPSAocGFyYW1f
+TmViU3RyZWFtS2VybmVsX2xvb3BMZW5ndGggKiA0MDk2KTsKCgkvKiBjb2RlIGZvciBzY2FsYXIg
+TmViU3RyZWFtS2VybmVsLnJ1bl9jeWNsZV9jb3VudCAqLwoJdWludDY0X3QgdGlja3NfTmViU3Ry
+ZWFtS2VybmVsID0gdG1wXzA7CgltYXhfc2V0X3RpY2tzKGFjdGlvbnMsICJOZWJTdHJlYW1LZXJu
+ZWwiLCB0bXBfMCk7CglDSEVDS19FUlJPUlM7CgkvKiBlbmQgb2YgY29kZSBmb3Igc2NhbGFyIE5l
+YlN0cmVhbUtlcm5lbC5ydW5fY3ljbGVfY291bnQqLwoJCgkvKiBjb2RlIGZvciBzdHJlYW0gciAq
+LwoJc2l6ZV90IGluc3RyZWFtX3NpemVfciA9IDE2Mzg0OwoJaWYgKGluc3RyZWFtX3NpemVfciA+
+IDApIHsKCQltYXhfcXVldWVfaW5wdXQoYWN0aW9ucywgInIiLCBpbnRlcmZhY2VfYWN0aW9ucy0+
+aW5zdHJlYW1fcixpbnN0cmVhbV9zaXplX3IpOwoJCUNIRUNLX0VSUk9SUzsKCX0KCS8qIGVuZCBv
+ZiBjb2RlIGZvciBzdHJlYW0gciAqLwoJCgkvKiBjb2RlIGZvciBzdHJlYW0gb3V0cHV0ICovCglz
+aXplX3Qgb3V0c3RyZWFtX3NpemVfb3V0cHV0ID0gMTYzODQ7CglpZiAob3V0c3RyZWFtX3NpemVf
+b3V0cHV0ID4gMCkgewoJCW1heF9xdWV1ZV9vdXRwdXQoYWN0aW9ucywgIm91dHB1dCIsIGludGVy
+ZmFjZV9hY3Rpb25zLT5vdXRzdHJlYW1fb3V0cHV0LG91dHN0cmVhbV9zaXplX291dHB1dCk7CgkJ
+Q0hFQ0tfRVJST1JTOwoJfQoJLyogZW5kIG9mIGNvZGUgZm9yIHN0cmVhbSBvdXRwdXQgKi8KCQoJ
+cmV0dXJuIGFjdGlvbnM7CiN1bmRlZiBDSEVDS19FUlJPUlMKfQoKdm9pZCBOZWJTdHJlYW0oCglj
+b25zdCBmbG9hdCAqaW5zdHJlYW1fciwKCWZsb2F0ICpvdXRzdHJlYW1fb3V0cHV0KQp7Cgkodm9p
+ZCkgcHRocmVhZF9vbmNlKCZzbGljX2JzX2lzX2luaXRpYWxpc2VkLCBOZWJTdHJlYW1fc3RhdGlj
+X2luaXQpOwoJQ0hFQ0tfTlVMTChzdG9yZWRfbWF4ZmlsZSwgIk1heGZpbGUgd2FzIG5vdCBsb2Fk
+ZWQiLCApOwoJbWF4X3J1bl90ICpydW4gPSBOZWJTdHJlYW1fbm9uYmxvY2soaW5zdHJlYW1fciwg
+b3V0c3RyZWFtX291dHB1dCk7CglDSEVDS19OVUxMKHJ1biwgIlVuYWJsZSB0byBydW4gYWN0aW9u
+cyIsICk7CgltYXhfd2FpdChydW4pOwp9CgptYXhfcnVuX3QgKk5lYlN0cmVhbV9ub25ibG9jaygK
+CWNvbnN0IGZsb2F0ICppbnN0cmVhbV9yLAoJZmxvYXQgKm91dHN0cmVhbV9vdXRwdXQpCnsKCU5l
+YlN0cmVhbV9hY3Rpb25zX3QgaW50ZXJmYWNlX2FjdGlvbnM7CglpbnRlcmZhY2VfYWN0aW9ucy5p
+bnN0cmVhbV9yID0gaW5zdHJlYW1fcjsKCWludGVyZmFjZV9hY3Rpb25zLm91dHN0cmVhbV9vdXRw
+dXQgPSBvdXRzdHJlYW1fb3V0cHV0OwoJKHZvaWQpIHB0aHJlYWRfb25jZSgmc2xpY19ic19pc19p
+bml0aWFsaXNlZCwgTmViU3RyZWFtX3N0YXRpY19pbml0KTsKCUNIRUNLX05VTEwoc3RvcmVkX21h
+eGZpbGUsICJNYXhmaWxlIHdhcyBub3QgbG9hZGVkIiwgTlVMTCk7CgltYXhfYWN0aW9uc190ICph
+Y3Rpb25zWzFdOwoJYWN0aW9uc1swXSA9IE5lYlN0cmVhbV9jb252ZXJ0X2ludGVybmFsKHN0b3Jl
+ZF9tYXhmaWxlLCAmaW50ZXJmYWNlX2FjdGlvbnMsIDEpOwoJQ0hFQ0tfTlVMTChhY3Rpb25zWzBd
+LCAiVW5hYmxlIHRvIGJ1aWxkIGFjdGlvbnMiLCBOVUxMKTsKCW1heF92YWxpZGF0ZShhY3Rpb25z
+WzBdKTsKCUNIRUNLX0VSUk9SU19TVChhY3Rpb25zWzBdLCBOVUxMKTsKCUNIRUNLX0VSUk9SU19T
+VChzdG9yZWRfZW5naW5lLCBOVUxMKTsKCW1heF9ydW5fdCAqcnVuID0gbWF4X3J1bl9tdWx0aV9u
+b25ibG9jayhzdG9yZWRfZW5naW5lLCBhY3Rpb25zLCAxKTsKCUNIRUNLX05VTEwocnVuLCAiVW5h
+YmxlIHRvIHJ1biBhY3Rpb25zIiwgTlVMTCk7CglDSEVDS19FUlJPUlNfU1QoYWN0aW9uc1swXSwg
+TlVMTCk7CgltYXhfYWN0aW9uc19mcmVlKGFjdGlvbnNbMF0pOwoJcmV0dXJuIHJ1bjsKfQoKdm9p
+ZCBOZWJTdHJlYW1fcnVuKAoJbWF4X2VuZ2luZV90ICplbmdpbmUsCglOZWJTdHJlYW1fYWN0aW9u
+c190ICppbnRlcmZhY2VfYWN0aW9ucykKewoJbWF4X3J1bl90ICpydW4gPSBOZWJTdHJlYW1fcnVu
+X25vbmJsb2NrKGVuZ2luZSwgaW50ZXJmYWNlX2FjdGlvbnMpOwoJQ0hFQ0tfTlVMTChydW4sICJV
+bmFibGUgdG8gcnVuIGFjdGlvbnMiLCApOwoJbWF4X3dhaXQocnVuKTsKfQoKbWF4X3J1bl90ICpO
+ZWJTdHJlYW1fcnVuX25vbmJsb2NrKAoJbWF4X2VuZ2luZV90ICplbmdpbmUsCglOZWJTdHJlYW1f
+YWN0aW9uc190ICppbnRlcmZhY2VfYWN0aW9ucykKewoJbWF4X2ZpbGVfdCAqbWF4ZmlsZSA9IG1h
+eF9lbmdpbmVfZ2V0X21heF9maWxlKGVuZ2luZSk7IAoJbWF4X2FjdGlvbnNfdCAqYWN0aW9uc1sx
+XTsKCWFjdGlvbnNbMF0gPSBOZWJTdHJlYW1fY29udmVydChtYXhmaWxlLCBpbnRlcmZhY2VfYWN0
+aW9ucyk7CglDSEVDS19FUlJPUlNfU1QoYWN0aW9uc1swXSwgTlVMTCk7CgltYXhfcnVuX3QgKnJ1
+biA9IG1heF9ydW5fbXVsdGlfbm9uYmxvY2soZW5naW5lLCBhY3Rpb25zLCAxKTsKCUNIRUNLX05V
+TEwocnVuLCAiVW5hYmxlIHRvIHJ1biBhY3Rpb25zIiwgTlVMTCk7CgltYXhfYWN0aW9uc19mcmVl
+KGFjdGlvbnNbMF0pOwoJcmV0dXJuIHJ1bjsKfQoKCi8qKgogKiBcYnJpZWYgR3JvdXAgcnVuIGFk
+dmFuY2VkIHN0YXRpYyBmdW5jdGlvbiBmb3IgdGhlIGludGVyZmFjZSAnZGVmYXVsdCcuCiAqIAog
+KiBccGFyYW0gW2luXSBncm91cCBHcm91cCB0byB1c2UuCiAqIFxwYXJhbSBbaW4sb3V0XSBpbnRl
+cmZhY2VfYWN0aW9ucyBBY3Rpb25zIHRvIHJ1bi4KICoKICogUnVuIHRoZSBhY3Rpb25zIG9uIHRo
+ZSBmaXJzdCBkZXZpY2UgYXZhaWxhYmxlIGluIHRoZSBncm91cC4KICovCnZvaWQgTmViU3RyZWFt
+X3J1bl9ncm91cChtYXhfZ3JvdXBfdCAqZ3JvdXAsIE5lYlN0cmVhbV9hY3Rpb25zX3QgKmludGVy
+ZmFjZV9hY3Rpb25zKQp7CgkvKiBOb3Qgc3RyaWN0bHkgY29ycmVjdCwgYmVjYXVzZSBleHBsaWNp
+dGx5IGxvY2tpbmcgYW4gZW5naW5lIGhlcmUuICovCgltYXhfZW5naW5lX3QgKmVuZ2luZSA9IG1h
+eF9sb2NrX2FueShncm91cCk7CglpZihlbmdpbmUgPT0gTlVMTCkgcmV0dXJuOwoJTmViU3RyZWFt
+X3J1bihlbmdpbmUsIGludGVyZmFjZV9hY3Rpb25zKTsKCW1heF91bmxvY2soZW5naW5lKTsKfQoK
+Ci8qKgogKiBcYnJpZWYgR3JvdXAgcnVuIGFkdmFuY2VkIHN0YXRpYyBub24tYmxvY2tpbmcgZnVu
+Y3Rpb24gZm9yIHRoZSBpbnRlcmZhY2UgJ2RlZmF1bHQnLgogKiAKICoKICogU2NoZWR1bGUgdGhl
+IGFjdGlvbnMgdG8gcnVuIG9uIHRoZSBmaXJzdCBkZXZpY2UgYXZhaWxhYmxlIGluIHRoZSBncm91
+cCBhbmQgcmV0dXJuIGltbWVkaWF0ZWx5LgogKiBUaGUgc3RhdHVzIG9mIHRoZSBydW4gbXVzdCBi
+ZSBjaGVja2VkIHdpdGggOjptYXhfd2FpdC4gCiAqIE5vdGUgdGhhdCB1c2Ugb2YgOjptYXhfbm93
+YWl0IGlzIHByb2hpYml0ZWQgd2l0aCBub24tYmxvY2tpbmcgcnVubmluZyBvbiBncm91cHM6CiAq
+IHNlZSB0aGUgOjptYXhfcnVuX2dyb3VwX25vbmJsb2NrIGRvY3VtZW50YXRpb24gZm9yIG1vcmUg
+ZXhwbGFuYXRpb24uCiAqCiAqIFxwYXJhbSBbaW5dIGdyb3VwIEdyb3VwIHRvIHVzZS4KICogXHBh
+cmFtIFtpbl0gaW50ZXJmYWNlX2FjdGlvbnMgQWN0aW9ucyB0byBydW4uCiAqIFxyZXR1cm4gQSBo
+YW5kbGUgb24gdGhlIGV4ZWN1dGlvbiBzdGF0dXMgb2YgdGhlIGFjdGlvbnMsIG9yIE5VTEwgaW4g
+Y2FzZSBvZiBlcnJvci4KICovCm1heF9ydW5fdCAqTmViU3RyZWFtX3J1bl9ncm91cF9ub25ibG9j
+ayhtYXhfZ3JvdXBfdCAqZ3JvdXAsIE5lYlN0cmVhbV9hY3Rpb25zX3QgKmludGVyZmFjZV9hY3Rp
+b25zKQp7CgltYXhfZmlsZV90ICptYXhmaWxlID0gbWF4X2dyb3VwX2dldF9tYXhfZmlsZShncm91
+cCk7CgltYXhfYWN0aW9uc190ICphY3Rpb25zID0gTmViU3RyZWFtX2NvbnZlcnQobWF4ZmlsZSwg
+aW50ZXJmYWNlX2FjdGlvbnMpOwoJaWYoYWN0aW9ucyA9PSBOVUxMKSByZXR1cm4gTlVMTDsKCWlm
+KCFtYXhfb2soYWN0aW9ucy0+ZXJyb3JzKSkgcmV0dXJuIE5VTEw7CgltYXhfdmFsaWRhdGUoYWN0
+aW9ucyk7CgltYXhfcnVuX3QgKnJ1biA9IG1heF9ydW5fZ3JvdXBfbm9uYmxvY2soZ3JvdXAsIGFj
+dGlvbnMpOwoJbWF4X2FjdGlvbnNfZnJlZShhY3Rpb25zKTsKCXJldHVybiBydW47Cn0KCgovKioK
+ICogXGJyaWVmIEFycmF5IHJ1biBhZHZhbmNlZCBzdGF0aWMgZnVuY3Rpb24gZm9yIHRoZSBpbnRl
+cmZhY2UgJ2RlZmF1bHQnLgogKiAKICogXHBhcmFtIFtpbl0gZW5nYXJyYXkgVGhlIGFycmF5IG9m
+IGRldmljZXMgdG8gdXNlLgogKiBccGFyYW0gW2luLG91dF0gaW50ZXJmYWNlX2FjdGlvbnMgVGhl
+IGFycmF5IG9mIGFjdGlvbnMgdG8gcnVuLgogKgogKiBSdW4gdGhlIGFycmF5IG9mIGFjdGlvbnMg
+b24gdGhlIGFycmF5IG9mIGVuZ2luZXMuICBUaGUgbGVuZ3RoIG9mIGludGVyZmFjZV9hY3Rpb25z
+CiAqIG11c3QgbWF0Y2ggdGhlIHNpemUgb2YgZW5nYXJyYXkuCiAqLwp2b2lkIE5lYlN0cmVhbV9y
+dW5fYXJyYXkobWF4X2VuZ2FycmF5X3QgKmVuZ2FycmF5LCBOZWJTdHJlYW1fYWN0aW9uc190ICpp
+bnRlcmZhY2VfYWN0aW9uc1tdKQp7CgltYXhfcnVuX3QgKnJ1biA9IE5lYlN0cmVhbV9ydW5fYXJy
+YXlfbm9uYmxvY2soZW5nYXJyYXksIGludGVyZmFjZV9hY3Rpb25zKTsKCUNIRUNLX05VTEwocnVu
+LCAiVW5hYmxlIHRvIHJ1biBhY3Rpb25zIiwgKTsKCW1heF93YWl0KHJ1bik7Cn0KCgovKioKICog
+XGJyaWVmIEFycmF5IHJ1biBhZHZhbmNlZCBzdGF0aWMgbm9uLWJsb2NraW5nIGZ1bmN0aW9uIGZv
+ciB0aGUgaW50ZXJmYWNlICdkZWZhdWx0Jy4KICogCiAqCiAqIFNjaGVkdWxlIHRvIHJ1biB0aGUg
+YXJyYXkgb2YgYWN0aW9ucyBvbiB0aGUgYXJyYXkgb2YgZW5naW5lcywgYW5kIHJldHVybiBpbW1l
+ZGlhdGVseS4KICogVGhlIGxlbmd0aCBvZiBpbnRlcmZhY2VfYWN0aW9ucyBtdXN0IG1hdGNoIHRo
+ZSBzaXplIG9mIGVuZ2FycmF5LgogKiBUaGUgc3RhdHVzIG9mIHRoZSBydW4gY2FuIGJlIGNoZWNr
+ZWQgZWl0aGVyIGJ5IDo6bWF4X3dhaXQgb3IgOjptYXhfbm93YWl0OwogKiBub3RlIHRoYXQgb25l
+IG9mIHRoZXNlICptdXN0KiBiZSBjYWxsZWQsIHNvIHRoYXQgYXNzb2NpYXRlZCBtZW1vcnkgY2Fu
+IGJlIHJlbGVhc2VkLgogKgogKiBccGFyYW0gW2luXSBlbmdhcnJheSBUaGUgYXJyYXkgb2YgZGV2
+aWNlcyB0byB1c2UuCiAqIFxwYXJhbSBbaW5dIGludGVyZmFjZV9hY3Rpb25zIFRoZSBhcnJheSBv
+ZiBhY3Rpb25zIHRvIHJ1bi4KICogXHJldHVybiBBIGhhbmRsZSBvbiB0aGUgZXhlY3V0aW9uIHN0
+YXR1cyBvZiB0aGUgYWN0aW9ucywgb3IgTlVMTCBpbiBjYXNlIG9mIGVycm9yLgogKi8KbWF4X3J1
+bl90ICpOZWJTdHJlYW1fcnVuX2FycmF5X25vbmJsb2NrKG1heF9lbmdhcnJheV90ICplbmdhcnJh
+eSwgTmViU3RyZWFtX2FjdGlvbnNfdCAqaW50ZXJmYWNlX2FjdGlvbnNbXSkKewoJbWF4X2ZpbGVf
+dCAqbWF4ZmlsZSA9IG1heF9lbmdhcnJheV9nZXRfbWF4X2ZpbGUoZW5nYXJyYXkpOwoJaW50IGk7
+CgltYXhfYWN0YXJyYXlfdCAqYXJyX2FjdGFycmF5WzFdOwoJbWF4X2FjdGlvbnNfdCAqKmFycl9h
+Y3Rpb25zWzFdOwoJYXJyX2FjdGFycmF5WzBdID0gbWF4X2FjdGFycmF5X2luaXQobWF4ZmlsZSwg
+ZW5nYXJyYXktPnNpemUpOwoJaWYoYXJyX2FjdGFycmF5WzBdID09IE5VTEwpIHJldHVybiBOVUxM
+OwoJYXJyX2FjdGlvbnNbMF0gPSBtYWxsb2MoZW5nYXJyYXktPnNpemUgKiBzaXplb2YobWF4X2Fj
+dGlvbnNfdCopKTsKCWZvcihpPTA7IGkgPCBhcnJfYWN0YXJyYXlbMF0tPnNpemU7IGkrKykgewoJ
+CW1heF9hY3Rpb25zX3QgKmFjdGlvbnMgPSBOZWJTdHJlYW1fY29udmVydChtYXhmaWxlLCBpbnRl
+cmZhY2VfYWN0aW9uc1tpXSk7CgkJaWYoYWN0aW9ucyA9PSBOVUxMKSByZXR1cm4gTlVMTDsKCQlh
+cnJfYWN0aW9uc1swXVtpXSA9IGFjdGlvbnM7CgkJbWF4X3NldF9hY3Rpb24oYXJyX2FjdGFycmF5
+WzBdLCBpLCBhY3Rpb25zKTsKCX0KCW1heF9ydW5fdCAqcnVuID0gbWF4X3J1bl9hcnJheV9tdWx0
+aV9ub25ibG9jayhlbmdhcnJheSwgYXJyX2FjdGFycmF5LCAxICk7Cglmb3IgKGk9MDsgaSA8IGFy
+cl9hY3RhcnJheVswXS0+c2l6ZTsgaSsrKSB7IG1heF9hY3Rpb25zX2ZyZWUoYXJyX2FjdGlvbnNb
+MF1baV0pOyB9CgltYXhfYWN0YXJyYXlfZnJlZShhcnJfYWN0YXJyYXlbMF0pOwoJZnJlZShhcnJf
+YWN0aW9uc1swXSk7CglyZXR1cm4gcnVuOwp9CgoKLyoqCiAqIFxicmllZiBDb252ZXJ0cyBhIHN0
+YXRpYy1pbnRlcmZhY2UgYWN0aW9uIHN0cnVjdCBpbnRvIGEgZHluYW1pYy1pbnRlcmZhY2UgbWF4
+X2FjdGlvbnNfdCBzdHJ1Y3QuCiAqCiAqIE5vdGUgdGhhdCB0aGlzIGlzIGFuIGludGVybmFsIHV0
+aWxpdHkgZnVuY3Rpb24gdXNlZCBieSBvdGhlciBmdW5jdGlvbnMgaW4gdGhlIHN0YXRpYyBpbnRl
+cmZhY2UuCiAqCiAqIFxwYXJhbSBbaW5dIG1heGZpbGUgVGhlIG1heGZpbGUgdG8gdXNlLgogKiBc
+cGFyYW0gW2luXSBpbnRlcmZhY2VfYWN0aW9ucyBUaGUgaW50ZXJmYWNlLXNwZWNpZmljIGFjdGlv
+bnMgdG8gcnVuLgogKiBccmV0dXJuIFRoZSBkeW5hbWljLWludGVyZmFjZSBhY3Rpb25zIHRvIHJ1
+biwgb3IgTlVMTCBpbiBjYXNlIG9mIGVycm9yLgogKi8KbWF4X2FjdGlvbnNfdCogTmViU3RyZWFt
+X2NvbnZlcnQobWF4X2ZpbGVfdCAqbWF4ZmlsZSwgTmViU3RyZWFtX2FjdGlvbnNfdCAqaW50ZXJm
+YWNlX2FjdGlvbnMpCnsKCXJldHVybiBOZWJTdHJlYW1fY29udmVydF9pbnRlcm5hbChtYXhmaWxl
+LCBpbnRlcmZhY2VfYWN0aW9ucywgMCk7Cn0KCiN1bmRlZiBDSEVDS19FUlJPUlNfU1QKI3VuZGVm
+IENIRUNLX05VTEwKCgo=
+#endif /* SLIC_B64_DEFINITIONS */
+
+#ifdef SLIC_EXTRA_FILES
+PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHVz
+ZXJmaWxlcyBmb3JtYXQtdmVyc2lvbj0iMjAxMjAyMDAiLz4=
+#endif /* SLIC_EXTRA_FILES */
+
+#ifdef PHOTON_NODE_ADD_DATA
+#define PHOTON_NODE_ADD_DATA_PRESENT 1
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 1, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 54, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 6, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 49, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 61, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 24, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 25, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 29, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 26, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 27, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 30, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 28, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 31, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 53, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 60, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 5, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 59, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 3, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 58, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 18, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 48, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 50, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 19, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 20, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 52, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 57, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 8, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 9, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 13, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 10, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 11, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 14, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 12, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 15, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 16, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 21, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 32, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 37, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 56, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 34, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 35, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 36, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 38, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 55, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 40, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 41, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 43, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 44, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebStreamKernel, 42, "SquashFactor", 0.0)
+#endif
+

@@ -1,0 +1,61 @@
+<div class="" data-ng-controller="ViewportController">
+  <h1>Models</h1>
+  <div class="col-md-12 row">
+    <div class="featured col-md-6">
+      <div class="viewport-centered">
+        <h2>Editor</h2>
+        <select ng-model="selectedModel" ng-init="selectedModel = 'Random Walk'">
+          <option>Random Walk</option>
+          <option>Geometric Walk</option>
+          <option>Black Scholes</option>
+          <option>Term Vol</option>
+          <option disabled>Local Vol</option>
+          <option>Heston</option>
+          <option disabled>Multiple Underlyings</option>
+          <option>Izhikevich Excitatory Neurons</option>
+          <option>Izhikevich Bursting Neurons</option>
+        </select>
+        <editor></editor>
+      </div>
+    </div>
+    <div class="featured col-md-6" style="min-height:750px">
+      <div class="viewport-centered">
+        <h2>Viewport</h2>
+        <select ng-model="viewport">
+          <option>LaTeX</option>
+          <option>OpenCL</option>
+          <option>C++</option>
+          <option>Maxeler FPGA</option>
+        </select>
+        <viewport></viewport>
+        <opencl></opencl>
+        <cpp></cpp>
+        <maxeler></maxeler>
+      </div>
+    </div>
+    <div class="featured col-md-6" style="margin-bottom: 20px">
+      <div class="viewport-centered">
+        <h2>Execution</h2>
+        <select ng-model="executeTarget" ng-init="executeTarget = 'OpenCL'">
+          <option>OpenCL</option>
+          <option>C++</option>
+          <option disabled>Maxeler FPGA</option>
+        </select>
+        <execute></execute>
+        <div style="margin-top: 50px" ng-show="executeResult && executeResult.elapsed_time > 0">Model executed in {{executeResult.elapsed_time}}s</div>
+      </div>
+    </div>
+    <div class="featured col-md-6">
+      <div class="viewport-centered">
+        <h2>Results</h2>
+        <select ng-model="resultView" ng-init="resultView = 'Chart'">
+          <option>Chart</option>
+          <option>Data</option>
+        </select>
+        <result></result>
+        <chart></chart>
+      </div>
+    </div>
+  </div>
+</div>
+

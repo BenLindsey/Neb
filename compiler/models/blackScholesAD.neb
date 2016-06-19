@@ -1,0 +1,29 @@
+% State Variables
+logspot
+
+% State Initialisation
+logspot_{0} = 100.0
+
+% Model Parameters
+Simulations = 65536
+Steps = 1024
+vol = 0.2
+drift = -0.1
+dt = 0.2
+
+% State Index
+t \in [1..Steps]
+
+% Random Source
+r \sim N[0,1]
+
+% State Update
+logspot_{t + 1} = logspot_{t} + drift + vol * \sqrt{dt} * r_{t}
+
+% Output
+logspot_{t}
+
+% Sensitivity
+\frac{logspot}{vol}
+
+

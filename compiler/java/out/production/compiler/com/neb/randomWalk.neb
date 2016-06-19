@@ -1,0 +1,21 @@
+% State Variables
+price
+
+% State Initialisation
+price_{0} = 100.0
+
+% Model Parameters
+Simulations = 64
+Steps = 64
+
+% State Index
+t \in [1..Steps]
+
+% Random Source
+r \sim R[0.5,1.0]
+
+% State Update
+price_{t + 1} = price_{t} + r_{t}
+
+% Output
+price_{t + 1}

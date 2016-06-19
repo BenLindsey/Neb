@@ -1,0 +1,40 @@
+package nebstream;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelParameters;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.OffsetExpr;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.memory.Memory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEType;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+
+class NebStreamKernel extends Kernel {
+
+  private static final int Simulations = 64;
+  private static final int Steps = 64;
+
+  NebStreamKernel(KernelParameters parameters) {
+    super(parameters);
+
+    OffsetExpr loopLength = stream.makeOffsetAutoLoop("loopLength");
+    DFEVar loopLengthVal = loopLength.getDFEVar(this, dfeUInt(8));
+
+    CounterChain chain = control.count.makeCounterChain();
+    DFEVar y = chain.addCounter(Steps, 1);
+    DFEVar x = chain.addCounter(Simulations, 1);
+    DFEVar loopCounter = chain.addCounter(loopLengthVal, 1);
+
+    DFEVar r = io.input("r", dfeFloat(8, 24), loopCounter === (loopLengthVal-1));
+
+    DFEVar priceCarried = dfeFloat(8, 24).newInstance(this);
+    DFEVar price = y === 0 ? 100.0 : priceCarried;
+
+    DFEVar priceTemp = price + r;
+
+    price = priceTemp;
+    priceCarried <== stream.offset(price, -(Simulations * loopLength));
+
+    io.output("output", price, price.getType(), loopCounter === (loopLengthVal-1));
+  }
+}

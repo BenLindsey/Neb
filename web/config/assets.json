@@ -1,0 +1,37 @@
+{
+  "core": {
+    "css": {
+      "bower_components/build/css/dist.min.css": [
+        "bower_components/angular/angular-csp.css",
+        "bower_components/angular-ui-select/dist/select.min.css",
+        "bower_components/codemirror/lib/codemirror.css",
+        "bower_components/codemirror/theme/blackboard.css",
+        "bower_components/codemirror/theme/elegant.css",
+        "bower_components/nvd3/build/nv.d3.css"
+      ]
+    },
+    "js": {
+      "bower_components/build/js/dist.min.js": [
+        "bower_components/jquery/dist/jquery.min.js",
+        "bower_components/angular/angular.min.js",
+        "bower_components/angular-mocks/angular-mocks.js",
+        "bower_components/angular-cookies/angular-cookies.min.js",
+        "bower_components/angular-resource/angular-resource.min.js",
+        "bower_components/angular-sanitize/angular-sanitize.min.js",
+        "bower_components/angular-ui-router/release/angular-ui-router.min.js",
+        "bower_components/angular-jwt/dist/angular-jwt.min.js",
+        "bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
+        "bower_components/angular-ui-select/dist/select.min.js",
+        "bower_components/web-bootstrap/index.js",
+        "bower_components/codemirror/lib/codemirror.js",
+        "bower_components/codemirror/mode/stex/stex.js",
+        "bower_components/codemirror/mode/clike/clike.js",
+        "bower_components/MathJax/MathJax.js",
+        "bower_components/MathJax/config/TeX-AMS-MML_HTMLorMML.js",
+        "bower_components/lodash/lodash.js",
+        "bower_components/d3/d3.js",
+        "bower_components/nvd3/build/nv.d3.js"
+    ]
+    }
+  }
+}

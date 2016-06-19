@@ -1,0 +1,23 @@
+NodeStreamOffset stream offset: -64 {HWFloat:8, 24} ID: 48
+com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)
+nebstream.NebStreamManager.main(NebStreamManager.maxj:31)
+	FIFO(46) {HWFloat:8, 24} 46 ID: 50
+
+NodeMux MUX {HWFloat:8, 24} ID: 20
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1038)
+nebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:31)
+nebstream.NebStreamManager.main(NebStreamManager.maxj:21)
+	FIFO(5) {HWFloat:8, 24} 5 ID: 52
+
+NodeReinterpret <{HWOffsetFix:1, 0, UNSIGNED}> {HWOffsetFix:1, 0, UNSIGNED} ID: 31
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)
+nebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:38)
+nebstream.NebStreamManager.main(NebStreamManager.maxj:21)
+	FIFO(17) {HWOffsetFix:1, 0, UNSIGNED} 17 ID: 53
+
+NodeCounterV1 Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0 {HWOffsetFix:8, 0, UNSIGNED} ID: 6
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:523)
+nebstream.NebStreamKernel.<init>(NebStreamKernel.maxj:26)
+nebstream.NebStreamManager.main(NebStreamManager.maxj:21)
+	FIFO(1) {HWOffsetFix:8, 0, UNSIGNED} 1 ID: 49
+

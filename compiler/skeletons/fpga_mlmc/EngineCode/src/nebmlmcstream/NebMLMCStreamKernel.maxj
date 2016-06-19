@@ -1,0 +1,81 @@
+package nebmlmcstream;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelParameters;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.OffsetExpr;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.memory.Memory;
+
+class NebMLMCStreamKernel extends Kernel {
+
+  private static final float X0  = 100.0f;
+  private static final float K   = 80.0f;
+  private static final float T   = 1.0f;
+  private static final float mr  = 0.05f;
+  private static final float sig = 0.3f;
+
+  private final DFEVar zero = constant.var(0.0).cast(dfeFloat(8, 24));
+
+  DFEVar stateUpdate(DFEVar previous, DFEVar h, DFEVar dW) {
+    return previous + mr * previous * h + sig * previous * dW + 0.5f * sig * sig * previous * (dW * dW - h);
+  }
+
+  DFEVar payoff(DFEVar logspot) {
+    return Math.exp(-mr * T) * KernelMath.max(zero, logspot - K);
+  }
+
+  NebMLMCStreamKernel(KernelParameters parameters, int nMin, int nMax) {
+    super(parameters);
+    
+
+    DFEVar l = io.scalarInput("l", dfeInt(32));
+    DFEVar N = io.scalarInput("N", dfeUInt(23));
+
+    DFEVar nc = io.scalarInput("nc", dfeUInt(32));
+    DFEVar nf = nc * 2;
+
+    DFEVar hf = T / nf.cast(dfeFloat(8, 24));
+    DFEVar hc = T / nc.cast(dfeFloat(8, 24));
+
+    OffsetExpr loopLength = stream.makeOffsetAutoLoop("loopLength");
+    DFEVar loopLengthVal = loopLength.getDFEVar(this, dfeUInt(32));
+    
+    CounterChain chain = control.count.makeCounterChain();
+    DFEVar y = chain.addCounter(nc, 1);
+    DFEVar x = chain.addCounter(N, 1);
+    DFEVar writing = chain.addCounter(2, 1);
+    DFEVar loopCounter = chain.addCounter(loopLengthVal, 1);
+
+    DFEVar r1 = io.input("r1", dfeFloat(8, 24), writing === 0 & loopCounter === loopLengthVal-1);
+    DFEVar r2 = io.input("r2", dfeFloat(8, 24), writing === 0 & loopCounter === loopLengthVal-1);
+    
+    DFEVar dWf0 = r1 * KernelMath.sqrt(hf);
+    DFEVar dWf1 = r2 * KernelMath.sqrt(hf);
+    DFEVar dWfC = dWf0 + dWf1;   
+ 
+    int MAX_SIZE = 8388608;
+    Memory<DFEVar> fine = mem.alloc(dfeFloat(8,24), MAX_SIZE);
+    Memory<DFEVar> coarse = mem.alloc(dfeFloat(8,24), MAX_SIZE);
+
+    DFEVar logspotf = y === 0 ? X0 : fine.read(x);
+    DFEVar logspotc = y === 0 ? X0 : coarse.read(x);
+
+    logspotf = stateUpdate(logspotf, hf, dWf0);
+    logspotf = (l === 0) ? logspotf : stateUpdate(logspotf, hf, dWf1);
+    logspotc = stateUpdate(logspotc, hc, dWfC);
+    
+    fine.write(x, stream.offset(logspotf, -loopLength), writing === 1);   
+    coarse.write(x, stream.offset(logspotc, -loopLength), writing === 1);   
+
+    DFEVar payoffFine = payoff(logspotf);
+    DFEVar payoffCoarse = payoff(logspotc);     
+    
+    DFEVar diff = (l === 0) ? payoffFine : payoffFine - payoffCoarse;
+
+    io.output("diff", diff,   diff.getType(),   y === (nc - 1) & writing === 1 & loopCounter === loopLengthVal-1);
+    io.output("fine", payoffFine, payoffFine.getType(), y === (nc - 1) & writing === 1 & loopCounter === loopLengthVal-1);
+  }
+}
+

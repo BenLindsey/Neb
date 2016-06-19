@@ -1,0 +1,57 @@
+package nebstream;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelParameters;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.OffsetExpr;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.memory.Memory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEType;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+
+class NebStreamKernel extends Kernel {
+
+  private static final int Simulations = 65536;
+  private static final int Steps = 1024;
+  private final DFEVar minVar = constant.var(0.0).cast(dfeFloat(8, 24));
+
+  NebStreamKernel(KernelParameters parameters) {
+    super(parameters);
+
+    Memory<DFEVar> kappa = mem.alloc(dfeFloat(8, 24), 4);
+    kappa.setContents(new double[] {0.2, 0.3, 0.6, 0.7});
+    Memory<DFEVar> theta = mem.alloc(dfeFloat(8, 24), 4);
+    theta.setContents(new double[] {-0.2, 0.8, 0.0, -0.3});
+    Memory<DFEVar> epsilon = mem.alloc(dfeFloat(8, 24), 4);
+    epsilon.setContents(new double[] {0.1, 0.5, 0.3, 0.2});
+    Memory<DFEVar> dt = mem.alloc(dfeFloat(8, 24), 4);
+    dt.setContents(new double[] {0.1, 0.9, 0.3, 0.4});
+
+    OffsetExpr loopLength = stream.makeOffsetAutoLoop("loopLength");
+    DFEVar loopLengthVal = loopLength.getDFEVar(this, dfeUInt(8));
+
+    CounterChain chain = control.count.makeCounterChain();
+    DFEVar y = chain.addCounter(Steps, 1);
+    DFEVar x = chain.addCounter(Simulations, 1);
+    DFEVar loopCounter = chain.addCounter(loopLengthVal, 1);
+    DFEVar yWrap = y.cast(dfeUInt(2));
+
+    DFEVar r = io.input("r", dfeFloat(8, 24), loopCounter === (loopLengthVal-1));
+    DFEVar r2 = io.input("r2", dfeFloat(8, 24), loopCounter === (loopLengthVal-1));
+
+    DFEVar logspotCarried = dfeFloat(8, 24).newInstance(this);
+    DFEVar logspot = y === 0 ? 100.0 : logspotCarried;
+    DFEVar varianceCarried = dfeFloat(8, 24).newInstance(this);
+    DFEVar variance = y === 0 ? 5.0 : varianceCarried;
+
+    DFEVar logspotTemp = logspot + 0.5 * dt.read(yWrap) * variance + KernelMath.sqrt(variance) * KernelMath.sqrt(dt.read(yWrap)) * r;
+    DFEVar varianceTemp = variance + 0.5 * kappa.read(yWrap) * (theta.read(yWrap) - KernelMath.max(variance, minVar)) + epsilon.read(yWrap) * KernelMath.sqrt(KernelMath.max(variance, minVar)) * KernelMath.sqrt(dt.read(yWrap)) * r2;
+
+    logspot = logspotTemp;
+    logspotCarried <== stream.offset(logspot, -(Simulations * loopLength));
+    variance = varianceTemp;
+    varianceCarried <== stream.offset(variance, -(Simulations * loopLength));
+
+    io.output("output", logspot, logspot.getType(), loopCounter === (loopLengthVal-1));
+  }
+}

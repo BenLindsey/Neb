@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<maxCompilerManager>
+<enginePart internalEngineSubproject="fpga_EngineCode" isSrcBin="false" isUseDefaultSelected="false" outputLocation="/fpga_EngineCode/bin" projectName="fpga"/>
+<cpuPart internalCpuSubproject="fpga_CPUCode"/>
+<watchedFiles/>
+</maxCompilerManager>

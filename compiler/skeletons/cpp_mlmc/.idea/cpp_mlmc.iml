@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="CPP_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/levelEstimator.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/regression.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/regression.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/mlmc.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/mlmc.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/levelEstimator.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/generated.h" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Header Search Paths">
+        <CLASSES>
+          <root url="file:///vol/cc/opt/intel/composer_xe_2011_sp1.10.319/composer_xe_2011_sp1.10.319/mkl/include" />
+          <root url="file:///vol/cc/opt/intel/composer_xe_2011_sp1.10.319/composer_xe_2011_sp1.10.319/tbb/include" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+          <root url="file:///usr/include" />
+          <root url="file:///usr/local/include" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file:///vol/cc/opt/intel/composer_xe_2011_sp1.10.319/composer_xe_2011_sp1.10.319/mkl/include" />
+          <root url="file:///vol/cc/opt/intel/composer_xe_2011_sp1.10.319/composer_xe_2011_sp1.10.319/tbb/include" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+          <root url="file:///usr/include" />
+          <root url="file:///usr/local/include" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>

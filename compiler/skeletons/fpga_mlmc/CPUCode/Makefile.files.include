@@ -1,0 +1,5 @@
+#
+# This file is managed by MaxIDE. Do NOT change.
+#
+HEADERS:= levelEstimator.h mlmc.h regression.h generate.h
+SOURCES:= NebMLMCStreamCpuCode.cpp levelEstimator.cpp regression.cpp mlmc.cpp

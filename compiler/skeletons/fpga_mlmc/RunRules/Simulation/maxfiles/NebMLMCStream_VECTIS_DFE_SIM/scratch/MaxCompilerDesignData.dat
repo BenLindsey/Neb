@@ -1,0 +1,1716 @@
+#ifdef MAXCOMPILER_VERSION_INFO
+#define MAXCOMPILER_VERSION_INFO_PRESENT 1
+#define MAXFILE_MAXCOMPILER_VERSION_YEAR         2013
+#define MAXFILE_MAXCOMPILER_VERSION_NUM          2
+#define MAXFILE_MAXCOMPILER_VERSION_POINT        2
+#define MAXFILE_MAXCOMPILER_VERSION_PATCH        ""
+#define MAXFILE_MAXCOMPILER_VERSION_REV          37772
+#define MAXFILE_MAXCOMPILER_VERSION_RELEASE_MODE true
+#endif
+
+#ifdef MAXFILE_BUILD_INFO
+#define MAXFILE_BUILD_INFO_PRESENT 1
+#define MAXFILE_BUILD_NAME "NebMLMCStream"
+#define MAXFILE_BUILD_DIR  "/homes/bl2312/DSL/DSL/fpga_mlmc/RunRules/Simulation/maxfiles/NebMLMCStream_VECTIS_DFE_SIM"
+#define MAXFILE_BUILD_DATE  20160309
+#define MAXFILE_BUILD_REV   1
+#endif
+
+#ifdef PARAM
+#define PARAM_PRESENT 1
+PARAM(APP_ID, 0)
+PARAM(REV_ID, 0)
+PARAM(CHAIN_LENGTH, 48)
+PARAM(IS_SIMULATION, 1)
+PARAM(MEC_SUPPORTED, 1)
+PARAM(PCIE_SLAVE_STREAMING, 0)
+PARAM(PCIE_ALIGNMENT, 16)
+PARAM(NUM_IFPGA_LINKS, 0)
+#endif
+
+#ifdef STRING_PARAM
+#define STRING_PARAM_PRESENT 1
+STRING_PARAM(BOARD_MODEL, "MAX3424A")
+#endif
+
+
+#ifdef INCLUDE_GENERATED_CPP_HEADERS
+#include "NebMLMCStreamKernel.h"
+#endif
+
+
+
+
+
+
+
+
+#ifdef STREAM_OFFSET_AUTO_LOOP_VAR
+#define STREAM_OFFSET_AUTO_LOOP_VAR_PRESENT 1
+STREAM_OFFSET_AUTO_LOOP_VAR(NebMLMCStreamKernel, loopLength, 108)
+#endif
+
+
+#ifdef MANAGER_NODE
+#define MANAGER_NODE_PRESENT 1
+MANAGER_NODE(NebMLMCStreamKernel, Kernel)
+MANAGER_NODE(r1, PCIe_From_Host_fwd)
+MANAGER_NODE(r2, PCIe_From_Host_fwd)
+MANAGER_NODE(diff, PCIe_To_Host_fwd)
+MANAGER_NODE(fine, PCIe_To_Host_fwd)
+MANAGER_NODE(Stream_1, DualAspectMux)
+MANAGER_NODE(Stream_4, DualAspectMux)
+MANAGER_NODE(Stream_9, DualAspectReg)
+MANAGER_NODE(Stream_12, DualAspectReg)
+MANAGER_NODE(Stream_24, StreamPullPushAdapter)
+MANAGER_NODE(Stream_28, StreamPullPushAdapter)
+MANAGER_NODE(Stream_16, Fifo)
+MANAGER_NODE(Stream_20, Fifo)
+MANAGER_NODE(Stream_22, Fifo)
+MANAGER_NODE(Stream_26, Fifo)
+#endif
+
+#ifdef MANAGER_NODE_IO
+#define MANAGER_NODE_IO_PRESENT 1
+MANAGER_NODE_IO(NebMLMCStreamKernel, r1, IN, STREAM, 32, PULL)
+MANAGER_NODE_IO(NebMLMCStreamKernel, r2, IN, STREAM, 32, PULL)
+MANAGER_NODE_IO(NebMLMCStreamKernel, diff, OUT, STREAM, 32, PUSH)
+MANAGER_NODE_IO(NebMLMCStreamKernel, fine, OUT, STREAM, 32, PUSH)
+MANAGER_NODE_IO(r1, r1, OUT, STREAM, 128, PULL)
+MANAGER_NODE_IO(r2, r2, OUT, STREAM, 128, PULL)
+MANAGER_NODE_IO(diff, diff, IN, STREAM, 128, PUSH)
+MANAGER_NODE_IO(fine, fine, IN, STREAM, 128, PUSH)
+MANAGER_NODE_IO(Stream_1, input, IN, STREAM, 128, PULL)
+MANAGER_NODE_IO(Stream_1, output, OUT, STREAM, 32, PUSH)
+MANAGER_NODE_IO(Stream_4, input, IN, STREAM, 128, PULL)
+MANAGER_NODE_IO(Stream_4, output, OUT, STREAM, 32, PUSH)
+MANAGER_NODE_IO(Stream_9, input, IN, STREAM, 32, PULL)
+MANAGER_NODE_IO(Stream_9, output, OUT, STREAM, 128, PULL)
+MANAGER_NODE_IO(Stream_12, input, IN, STREAM, 32, PULL)
+MANAGER_NODE_IO(Stream_12, output, OUT, STREAM, 128, PULL)
+MANAGER_NODE_IO(Stream_24, input, IN, STREAM, 128, PULL)
+MANAGER_NODE_IO(Stream_24, output, OUT, STREAM, 128, PUSH)
+MANAGER_NODE_IO(Stream_28, input, IN, STREAM, 128, PULL)
+MANAGER_NODE_IO(Stream_28, output, OUT, STREAM, 128, PUSH)
+MANAGER_NODE_IO(Stream_16, input, IN, STREAM, 32, PUSH)
+MANAGER_NODE_IO(Stream_16, output, OUT, STREAM, 32, PULL)
+MANAGER_NODE_IO(Stream_20, input, IN, STREAM, 32, PUSH)
+MANAGER_NODE_IO(Stream_20, output, OUT, STREAM, 32, PULL)
+MANAGER_NODE_IO(Stream_22, input, IN, STREAM, 32, PUSH)
+MANAGER_NODE_IO(Stream_22, output, OUT, STREAM, 32, PULL)
+MANAGER_NODE_IO(Stream_26, input, IN, STREAM, 32, PUSH)
+MANAGER_NODE_IO(Stream_26, output, OUT, STREAM, 32, PULL)
+#endif
+
+#ifdef MANAGER_STREAM
+#define MANAGER_STREAM_PRESENT 1
+MANAGER_STREAM(r1, r1, Stream_1, input, 128)
+MANAGER_STREAM(r2, r2, Stream_4, input, 128)
+MANAGER_STREAM(NebMLMCStreamKernel, diff, Stream_22, input, 32)
+MANAGER_STREAM(NebMLMCStreamKernel, fine, Stream_26, input, 32)
+MANAGER_STREAM(Stream_1, output, Stream_16, input, 32)
+MANAGER_STREAM(Stream_4, output, Stream_20, input, 32)
+MANAGER_STREAM(Stream_9, output, Stream_24, input, 128)
+MANAGER_STREAM(Stream_12, output, Stream_28, input, 128)
+MANAGER_STREAM(Stream_24, output, diff, diff, 128)
+MANAGER_STREAM(Stream_28, output, fine, fine, 128)
+MANAGER_STREAM(Stream_16, output, NebMLMCStreamKernel, r1, 32)
+MANAGER_STREAM(Stream_20, output, NebMLMCStreamKernel, r2, 32)
+MANAGER_STREAM(Stream_22, output, Stream_9, input, 32)
+MANAGER_STREAM(Stream_26, output, Stream_12, input, 32)
+#endif
+
+#ifdef MANAGER_NODE_PROPERTY
+#define MANAGER_NODE_PROPERTY_PRESENT 1
+MANAGER_NODE_PROPERTY(NebMLMCStreamKernel, control_pipelining_depth, 2)
+#endif
+
+
+#ifdef KERNEL_CORE
+#define KERNEL_CORE_PRESENT 1
+KERNEL_CORE(NebMLMCStreamKernel)
+#endif
+
+#ifdef KERNEL_HOST_CONTROLLED
+#define KERNEL_HOST_CONTROLLED_PRESENT 1
+KERNEL_HOST_CONTROLLED(NebMLMCStreamKernel, NebMLMCStreamKernel)
+#endif
+
+#ifdef DEBUG_INPUT_BITS
+#define DEBUG_INPUT_BITS_PRESENT 1
+DEBUG_INPUT_BITS(NebMLMCStreamKernel, r1, 0)
+DEBUG_INPUT_BITS(NebMLMCStreamKernel, r2, 1)
+#endif
+
+#ifdef DEBUG_OUTPUT_BITS
+#define DEBUG_OUTPUT_BITS_PRESENT 1
+DEBUG_OUTPUT_BITS(NebMLMCStreamKernel, diff, 0)
+DEBUG_OUTPUT_BITS(NebMLMCStreamKernel, fine, 1)
+#endif
+
+#ifdef MANAGER_NODE_CPP_SIM_MODEL_CTOR
+#define MANAGER_NODE_CPP_SIM_MODEL_CTOR_PRESENT 1
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(r1, PCIePullSourceSyncMax3, "r1")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(r2, PCIePullSourceSyncMax3, "r2")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_1, DualAspectMuxSync, "Stream_1", 32, 4)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_4, DualAspectMuxSync, "Stream_4", 32, 4)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_16, FifoPushToPullSync, "Stream_16", false, 512, 32)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_20, FifoPushToPullSync, "Stream_20", false, 512, 32)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(NebMLMCStreamKernel, NebMLMCStreamKernel, "NebMLMCStreamKernel")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_22, FifoPushToPullSync, "Stream_22", false, 512, 32)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_26, FifoPushToPullSync, "Stream_26", false, 512, 32)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_9, DualAspectRegSync, "Stream_9", 32, 4)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_12, DualAspectRegSync, "Stream_12", 32, 4)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_24, PullToPushAdapterSync, "Stream_24")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(Stream_28, PullToPushAdapterSync, "Stream_28")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(diff, PCIePushSinkSyncMax3, "diff")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(fine, PCIePushSinkSyncMax3, "fine")
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(CapabilityReg, CapRegs, "CapabilityReg", 0, 2, 2, 0, 0, 0, 0, 0, 48)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(ifpga, IFPGARegs)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(sfa, SFARegs)
+MANAGER_NODE_CPP_SIM_MODEL_CTOR(ChecksumMemory, ChecksumMem, "ChecksumMemory", "b19af333401ba9e9c62288e3481161f46a25a52a41b6164de6915df5f3393d52")
+#endif
+
+#ifdef MANAGER_NODE_CPP_SIM_MODEL_SETUP
+#define MANAGER_NODE_CPP_SIM_MODEL_SETUP_PRESENT 1
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebMLMCStreamKernel, addDebugRegister, reg_dbg_ctld_almost_empty, 2, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebMLMCStreamKernel, addDebugRegister, reg_dbg_ctld_done, 2, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebMLMCStreamKernel, addDebugRegister, reg_dbg_ctld_empty, 2, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebMLMCStreamKernel, addDebugRegister, reg_dbg_ctld_read, 2, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebMLMCStreamKernel, addDebugRegister, reg_dbg_ctld_read_pipe_dbg, 6, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebMLMCStreamKernel, addDebugRegister, reg_dbg_ctld_request, 2, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebMLMCStreamKernel, addDebugRegister, reg_dbg_done_out, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebMLMCStreamKernel, addDebugRegister, reg_dbg_fill_level, 8, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebMLMCStreamKernel, addDebugRegister, reg_dbg_flush_level, 8, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebMLMCStreamKernel, addDebugRegister, reg_dbg_flush_start, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebMLMCStreamKernel, addDebugRegister, reg_dbg_flush_start_level, 8, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebMLMCStreamKernel, addDebugRegister, reg_dbg_flushing, 1, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebMLMCStreamKernel, addDebugRegister, reg_dbg_full_level, 8, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebMLMCStreamKernel, addDebugRegister, reg_dbg_out_stall, 2, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebMLMCStreamKernel, addDebugRegister, reg_dbg_out_valid, 2, 0)
+MANAGER_NODE_CPP_SIM_MODEL_SETUP(NebMLMCStreamKernel, addDebugRegister, reg_dbg_stall_vector, 2, 0)
+#endif
+
+#ifdef PCIE_STREAM
+#define PCIE_STREAM_PRESENT 1
+PCIE_STREAM(r1, STREAM_FROM_HOST, 0)
+PCIE_STREAM(r2, STREAM_FROM_HOST, 1)
+PCIE_STREAM(diff, STREAM_TO_HOST, 0)
+PCIE_STREAM(fine, STREAM_TO_HOST, 1)
+#endif
+
+#ifdef REG
+#define REG_PRESENT 1
+REG(NebMLMCStreamKernel.l, 0x0, 4, hwOffsetFix(32, 0, TWOSCOMPLEMENT))
+REG(NebMLMCStreamKernel.N, 0x4, 3, hwOffsetFix(24, 0, UNSIGNED))
+REG(NebMLMCStreamKernel.nc, 0x7, 4, hwOffsetFix(32, 0, UNSIGNED))
+REG(NebMLMCStreamKernel.io_r1_force_disabled, 0xb, 1, hwOffsetFix(1, 0, UNSIGNED))
+REG(NebMLMCStreamKernel.io_r2_force_disabled, 0xc, 1, hwOffsetFix(1, 0, UNSIGNED))
+REG(NebMLMCStreamKernel.io_diff_force_disabled, 0xd, 1, hwOffsetFix(1, 0, UNSIGNED))
+REG(NebMLMCStreamKernel.io_fine_force_disabled, 0xe, 1, hwOffsetFix(1, 0, UNSIGNED))
+REG(NebMLMCStreamKernel.run_cycle_count, 0xf, 6, hwOffsetFix(48, 0, UNSIGNED))
+REG(NebMLMCStreamKernel.current_run_cycle_count, 0x15, 6, hwOffsetFix(48, 0, UNSIGNED))
+REG(NebMLMCStreamKernel.dbg_ctld_almost_empty, 0x1b, 1, hwBits(2))
+REG(NebMLMCStreamKernel.dbg_ctld_done, 0x1c, 1, hwBits(2))
+REG(NebMLMCStreamKernel.dbg_ctld_empty, 0x1d, 1, hwBits(2))
+REG(NebMLMCStreamKernel.dbg_ctld_read, 0x1e, 1, hwBits(2))
+REG(NebMLMCStreamKernel.dbg_ctld_read_pipe_dbg, 0x1f, 1, hwBits(6))
+REG(NebMLMCStreamKernel.dbg_ctld_request, 0x20, 1, hwBits(2))
+REG(NebMLMCStreamKernel.dbg_done_out, 0x21, 1, hwBits(1))
+REG(NebMLMCStreamKernel.dbg_fill_level, 0x22, 1, hwBits(8))
+REG(NebMLMCStreamKernel.dbg_flush_level, 0x23, 1, hwBits(8))
+REG(NebMLMCStreamKernel.dbg_flush_start, 0x24, 1, hwBits(1))
+REG(NebMLMCStreamKernel.dbg_flush_start_level, 0x25, 1, hwBits(8))
+REG(NebMLMCStreamKernel.dbg_flushing, 0x26, 1, hwBits(1))
+REG(NebMLMCStreamKernel.dbg_full_level, 0x27, 1, hwBits(8))
+REG(NebMLMCStreamKernel.dbg_out_stall, 0x28, 1, hwBits(2))
+REG(NebMLMCStreamKernel.dbg_out_valid, 0x29, 1, hwBits(2))
+REG(NebMLMCStreamKernel.dbg_stall_vector, 0x2a, 1, hwBits(2))
+REG(ifpga.ifpga_ctrl, 0x2b, 1, hwBits(8))
+REG(SignalForwardingAdapter.SFA_FORWARD_EN, 0x2c, 4, hwBits(32))
+#endif
+
+#ifdef REG_V2
+#define REG_V2_PRESENT 1
+REG_V2(NebMLMCStreamKernel.l, 0x0, 4, hwOffsetFix(32, 0, TWOSCOMPLEMENT), HOST_WRITE_ONLY, false)
+REG_V2(NebMLMCStreamKernel.N, 0x4, 3, hwOffsetFix(24, 0, UNSIGNED), HOST_WRITE_ONLY, false)
+REG_V2(NebMLMCStreamKernel.nc, 0x7, 4, hwOffsetFix(32, 0, UNSIGNED), HOST_WRITE_ONLY, false)
+REG_V2(NebMLMCStreamKernel.io_r1_force_disabled, 0xb, 1, hwOffsetFix(1, 0, UNSIGNED), HOST_WRITE_ONLY, true)
+REG_V2(NebMLMCStreamKernel.io_r2_force_disabled, 0xc, 1, hwOffsetFix(1, 0, UNSIGNED), HOST_WRITE_ONLY, true)
+REG_V2(NebMLMCStreamKernel.io_diff_force_disabled, 0xd, 1, hwOffsetFix(1, 0, UNSIGNED), HOST_WRITE_ONLY, true)
+REG_V2(NebMLMCStreamKernel.io_fine_force_disabled, 0xe, 1, hwOffsetFix(1, 0, UNSIGNED), HOST_WRITE_ONLY, true)
+REG_V2(NebMLMCStreamKernel.run_cycle_count, 0xf, 6, hwOffsetFix(48, 0, UNSIGNED), HOST_WRITE_ONLY, false)
+REG_V2(NebMLMCStreamKernel.current_run_cycle_count, 0x15, 6, hwOffsetFix(48, 0, UNSIGNED), HOST_READ_ONLY, false)
+REG_V2(NebMLMCStreamKernel.dbg_ctld_almost_empty, 0x1b, 1, hwBits(2), HOST_READ_ONLY, false)
+REG_V2(NebMLMCStreamKernel.dbg_ctld_done, 0x1c, 1, hwBits(2), HOST_READ_ONLY, false)
+REG_V2(NebMLMCStreamKernel.dbg_ctld_empty, 0x1d, 1, hwBits(2), HOST_READ_ONLY, false)
+REG_V2(NebMLMCStreamKernel.dbg_ctld_read, 0x1e, 1, hwBits(2), HOST_READ_ONLY, false)
+REG_V2(NebMLMCStreamKernel.dbg_ctld_read_pipe_dbg, 0x1f, 1, hwBits(6), HOST_READ_ONLY, false)
+REG_V2(NebMLMCStreamKernel.dbg_ctld_request, 0x20, 1, hwBits(2), HOST_READ_ONLY, false)
+REG_V2(NebMLMCStreamKernel.dbg_done_out, 0x21, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(NebMLMCStreamKernel.dbg_fill_level, 0x22, 1, hwBits(8), HOST_READ_ONLY, false)
+REG_V2(NebMLMCStreamKernel.dbg_flush_level, 0x23, 1, hwBits(8), HOST_READ_ONLY, false)
+REG_V2(NebMLMCStreamKernel.dbg_flush_start, 0x24, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(NebMLMCStreamKernel.dbg_flush_start_level, 0x25, 1, hwBits(8), HOST_READ_ONLY, false)
+REG_V2(NebMLMCStreamKernel.dbg_flushing, 0x26, 1, hwBits(1), HOST_READ_ONLY, false)
+REG_V2(NebMLMCStreamKernel.dbg_full_level, 0x27, 1, hwBits(8), HOST_READ_ONLY, false)
+REG_V2(NebMLMCStreamKernel.dbg_out_stall, 0x28, 1, hwBits(2), HOST_READ_ONLY, false)
+REG_V2(NebMLMCStreamKernel.dbg_out_valid, 0x29, 1, hwBits(2), HOST_READ_ONLY, false)
+REG_V2(NebMLMCStreamKernel.dbg_stall_vector, 0x2a, 1, hwBits(2), HOST_READ_ONLY, false)
+REG_V2(ifpga.ifpga_ctrl, 0x2b, 1, hwBits(8), HOST_READ_WRITE, false)
+REG_V2(SignalForwardingAdapter.SFA_FORWARD_EN, 0x2c, 4, hwBits(32), HOST_READ_WRITE, false)
+#endif
+
+
+
+
+#ifdef CHECKSUM
+#define CHECKSUM_PRESENT 1
+CHECKSUM("b19af333401ba9e9c62288e3481161f46a25a52a41b6164de6915df5f3393d52")
+#endif
+
+#ifdef CAPABILITY
+#define CAPABILITY_PRESENT 1
+CAPABILITY(MAX3REV, MAX3REVA)
+CAPABILITY(MAX3RAM, DDR3_24GB)
+CAPABILITY(MAX3FPGA, SXT475_2ES)
+#endif
+
+#ifdef DEFINE_DESIGN_NAME
+#define DESIGN_NAME NebMLMCStream
+#endif /* DEFINE_DESIGN_NAME */
+
+#ifndef SLIC_NO_DECLARATIONS
+/**\file */
+#ifndef SLIC_DECLARATIONS_NebMLMCStream_H
+#define SLIC_DECLARATIONS_NebMLMCStream_H
+#include "MaxSLiCInterface.h"
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
+
+
+/*----------------------------------------------------------------------------*/
+/*---------------------------- Interface default -----------------------------*/
+/*----------------------------------------------------------------------------*/
+
+
+
+/**
+ * \brief Basic static function for the interface 'default'.
+ * 
+ * \param [in] param_N Interface Parameter "N".
+ * \param [in] param_l Interface Parameter "l".
+ * \param [in] param_nc Interface Parameter "nc".
+ * \param [in] instream_r1 The stream should be of size ((param_N * param_nc) * 4) bytes.
+ * \param [in] instream_r2 The stream should be of size ((param_N * param_nc) * 4) bytes.
+ * \param [out] outstream_diff The stream should be of size (param_N * 4) bytes.
+ * \param [out] outstream_fine The stream should be of size (param_N * 4) bytes.
+ */
+void NebMLMCStream(
+	uint32_t param_N,
+	int32_t param_l,
+	uint32_t param_nc,
+	const float *instream_r1,
+	const float *instream_r2,
+	float *outstream_diff,
+	float *outstream_fine);
+
+/**
+ * \brief Basic static non-blocking function for the interface 'default'.
+ * 
+ * Schedule to run on an engine and return immediately.
+ * The status of the run can be checked either by ::max_wait or ::max_nowait;
+ * note that one of these *must* be called, so that associated memory can be released.
+ * 
+ * 
+ * \param [in] param_N Interface Parameter "N".
+ * \param [in] param_l Interface Parameter "l".
+ * \param [in] param_nc Interface Parameter "nc".
+ * \param [in] instream_r1 The stream should be of size ((param_N * param_nc) * 4) bytes.
+ * \param [in] instream_r2 The stream should be of size ((param_N * param_nc) * 4) bytes.
+ * \param [out] outstream_diff The stream should be of size (param_N * 4) bytes.
+ * \param [out] outstream_fine The stream should be of size (param_N * 4) bytes.
+ * \return A handle on the execution status, or NULL in case of error.
+ */
+max_run_t *NebMLMCStream_nonblock(
+	uint32_t param_N,
+	int32_t param_l,
+	uint32_t param_nc,
+	const float *instream_r1,
+	const float *instream_r2,
+	float *outstream_diff,
+	float *outstream_fine);
+
+/**
+ * \brief Advanced static interface, structure for the engine interface 'default'
+ * 
+ */
+typedef struct { 
+	uint32_t param_N; /**<  [in] Interface Parameter "N". */
+	int32_t param_l; /**<  [in] Interface Parameter "l". */
+	uint32_t param_nc; /**<  [in] Interface Parameter "nc". */
+	const float *instream_r1; /**<  [in] The stream should be of size ((param_N * param_nc) * 4) bytes. */
+	const float *instream_r2; /**<  [in] The stream should be of size ((param_N * param_nc) * 4) bytes. */
+	float *outstream_diff; /**<  [out] The stream should be of size (param_N * 4) bytes. */
+	float *outstream_fine; /**<  [out] The stream should be of size (param_N * 4) bytes. */
+} NebMLMCStream_actions_t;
+
+/**
+ * \brief Advanced static function for the interface 'default'.
+ * 
+ * \param [in] engine The engine on which the actions will be executed.
+ * \param [in,out] interface_actions Actions to be executed.
+ */
+void NebMLMCStream_run(
+	max_engine_t *engine,
+	NebMLMCStream_actions_t *interface_actions);
+
+/**
+ * \brief Advanced static non-blocking function for the interface 'default'.
+ *
+ * Schedule the actions to run on the engine and return immediately.
+ * The status of the run can be checked either by ::max_wait or ::max_nowait;
+ * note that one of these *must* be called, so that associated memory can be released.
+ *
+ * 
+ * \param [in] engine The engine on which the actions will be executed.
+ * \param [in] interface_actions Actions to be executed.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *NebMLMCStream_run_nonblock(
+	max_engine_t *engine,
+	NebMLMCStream_actions_t *interface_actions);
+
+/**
+ * \brief Group run advanced static function for the interface 'default'.
+ * 
+ * \param [in] group Group to use.
+ * \param [in,out] interface_actions Actions to run.
+ *
+ * Run the actions on the first device available in the group.
+ */
+void NebMLMCStream_run_group(max_group_t *group, NebMLMCStream_actions_t *interface_actions);
+
+/**
+ * \brief Group run advanced static non-blocking function for the interface 'default'.
+ * 
+ *
+ * Schedule the actions to run on the first device available in the group and return immediately.
+ * The status of the run must be checked with ::max_wait. 
+ * Note that use of ::max_nowait is prohibited with non-blocking running on groups:
+ * see the ::max_run_group_nonblock documentation for more explanation.
+ *
+ * \param [in] group Group to use.
+ * \param [in] interface_actions Actions to run.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *NebMLMCStream_run_group_nonblock(max_group_t *group, NebMLMCStream_actions_t *interface_actions);
+
+/**
+ * \brief Array run advanced static function for the interface 'default'.
+ * 
+ * \param [in] engarray The array of devices to use.
+ * \param [in,out] interface_actions The array of actions to run.
+ *
+ * Run the array of actions on the array of engines.  The length of interface_actions
+ * must match the size of engarray.
+ */
+void NebMLMCStream_run_array(max_engarray_t *engarray, NebMLMCStream_actions_t *interface_actions[]);
+
+/**
+ * \brief Array run advanced static non-blocking function for the interface 'default'.
+ * 
+ *
+ * Schedule to run the array of actions on the array of engines, and return immediately.
+ * The length of interface_actions must match the size of engarray.
+ * The status of the run can be checked either by ::max_wait or ::max_nowait;
+ * note that one of these *must* be called, so that associated memory can be released.
+ *
+ * \param [in] engarray The array of devices to use.
+ * \param [in] interface_actions The array of actions to run.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *NebMLMCStream_run_array_nonblock(max_engarray_t *engarray, NebMLMCStream_actions_t *interface_actions[]);
+
+/**
+ * \brief Converts a static-interface action struct into a dynamic-interface max_actions_t struct.
+ *
+ * Note that this is an internal utility function used by other functions in the static interface.
+ *
+ * \param [in] maxfile The maxfile to use.
+ * \param [in] interface_actions The interface-specific actions to run.
+ * \return The dynamic-interface actions to run, or NULL in case of error.
+ */
+max_actions_t* NebMLMCStream_convert(max_file_t *maxfile, NebMLMCStream_actions_t *interface_actions);
+
+/**
+ * \brief Initialise a maxfile.
+ */
+max_file_t* NebMLMCStream_init(void);
+
+/* Error handling functions */
+int NebMLMCStream_has_errors(void);
+const char* NebMLMCStream_get_errors(void);
+void NebMLMCStream_clear_errors(void);
+/* Free statically allocated maxfile data */
+void NebMLMCStream_free(void);
+/* returns: -1 = error running command; 0 = no error reported */
+int NebMLMCStream_simulator_start(void);
+/* returns: -1 = error running command; 0 = no error reported */
+int NebMLMCStream_simulator_stop(void);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
+#endif /* SLIC_DECLARATIONS_NebMLMCStream_H */
+
+#endif /* SLIC_NO_DECLARATIONS */
+
+#ifdef PHOTON_NODE_DATA
+#define PHOTON_NODE_DATA_PRESENT 1
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 14, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Count.makeCounterChain(Count.java:467)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:45)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 250, NodeConstantRawBits, "{HWOffsetFix:32, 0, UNSIGNED}\n0x0000006c; 108.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream$OffsetExpr.getDFEVar(Stream.java:176)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:43)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 19, NodeCounterV1, "Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:523)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:49)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 284, NodeConstantRawBits, "{HWOffsetFix:2, 0, UNSIGNED}\n0x2; 2.0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:501)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:48)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 18, NodeCounterV1, "Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:501)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:48)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 203, NodeFIFO, "FIFO(1)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:523)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:47)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 3, NodeInputMappedReg, "Scalar input (N)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:992)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:34)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 16, NodeCounterV1, "Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:523)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:47)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 4, NodeInputMappedReg, "Scalar input (nc)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:992)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:36)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 15, NodeCounterV1, "Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain.addCounter(CounterChain.java:523)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:46)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 283, NodeConstantRawBits, "{HWOffsetFix:32, 0, UNSIGNED}\n0x00000001; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 135, NodeSub, "-", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 136, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:531)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 140, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 204, NodeFIFO, "FIFO(1)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 282, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 138, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 141, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 139, NodeAnd, "&", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 142, NodeReinterpret, "<{HWOffsetFix:1, 0, UNSIGNED}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 147, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 205, NodeFIFO, "FIFO(1)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:531)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 281, NodeConstantRawBits, "{HWOffsetFix:32, 0, UNSIGNED}\n0x00000001; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 144, NodeSub, "-", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 145, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:531)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 206, NodeFIFO, "FIFO(1)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 148, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 146, NodeAnd, "&", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 149, NodeReinterpret, "<{HWOffsetFix:1, 0, UNSIGNED}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 153, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 150, NodeInputMappedReg, "Scalar input (io_diff_force_disabled)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 151, NodeNot, "~", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 154, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 152, NodeAnd, "&", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 155, NodeReinterpret, "<{HWOffsetFix:1, 0, UNSIGNED}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 239, NodeFIFO, "FIFO(141)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 2, NodeInputMappedReg, "Scalar input (l)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:992)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:33)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 280, NodeConstantRawBits, "{HWOffsetFix:32, 0, TWOSCOMPLEMENT}\n0x00000000; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:75)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 131, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:75)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 279, NodeConstantRawBits, "{HWFloat:8, 24}\n0x3f7383c6; 0.951229453086853", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:869)\nnebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:72)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 194, NodeConstantRawBits, "{HWFloat:8, 24}\n0x00000000; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.cast(DFEVar.java:160)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:19)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 278, NodeConstantRawBits, "{HWOffsetFix:32, 0, TWOSCOMPLEMENT}\n0x00000000; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 82, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 277, NodeConstantRawBits, "{HWOffsetFix:32, 0, UNSIGNED}\n0x00000000; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:62)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 60, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:62)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 207, NodeFIFO, "FIFO(1)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1041)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:62)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 201, NodeStreamOffset, "stream offset: -108", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.offset(Stream.java:259)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:69)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 276, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:69)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 114, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:69)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 180, NodeRAM, "RAM(RAM_TWO_PORT)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Mem.alloc(Mem.java:66)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:59)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 61, NodeConstantRawBits, "{HWFloat:8, 24}\n0x42c80000; 100.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1041)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:62)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 62, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1041)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:62)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 209, NodeFIFO, "FIFO(12)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 244, NodeFIFO, "FIFO(4)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 275, NodeConstantRawBits, "{HWFloat:8, 24}\n0x3d4ccccd; 0.05000000074505806", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 68, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 274, NodeConstantRawBits, "{HWFloat:8, 24}\n0x3f800000; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.divAsRHS(DFEVar.java:910)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:39)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 195, NodeReinterpret, "<{HWOffsetFix:32, 1, UNSIGNED}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:861)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:37)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 196, NodeCast, "{HWOffsetFix:32, 0, UNSIGNED}", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:861)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:37)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 7, NodeCast, "{HWFloat:8, 24}", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.cast(DFEVar.java:160)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:39)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 9, NodeDiv, "/", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.divAsRHS(DFEVar.java:910)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:39)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 69, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 70, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 273, NodeConstantRawBits, "{HWFloat:8, 24}\n0x3e99999a; 0.30000001192092896", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 72, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 272, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x0; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 21, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 26, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 271, NodeConstantRawBits, "{HWOffsetFix:32, 0, UNSIGNED}\n0x00000001; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 23, NodeSub, "-", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 24, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:531)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 27, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 25, NodeAnd, "&", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 28, NodeReinterpret, "<{HWOffsetFix:1, 0, UNSIGNED}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 32, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 29, NodeInputMappedReg, "Scalar input (io_r1_force_disabled)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 30, NodeNot, "~", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 33, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 31, NodeAnd, "&", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 34, NodeReinterpret, "<{HWOffsetFix:1, 0, UNSIGNED}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 35, NodeInput, "Input(r1)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:51)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 52, NodeSqrt, "sqrt", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath.sqrt(KernelMath.java:363)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:54)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 54, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:54)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 212, NodeFIFO, "FIFO(8)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 73, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 74, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 270, NodeConstantRawBits, "{HWFloat:8, 24}\n0x3d3851ec; 0.04500000178813934", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 76, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 214, NodeFIFO, "FIFO(8)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 77, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 78, NodeSub, "-", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:812)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 79, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 80, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:65)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 216, NodeFIFO, "FIFO(4)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 245, NodeFIFO, "FIFO(12)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 269, NodeConstantRawBits, "{HWFloat:8, 24}\n0x3d4ccccd; 0.05000000074505806", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 84, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 85, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 86, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 268, NodeConstantRawBits, "{HWFloat:8, 24}\n0x3e99999a; 0.30000001192092896", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 88, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 267, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x0; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 37, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 42, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 266, NodeConstantRawBits, "{HWOffsetFix:32, 0, UNSIGNED}\n0x00000001; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 39, NodeSub, "-", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 40, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:531)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 43, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 41, NodeAnd, "&", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 44, NodeReinterpret, "<{HWOffsetFix:1, 0, UNSIGNED}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 48, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 45, NodeInputMappedReg, "Scalar input (io_r2_force_disabled)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 46, NodeNot, "~", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 49, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 47, NodeAnd, "&", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 50, NodeReinterpret, "<{HWOffsetFix:1, 0, UNSIGNED}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 219, NodeFIFO, "FIFO(8)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 51, NodeInput, "Input(r2)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:514)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:52)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 55, NodeSqrt, "sqrt", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath.sqrt(KernelMath.java:363)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:55)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 57, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:55)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 220, NodeFIFO, "FIFO(44)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 89, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 221, NodeFIFO, "FIFO(8)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 90, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 265, NodeConstantRawBits, "{HWFloat:8, 24}\n0x3d3851ec; 0.04500000178813934", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 246, NodeFIFO, "FIFO(8)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 92, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 93, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 94, NodeSub, "-", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:812)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 95, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 96, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 247, NodeFIFO, "FIFO(28)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1021)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 97, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1021)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:66)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 264, NodeConstantRawBits, "{HWFloat:8, 24}\n0x42a00000; 80.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:820)\nnebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:72)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 119, NodeSub, "-", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:820)\nnebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:72)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 120, NodeGt, ">", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath.max(KernelMath.java:846)\nnebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:72)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 226, NodeFIFO, "FIFO(2)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath.max(KernelMath.java:846)\nnebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:72)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 121, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath.max(KernelMath.java:846)\nnebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:72)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 123, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:869)\nnebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:72)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 263, NodeConstantRawBits, "{HWFloat:8, 24}\n0x3f7383c6; 0.951229453086853", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:869)\nnebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:73)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 262, NodeConstantRawBits, "{HWOffsetFix:32, 0, UNSIGNED}\n0x00000000; 0.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:63)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 64, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:63)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 228, NodeFIFO, "FIFO(1)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1041)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:63)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 202, NodeStreamOffset, "stream offset: -108", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.offset(Stream.java:259)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:70)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 261, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:70)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 117, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:70)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 181, NodeRAM, "RAM(RAM_TWO_PORT)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Mem.alloc(Mem.java:66)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:60)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 65, NodeConstantRawBits, "{HWFloat:8, 24}\n0x42c80000; 100.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1041)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:63)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 66, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1041)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:63)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 229, NodeFIFO, "FIFO(12)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 248, NodeFIFO, "FIFO(12)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 249, NodeFIFO, "FIFO(4)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 260, NodeConstantRawBits, "{HWFloat:8, 24}\n0x3d4ccccd; 0.05000000074505806", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 99, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 259, NodeConstantRawBits, "{HWFloat:8, 24}\n0x3f800000; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.divAsRHS(DFEVar.java:910)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:40)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 10, NodeCast, "{HWFloat:8, 24}", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.cast(DFEVar.java:160)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:40)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 12, NodeDiv, "/", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.divAsRHS(DFEVar.java:910)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:40)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 100, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 101, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 258, NodeConstantRawBits, "{HWFloat:8, 24}\n0x3e99999a; 0.30000001192092896", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 103, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 58, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:56)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 104, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 105, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 235, NodeFIFO, "FIFO(8)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 257, NodeConstantRawBits, "{HWFloat:8, 24}\n0x3d3851ec; 0.04500000178813934", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 107, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:873)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 234, NodeFIFO, "FIFO(16)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 108, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 109, NodeSub, "-", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:812)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 110, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mul(DFEVar.java:849)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 111, NodeAdd, "+", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.add(DFEVar.java:775)\nnebmlmcstream.NebMLMCStreamKernel.stateUpdate(NebMLMCStreamKernel.maxj:22)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:67)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 227, NodeFIFO, "FIFO(33)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Stream.offset(Stream.java:259)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:70)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 256, NodeConstantRawBits, "{HWFloat:8, 24}\n0x42a00000; 80.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:820)\nnebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:73)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 125, NodeSub, "-", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:820)\nnebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:73)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 126, NodeGt, ">", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath.max(KernelMath.java:846)\nnebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:73)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 237, NodeFIFO, "FIFO(2)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath.max(KernelMath.java:846)\nnebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:73)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 127, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath.max(KernelMath.java:846)\nnebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:73)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 129, NodeMul, "*", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:869)\nnebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:73)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 132, NodeSub, "-", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:812)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:75)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 238, NodeFIFO, "FIFO(12)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1021)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:75)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 133, NodeMux, "MUX", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.ternaryIf(DFEVar.java:1021)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:75)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 156, NodeOutput, "Output(diff)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:77)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 255, NodeConstantRawBits, "{HWOffsetFix:32, 0, UNSIGNED}\n0x00000001; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 158, NodeSub, "-", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 159, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:531)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 163, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 254, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 161, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:543)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 164, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 162, NodeAnd, "&", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 165, NodeReinterpret, "<{HWOffsetFix:1, 0, UNSIGNED}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 170, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 253, NodeConstantRawBits, "{HWOffsetFix:32, 0, UNSIGNED}\n0x00000001; 1.0", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 167, NodeSub, "-", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.sub(DFEVar.java:824)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 168, NodeEq, "==", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.eq(DFEVar.java:531)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 242, NodeFIFO, "FIFO(1)", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 171, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 169, NodeAnd, "&", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 172, NodeReinterpret, "<{HWOffsetFix:1, 0, UNSIGNED}>", "com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:486)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 176, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 173, NodeInputMappedReg, "Scalar input (io_fine_force_disabled)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 174, NodeNot, "~", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 177, NodeReinterpret, "<{HWRawBits:1}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 175, NodeAnd, "&", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 178, NodeReinterpret, "<{HWOffsetFix:1, 0, UNSIGNED}>", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 243, NodeFIFO, "FIFO(128)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 179, NodeOutput, "Output(fine)", "com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:645)\nnebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:78)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 186, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 252, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 183, NodeConstantRawBits, "{HWOffsetFix:49, 0, UNSIGNED}\n0x1000000000000; 2.81474976710656E14", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 184, NodeCounterV1, "Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 185, NodeStreamOffset, "stream offset: 1", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 187, NodeOutputMappedReg, "Scalar output (current_run_cycle_count)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 251, NodeConstantRawBits, "{HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 189, NodeConstantRawBits, "{HWOffsetFix:49, 0, UNSIGNED}\n0x1000000000000; 2.81474976710656E14", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 190, NodeCounterV1, "Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 192, NodeInputMappedReg, "Scalar input (run_cycle_count)", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 193, NodeEq, "==", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)\n")
+PHOTON_NODE_DATA(NebMLMCStreamKernel, 191, NodeFlush, "flush on trigger", "com.maxeler.maxcompiler.v2.managers.DFEManager.build(DFEManager.java:339)\nnebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:35)\n")
+#endif
+
+#ifdef SLIC_USE_DEFINITIONS
+#include <stdio.h>
+#include <math.h>
+#include <pthread.h>
+#include <string.h>
+#include <unistd.h>
+static max_file_t *stored_maxfile = NULL;
+static max_engine_t *stored_engine = NULL;
+static char *stored_error = NULL;
+static int stored_has_error = 0;
+static pthread_once_t slic_bs_is_initialised = PTHREAD_ONCE_INIT;
+
+static void set_error(const char *error_str)
+{
+	stored_has_error = 1; 
+	if(stored_error == NULL) {
+		stored_error = strdup(error_str);
+	} else {
+		char *nerr = malloc(strlen(stored_error) + strlen(error_str) + 2);
+		sprintf(nerr, "%s\n%s", stored_error, error_str);
+		free(stored_error);
+		stored_error = nerr;
+	}
+}
+static void set_error_and_free(char *error_str){
+	set_error(error_str);
+	free(error_str);
+}
+int NebMLMCStream_has_errors(void)
+{	return stored_has_error; }
+const char* NebMLMCStream_get_errors(void)
+{	return stored_error; }
+void NebMLMCStream_clear_errors(void)
+{
+	free(stored_error);
+	stored_error = NULL;
+	stored_has_error = 0;
+}
+
+static char NebMLMCStream_use_simulation[16];
+static void NebMLMCStream_def_use_simulation(void)
+{
+	long pid = ((long) getpid()) % 100000;
+	snprintf(NebMLMCStream_use_simulation, 16, "NebMLMCS_%05ld_", pid);
+}
+static const char *NebMLMCStream_check_use_simulation(void)
+{
+	NebMLMCStream_def_use_simulation();
+	const char *use_sim = max_config_get_string(MAX_CONFIG_USE_SIMULATION);
+	if (use_sim == NULL) {
+		use_sim = NebMLMCStream_use_simulation;
+		max_config_set_string(MAX_CONFIG_USE_SIMULATION, use_sim);
+	}
+	return use_sim;
+}
+
+static int NebMLMCStream_simulation_launch = 0;
+int NebMLMCStream_simulator_start(void)
+{
+	int retval = 0;
+	const char *use_sim = NebMLMCStream_check_use_simulation();
+	char buff[1024];
+	snprintf(buff, 1024, "PATH=simutils:$PATH maxcompilersim -d 1 -n %s -c MAX3424A -S simutils restart", use_sim);
+	FILE *pipe_fp = popen(buff, "r");
+	if (pipe_fp == NULL) {
+		strncat(buff, " : failed to execute.", (1024 - strlen(buff)));
+		set_error(buff);
+		return -1;
+	}
+	while (fgets(buff, 1024, pipe_fp) != NULL) {
+		/* Uncomment this to get simulator command output */
+		/* fprintf(stderr, buff); */
+		if (strstr(buff, "Error")) {
+			set_error(buff);
+			retval = -1;
+		}
+	}
+	pclose(pipe_fp);
+	return retval;
+}
+
+int NebMLMCStream_simulator_stop(void)
+{
+	const char *use_sim = NebMLMCStream_check_use_simulation();
+	char buff[1024];
+	snprintf(buff, 1024, "PATH=simutils:$PATH maxcompilersim -d 1 -n %s -c MAX3424A -S simutils stop", use_sim);
+	FILE *pipe_fp = popen(buff, "r");
+	if (pipe_fp == NULL) {
+		strncat(buff, " : failed to execute.", (1024 - strlen(buff)));
+		set_error(buff);
+		return -1;
+	}
+	while (fgets(buff, 1024, pipe_fp) != NULL) {
+		/* Uncomment this to get simulator command output */
+		/* fprintf(stderr, buff); */
+		;
+	}
+	pclose(pipe_fp);
+	return 0;
+}
+
+static void NebMLMCStream_static_init(void) 
+{
+	stored_maxfile = NebMLMCStream_init();
+	if (stored_maxfile == NULL || !max_ok(stored_maxfile->errors)) {
+		stored_maxfile = NULL;
+		if(max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR)) abort();
+		else { set_error("Unable to load maxfile"); return; }
+	}
+	if(!max_ok(max_global_errors())) {
+		set_error_and_free(max_errors_trace(max_global_errors()));
+		return;
+	}
+	if(!max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR))
+		max_errors_mode(stored_maxfile->errors, 0);
+	time_t timeout_previous = max_load_timeout(stored_maxfile, 30);
+	const char *use_sim = NebMLMCStream_check_use_simulation();
+	if (max_ping_daemon(stored_maxfile, use_sim) == 0) {
+		int sim_stat = NebMLMCStream_simulator_start();
+		if ((sim_stat == 0) && (max_ping_daemon(stored_maxfile, use_sim) == 1)) {
+			NebMLMCStream_simulation_launch = 1;
+		} else {
+			set_error("Error: unable to launch simulator.");
+			max_file_free(stored_maxfile);
+			stored_maxfile = NULL;
+			return;
+		}
+	}
+	stored_engine = max_load(stored_maxfile, "*");
+	if (!max_ok(stored_maxfile->errors)) {
+		if(max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR)) {
+			fprintf(stderr, "\nUnable to load engine: aborting now.\n\n");
+			fflush(stderr);
+			abort();
+		} else {
+			set_error_and_free(max_errors_trace(stored_maxfile->errors));
+			max_file_free(stored_maxfile);
+			stored_maxfile = NULL;
+			return;
+		} 
+	} 
+	max_load_timeout(stored_maxfile, timeout_previous);
+}
+void NebMLMCStream_free(void)
+{
+	if (stored_engine != NULL) {
+		max_unload(stored_engine);
+		stored_engine = NULL;
+	}
+	if (stored_maxfile != NULL) {
+		max_file_free(stored_maxfile);
+		stored_maxfile = NULL;
+	}
+	if (stored_error != NULL) {
+		free(stored_error);
+		stored_error = NULL;
+	}
+	if (NebMLMCStream_simulation_launch == 1) {
+		int sim_stat = NebMLMCStream_simulator_stop();
+		if (sim_stat != 0 ) {
+			fprintf(stderr, "Error stopping simulator.");
+		}
+		NebMLMCStream_simulation_launch = 0;
+	}
+}
+
+
+
+/*----------------------------------------------------------------------------*/
+/*---------------------------- Interface default -----------------------------*/
+/*----------------------------------------------------------------------------*/
+
+
+#define CHECK_ERRORS_ST(ST, RET) if(!max_ok(ST->errors)) { if(max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR)) abort(); set_error_and_free(max_errors_trace(ST->errors)); return RET; } 
+#define CHECK_NULL(VALUE, MESSAGE, RET) if(VALUE == NULL) { if (max_config_get_bool(MAX_CONFIG_STATIC_INTERFACE_ABORT_ON_ERROR)) abort(); set_error(MESSAGE); return RET; }
+
+ 
+static max_actions_t* NebMLMCStream_convert_internal(max_file_t *maxfile, NebMLMCStream_actions_t *interface_actions, int is_internal_call)
+{
+	max_actions_t *actions = max_actions_init(maxfile, NULL);
+	if(actions == NULL) return NULL;
+
+#define CHECK_ERRORS if(!max_ok(actions->errors)) { set_error_and_free(max_errors_trace(actions->errors)); return NULL; } 
+	uint32_t param_N = interface_actions->param_N;
+	
+	int32_t param_l = interface_actions->param_l;
+	
+	uint32_t param_nc = interface_actions->param_nc;
+	
+	int32_t param_NebMLMCStreamKernel_loopLength = max_get_offset_auto_loop_size( actions, "NebMLMCStreamKernel", "loopLength" );
+	
+
+	/* temporary variables */
+	int64_t tmp_0 = ((param_N * param_nc) * 4);
+	int64_t tmp_1 = ((param_N * param_nc) * 4);
+	int64_t tmp_2 = (param_N * 4);
+	int64_t tmp_3 = (param_N * 4);
+	int64_t tmp_4 = (((param_N * param_nc) * param_NebMLMCStreamKernel_loopLength) * 2);
+
+	/* code for scalar NebMLMCStreamKernel.run_cycle_count */
+	uint64_t ticks_NebMLMCStreamKernel = tmp_4;
+	max_set_ticks(actions, "NebMLMCStreamKernel", tmp_4);
+	CHECK_ERRORS;
+	/* end of code for scalar NebMLMCStreamKernel.run_cycle_count*/
+	
+	/* code for scalar NebMLMCStreamKernel.N */
+	uint64_t inscalar_NebMLMCStreamKernel_N = param_N;
+	max_set_uint64t(actions, "NebMLMCStreamKernel", "N", inscalar_NebMLMCStreamKernel_N);
+	CHECK_ERRORS;
+	/* end of code for scalar NebMLMCStreamKernel.N*/
+	
+	/* code for scalar NebMLMCStreamKernel.l */
+	uint64_t inscalar_NebMLMCStreamKernel_l = param_l;
+	max_set_uint64t(actions, "NebMLMCStreamKernel", "l", inscalar_NebMLMCStreamKernel_l);
+	CHECK_ERRORS;
+	/* end of code for scalar NebMLMCStreamKernel.l*/
+	
+	/* code for scalar NebMLMCStreamKernel.nc */
+	uint64_t inscalar_NebMLMCStreamKernel_nc = param_nc;
+	max_set_uint64t(actions, "NebMLMCStreamKernel", "nc", inscalar_NebMLMCStreamKernel_nc);
+	CHECK_ERRORS;
+	/* end of code for scalar NebMLMCStreamKernel.nc*/
+	
+	/* code for stream r1 */
+	size_t instream_size_r1 = tmp_0;
+	if (instream_size_r1 > 0) {
+		max_queue_input(actions, "r1", interface_actions->instream_r1,instream_size_r1);
+		CHECK_ERRORS;
+	}
+	/* end of code for stream r1 */
+	
+	/* code for stream r2 */
+	size_t instream_size_r2 = tmp_1;
+	if (instream_size_r2 > 0) {
+		max_queue_input(actions, "r2", interface_actions->instream_r2,instream_size_r2);
+		CHECK_ERRORS;
+	}
+	/* end of code for stream r2 */
+	
+	/* code for stream diff */
+	size_t outstream_size_diff = tmp_2;
+	if (outstream_size_diff > 0) {
+		max_queue_output(actions, "diff", interface_actions->outstream_diff,outstream_size_diff);
+		CHECK_ERRORS;
+	}
+	/* end of code for stream diff */
+	
+	/* code for stream fine */
+	size_t outstream_size_fine = tmp_3;
+	if (outstream_size_fine > 0) {
+		max_queue_output(actions, "fine", interface_actions->outstream_fine,outstream_size_fine);
+		CHECK_ERRORS;
+	}
+	/* end of code for stream fine */
+	
+	return actions;
+#undef CHECK_ERRORS
+}
+
+void NebMLMCStream(
+	uint32_t param_N,
+	int32_t param_l,
+	uint32_t param_nc,
+	const float *instream_r1,
+	const float *instream_r2,
+	float *outstream_diff,
+	float *outstream_fine)
+{
+	(void) pthread_once(&slic_bs_is_initialised, NebMLMCStream_static_init);
+	CHECK_NULL(stored_maxfile, "Maxfile was not loaded", );
+	max_run_t *run = NebMLMCStream_nonblock(param_N, param_l, param_nc, instream_r1, instream_r2, outstream_diff, outstream_fine);
+	CHECK_NULL(run, "Unable to run actions", );
+	max_wait(run);
+}
+
+max_run_t *NebMLMCStream_nonblock(
+	uint32_t param_N,
+	int32_t param_l,
+	uint32_t param_nc,
+	const float *instream_r1,
+	const float *instream_r2,
+	float *outstream_diff,
+	float *outstream_fine)
+{
+	NebMLMCStream_actions_t interface_actions;
+	interface_actions.param_N = param_N;
+	interface_actions.param_l = param_l;
+	interface_actions.param_nc = param_nc;
+	interface_actions.instream_r1 = instream_r1;
+	interface_actions.instream_r2 = instream_r2;
+	interface_actions.outstream_diff = outstream_diff;
+	interface_actions.outstream_fine = outstream_fine;
+	(void) pthread_once(&slic_bs_is_initialised, NebMLMCStream_static_init);
+	CHECK_NULL(stored_maxfile, "Maxfile was not loaded", NULL);
+	max_actions_t *actions[1];
+	actions[0] = NebMLMCStream_convert_internal(stored_maxfile, &interface_actions, 1);
+	CHECK_NULL(actions[0], "Unable to build actions", NULL);
+	max_validate(actions[0]);
+	CHECK_ERRORS_ST(actions[0], NULL);
+	CHECK_ERRORS_ST(stored_engine, NULL);
+	max_run_t *run = max_run_multi_nonblock(stored_engine, actions, 1);
+	CHECK_NULL(run, "Unable to run actions", NULL);
+	CHECK_ERRORS_ST(actions[0], NULL);
+	max_actions_free(actions[0]);
+	return run;
+}
+
+void NebMLMCStream_run(
+	max_engine_t *engine,
+	NebMLMCStream_actions_t *interface_actions)
+{
+	max_run_t *run = NebMLMCStream_run_nonblock(engine, interface_actions);
+	CHECK_NULL(run, "Unable to run actions", );
+	max_wait(run);
+}
+
+max_run_t *NebMLMCStream_run_nonblock(
+	max_engine_t *engine,
+	NebMLMCStream_actions_t *interface_actions)
+{
+	max_file_t *maxfile = max_engine_get_max_file(engine); 
+	max_actions_t *actions[1];
+	actions[0] = NebMLMCStream_convert(maxfile, interface_actions);
+	CHECK_ERRORS_ST(actions[0], NULL);
+	max_run_t *run = max_run_multi_nonblock(engine, actions, 1);
+	CHECK_NULL(run, "Unable to run actions", NULL);
+	max_actions_free(actions[0]);
+	return run;
+}
+
+
+/**
+ * \brief Group run advanced static function for the interface 'default'.
+ * 
+ * \param [in] group Group to use.
+ * \param [in,out] interface_actions Actions to run.
+ *
+ * Run the actions on the first device available in the group.
+ */
+void NebMLMCStream_run_group(max_group_t *group, NebMLMCStream_actions_t *interface_actions)
+{
+	/* Not strictly correct, because explicitly locking an engine here. */
+	max_engine_t *engine = max_lock_any(group);
+	if(engine == NULL) return;
+	NebMLMCStream_run(engine, interface_actions);
+	max_unlock(engine);
+}
+
+
+/**
+ * \brief Group run advanced static non-blocking function for the interface 'default'.
+ * 
+ *
+ * Schedule the actions to run on the first device available in the group and return immediately.
+ * The status of the run must be checked with ::max_wait. 
+ * Note that use of ::max_nowait is prohibited with non-blocking running on groups:
+ * see the ::max_run_group_nonblock documentation for more explanation.
+ *
+ * \param [in] group Group to use.
+ * \param [in] interface_actions Actions to run.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *NebMLMCStream_run_group_nonblock(max_group_t *group, NebMLMCStream_actions_t *interface_actions)
+{
+	max_file_t *maxfile = max_group_get_max_file(group);
+	max_actions_t *actions = NebMLMCStream_convert(maxfile, interface_actions);
+	if(actions == NULL) return NULL;
+	if(!max_ok(actions->errors)) return NULL;
+	max_validate(actions);
+	max_run_t *run = max_run_group_nonblock(group, actions);
+	max_actions_free(actions);
+	return run;
+}
+
+
+/**
+ * \brief Array run advanced static function for the interface 'default'.
+ * 
+ * \param [in] engarray The array of devices to use.
+ * \param [in,out] interface_actions The array of actions to run.
+ *
+ * Run the array of actions on the array of engines.  The length of interface_actions
+ * must match the size of engarray.
+ */
+void NebMLMCStream_run_array(max_engarray_t *engarray, NebMLMCStream_actions_t *interface_actions[])
+{
+	max_run_t *run = NebMLMCStream_run_array_nonblock(engarray, interface_actions);
+	CHECK_NULL(run, "Unable to run actions", );
+	max_wait(run);
+}
+
+
+/**
+ * \brief Array run advanced static non-blocking function for the interface 'default'.
+ * 
+ *
+ * Schedule to run the array of actions on the array of engines, and return immediately.
+ * The length of interface_actions must match the size of engarray.
+ * The status of the run can be checked either by ::max_wait or ::max_nowait;
+ * note that one of these *must* be called, so that associated memory can be released.
+ *
+ * \param [in] engarray The array of devices to use.
+ * \param [in] interface_actions The array of actions to run.
+ * \return A handle on the execution status of the actions, or NULL in case of error.
+ */
+max_run_t *NebMLMCStream_run_array_nonblock(max_engarray_t *engarray, NebMLMCStream_actions_t *interface_actions[])
+{
+	max_file_t *maxfile = max_engarray_get_max_file(engarray);
+	int i;
+	max_actarray_t *arr_actarray[1];
+	max_actions_t **arr_actions[1];
+	arr_actarray[0] = max_actarray_init(maxfile, engarray->size);
+	if(arr_actarray[0] == NULL) return NULL;
+	arr_actions[0] = malloc(engarray->size * sizeof(max_actions_t*));
+	for(i=0; i < arr_actarray[0]->size; i++) {
+		max_actions_t *actions = NebMLMCStream_convert(maxfile, interface_actions[i]);
+		if(actions == NULL) return NULL;
+		arr_actions[0][i] = actions;
+		max_set_action(arr_actarray[0], i, actions);
+	}
+	max_run_t *run = max_run_array_multi_nonblock(engarray, arr_actarray, 1 );
+	for (i=0; i < arr_actarray[0]->size; i++) { max_actions_free(arr_actions[0][i]); }
+	max_actarray_free(arr_actarray[0]);
+	free(arr_actions[0]);
+	return run;
+}
+
+
+/**
+ * \brief Converts a static-interface action struct into a dynamic-interface max_actions_t struct.
+ *
+ * Note that this is an internal utility function used by other functions in the static interface.
+ *
+ * \param [in] maxfile The maxfile to use.
+ * \param [in] interface_actions The interface-specific actions to run.
+ * \return The dynamic-interface actions to run, or NULL in case of error.
+ */
+max_actions_t* NebMLMCStream_convert(max_file_t *maxfile, NebMLMCStream_actions_t *interface_actions)
+{
+	return NebMLMCStream_convert_internal(maxfile, interface_actions, 0);
+}
+
+#undef CHECK_ERRORS_ST
+#undef CHECK_NULL
+
+
+
+#endif /* SLIC_USE_DEFINITIONS */
+
+#ifdef SLIC_DYNAMIC_CODE
+SLIC_MODE_START(default)	
+SLIC_PARAMETER_UINT64(uint32_t, N, param_N)	
+SLIC_PARAMETER_UINT64(int32_t, l, param_l)	
+SLIC_PARAMETER_UINT64(uint32_t, nc, param_nc)	
+SLIC_AUTO_LOOP_OFFSET(int32_t, NebMLMCStreamKernel, loopLength, param_NebMLMCStreamKernel_loopLength)	
+SLIC_TEMP_VAR(int64_t tmp_0 = ((param_N * param_nc) * 4);)	
+SLIC_TEMP_VAR(int64_t tmp_1 = ((param_N * param_nc) * 4);)	
+SLIC_TEMP_VAR(int64_t tmp_2 = (param_N * 4);)	
+SLIC_TEMP_VAR(int64_t tmp_3 = (param_N * 4);)	
+SLIC_TEMP_VAR(int64_t tmp_4 = (((param_N * param_nc) * param_NebMLMCStreamKernel_loopLength) * 2);)	
+SLIC_SET_TICKS(NebMLMCStreamKernel, tmp_4)	
+SLIC_SCALAR_UINT64(NebMLMCStreamKernel, N, param_N)	
+SLIC_SCALAR_UINT64(NebMLMCStreamKernel, l, param_l)	
+SLIC_SCALAR_UINT64(NebMLMCStreamKernel, nc, param_nc)	
+SLIC_STREAM(r1, tmp_0)	
+SLIC_STREAM(r2, tmp_1)	
+SLIC_STREAM(diff, tmp_2)	
+SLIC_STREAM(fine, tmp_3)	
+SLIC_MODE_END(default)
+
+#endif /* SLIC_DYNAMIC_CODE */
+
+#ifdef SKIN_META_DATA
+PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PG1h
+eGZpbGUgZm9ybWF0LXZlcnNpb249IjIwMTIwMjAwIiBoZWFkZXI9Ik5lYk1MTUNTdHJlYW0uaCIg
+bmFtZT0iTmViTUxNQ1N0cmVhbSI+PGVuZ2luZW1vZGUgbmFtZT0iZGVmYXVsdCI+PGZ1bmN0aW9u
+IG5hbWU9Ik5lYk1MTUNTdHJlYW0iIHJldHVybi12YWx1ZT0idm9pZCI+PHNjYWxhciBkZXNjPSJJ
+bnRlcmZhY2UgUGFyYW1ldGVyICZxdW90O04mcXVvdDsuIiBkaXJlY3Rpb249IklucHV0IiBuYW1l
+PSJwYXJhbV9OIiB0eXBlPSJ1aW50MzJfdCIvPjxzY2FsYXIgZGVzYz0iSW50ZXJmYWNlIFBhcmFt
+ZXRlciAmcXVvdDtsJnF1b3Q7LiIgZGlyZWN0aW9uPSJJbnB1dCIgbmFtZT0icGFyYW1fbCIgdHlw
+ZT0iaW50MzJfdCIvPjxzY2FsYXIgZGVzYz0iSW50ZXJmYWNlIFBhcmFtZXRlciAmcXVvdDtuYyZx
+dW90Oy4iIGRpcmVjdGlvbj0iSW5wdXQiIG5hbWU9InBhcmFtX25jIiB0eXBlPSJ1aW50MzJfdCIv
+PjxhcnJheSBkZXNjPSJUaGUgc3RyZWFtIHNob3VsZCBiZSBvZiBzaXplICgocGFyYW1fTiAqIHBh
+cmFtX25jKSAqIDQpIGJ5dGVzLiIgZGlyZWN0aW9uPSJJbnB1dCIgbmFtZT0iaW5zdHJlYW1fcjEi
+IHNpemU9IigocGFyYW1fTiAqIHBhcmFtX25jKSAqIDQpIiB0cmFuc3Bvc2U9InRydWUiIHR5cGU9
+ImZsb2F0Ij48ZGltZW5zaW9uIGluZGV4PSIwIj48bGVuZ3RoPjxmdW5jdGlvbkNhbGw+PG51bUJp
+bmFyeU9wZXJhdG9yIG9wZXJhdG9yPSIvIiB2YWx1ZT0iKCgocGFyYW1fTiAqIHBhcmFtX25jKSAq
+IDQpIC8gNCkiPjxmdW5jdGlvbkNhbGw+PG51bUJpbmFyeU9wZXJhdG9yIG9wZXJhdG9yPSIqIiB2
+YWx1ZT0iKChwYXJhbV9OICogcGFyYW1fbmMpICogNCkiPjxmdW5jdGlvbkNhbGw+PG51bUJpbmFy
+eU9wZXJhdG9yIG9wZXJhdG9yPSIqIiB2YWx1ZT0iKHBhcmFtX04gKiBwYXJhbV9uYykiPjx1c2Vy
+UGFyYW0gdmFsdWU9InBhcmFtX04iLz48dXNlclBhcmFtIHZhbHVlPSJwYXJhbV9uYyIvPjwvbnVt
+QmluYXJ5T3BlcmF0b3I+PC9mdW5jdGlvbkNhbGw+PGNvbnN0YW50VmFsdWUgdmFsdWU9IjQiLz48
+L251bUJpbmFyeU9wZXJhdG9yPjwvZnVuY3Rpb25DYWxsPjxjb25zdGFudFZhbHVlIHZhbHVlPSI0
+Ii8+PC9udW1CaW5hcnlPcGVyYXRvcj48L2Z1bmN0aW9uQ2FsbD48L2xlbmd0aD48L2RpbWVuc2lv
+bj48L2FycmF5PjxhcnJheSBkZXNjPSJUaGUgc3RyZWFtIHNob3VsZCBiZSBvZiBzaXplICgocGFy
+YW1fTiAqIHBhcmFtX25jKSAqIDQpIGJ5dGVzLiIgZGlyZWN0aW9uPSJJbnB1dCIgbmFtZT0iaW5z
+dHJlYW1fcjIiIHNpemU9IigocGFyYW1fTiAqIHBhcmFtX25jKSAqIDQpIiB0cmFuc3Bvc2U9InRy
+dWUiIHR5cGU9ImZsb2F0Ij48ZGltZW5zaW9uIGluZGV4PSIwIj48bGVuZ3RoPjxmdW5jdGlvbkNh
+bGw+PG51bUJpbmFyeU9wZXJhdG9yIG9wZXJhdG9yPSIvIiB2YWx1ZT0iKCgocGFyYW1fTiAqIHBh
+cmFtX25jKSAqIDQpIC8gNCkiPjxmdW5jdGlvbkNhbGw+PG51bUJpbmFyeU9wZXJhdG9yIG9wZXJh
+dG9yPSIqIiB2YWx1ZT0iKChwYXJhbV9OICogcGFyYW1fbmMpICogNCkiPjxmdW5jdGlvbkNhbGw+
+PG51bUJpbmFyeU9wZXJhdG9yIG9wZXJhdG9yPSIqIiB2YWx1ZT0iKHBhcmFtX04gKiBwYXJhbV9u
+YykiPjx1c2VyUGFyYW0gdmFsdWU9InBhcmFtX04iLz48dXNlclBhcmFtIHZhbHVlPSJwYXJhbV9u
+YyIvPjwvbnVtQmluYXJ5T3BlcmF0b3I+PC9mdW5jdGlvbkNhbGw+PGNvbnN0YW50VmFsdWUgdmFs
+dWU9IjQiLz48L251bUJpbmFyeU9wZXJhdG9yPjwvZnVuY3Rpb25DYWxsPjxjb25zdGFudFZhbHVl
+IHZhbHVlPSI0Ii8+PC9udW1CaW5hcnlPcGVyYXRvcj48L2Z1bmN0aW9uQ2FsbD48L2xlbmd0aD48
+L2RpbWVuc2lvbj48L2FycmF5PjxhcnJheSBkZXNjPSJUaGUgc3RyZWFtIHNob3VsZCBiZSBvZiBz
+aXplIChwYXJhbV9OICogNCkgYnl0ZXMuIiBkaXJlY3Rpb249Ik91dHB1dCIgbmFtZT0ib3V0c3Ry
+ZWFtX2RpZmYiIHNpemU9IihwYXJhbV9OICogNCkiIHRyYW5zcG9zZT0idHJ1ZSIgdHlwZT0iZmxv
+YXQiPjxkaW1lbnNpb24gaW5kZXg9IjAiPjxsZW5ndGg+PGZ1bmN0aW9uQ2FsbD48bnVtQmluYXJ5
+T3BlcmF0b3Igb3BlcmF0b3I9Ii8iIHZhbHVlPSIoKHBhcmFtX04gKiA0KSAvIDQpIj48ZnVuY3Rp
+b25DYWxsPjxudW1CaW5hcnlPcGVyYXRvciBvcGVyYXRvcj0iKiIgdmFsdWU9IihwYXJhbV9OICog
+NCkiPjx1c2VyUGFyYW0gdmFsdWU9InBhcmFtX04iLz48Y29uc3RhbnRWYWx1ZSB2YWx1ZT0iNCIv
+PjwvbnVtQmluYXJ5T3BlcmF0b3I+PC9mdW5jdGlvbkNhbGw+PGNvbnN0YW50VmFsdWUgdmFsdWU9
+IjQiLz48L251bUJpbmFyeU9wZXJhdG9yPjwvZnVuY3Rpb25DYWxsPjwvbGVuZ3RoPjwvZGltZW5z
+aW9uPjwvYXJyYXk+PGFycmF5IGRlc2M9IlRoZSBzdHJlYW0gc2hvdWxkIGJlIG9mIHNpemUgKHBh
+cmFtX04gKiA0KSBieXRlcy4iIGRpcmVjdGlvbj0iT3V0cHV0IiBuYW1lPSJvdXRzdHJlYW1fZmlu
+ZSIgc2l6ZT0iKHBhcmFtX04gKiA0KSIgdHJhbnNwb3NlPSJ0cnVlIiB0eXBlPSJmbG9hdCI+PGRp
+bWVuc2lvbiBpbmRleD0iMCI+PGxlbmd0aD48ZnVuY3Rpb25DYWxsPjxudW1CaW5hcnlPcGVyYXRv
+ciBvcGVyYXRvcj0iLyIgdmFsdWU9IigocGFyYW1fTiAqIDQpIC8gNCkiPjxmdW5jdGlvbkNhbGw+
+PG51bUJpbmFyeU9wZXJhdG9yIG9wZXJhdG9yPSIqIiB2YWx1ZT0iKHBhcmFtX04gKiA0KSI+PHVz
+ZXJQYXJhbSB2YWx1ZT0icGFyYW1fTiIvPjxjb25zdGFudFZhbHVlIHZhbHVlPSI0Ii8+PC9udW1C
+aW5hcnlPcGVyYXRvcj48L2Z1bmN0aW9uQ2FsbD48Y29uc3RhbnRWYWx1ZSB2YWx1ZT0iNCIvPjwv
+bnVtQmluYXJ5T3BlcmF0b3I+PC9mdW5jdGlvbkNhbGw+PC9sZW5ndGg+PC9kaW1lbnNpb24+PC9h
+cnJheT48L2Z1bmN0aW9uPjwvZW5naW5lbW9kZT48L21heGZpbGU+
+#endif /* SKIN_META_DATA */
+
+#ifdef SLIC_B64_DEFINITIONS
+I2luY2x1ZGUgPHN0ZGlvLmg+CiNpbmNsdWRlIDxtYXRoLmg+CiNpbmNsdWRlIDxwdGhyZWFkLmg+
+CiNpbmNsdWRlIDxzdHJpbmcuaD4KI2luY2x1ZGUgPHVuaXN0ZC5oPgpzdGF0aWMgbWF4X2ZpbGVf
+dCAqc3RvcmVkX21heGZpbGUgPSBOVUxMOwpzdGF0aWMgbWF4X2VuZ2luZV90ICpzdG9yZWRfZW5n
+aW5lID0gTlVMTDsKc3RhdGljIGNoYXIgKnN0b3JlZF9lcnJvciA9IE5VTEw7CnN0YXRpYyBpbnQg
+c3RvcmVkX2hhc19lcnJvciA9IDA7CnN0YXRpYyBwdGhyZWFkX29uY2VfdCBzbGljX2JzX2lzX2lu
+aXRpYWxpc2VkID0gUFRIUkVBRF9PTkNFX0lOSVQ7CgpzdGF0aWMgdm9pZCBzZXRfZXJyb3IoY29u
+c3QgY2hhciAqZXJyb3Jfc3RyKQp7CglzdG9yZWRfaGFzX2Vycm9yID0gMTsgCglpZihzdG9yZWRf
+ZXJyb3IgPT0gTlVMTCkgewoJCXN0b3JlZF9lcnJvciA9IHN0cmR1cChlcnJvcl9zdHIpOwoJfSBl
+bHNlIHsKCQljaGFyICpuZXJyID0gbWFsbG9jKHN0cmxlbihzdG9yZWRfZXJyb3IpICsgc3RybGVu
+KGVycm9yX3N0cikgKyAyKTsKCQlzcHJpbnRmKG5lcnIsICIlc1xuJXMiLCBzdG9yZWRfZXJyb3Is
+IGVycm9yX3N0cik7CgkJZnJlZShzdG9yZWRfZXJyb3IpOwoJCXN0b3JlZF9lcnJvciA9IG5lcnI7
+Cgl9Cn0Kc3RhdGljIHZvaWQgc2V0X2Vycm9yX2FuZF9mcmVlKGNoYXIgKmVycm9yX3N0cil7Cglz
+ZXRfZXJyb3IoZXJyb3Jfc3RyKTsKCWZyZWUoZXJyb3Jfc3RyKTsKfQppbnQgTmViTUxNQ1N0cmVh
+bV9oYXNfZXJyb3JzKHZvaWQpCnsJcmV0dXJuIHN0b3JlZF9oYXNfZXJyb3I7IH0KY29uc3QgY2hh
+ciogTmViTUxNQ1N0cmVhbV9nZXRfZXJyb3JzKHZvaWQpCnsJcmV0dXJuIHN0b3JlZF9lcnJvcjsg
+fQp2b2lkIE5lYk1MTUNTdHJlYW1fY2xlYXJfZXJyb3JzKHZvaWQpCnsKCWZyZWUoc3RvcmVkX2Vy
+cm9yKTsKCXN0b3JlZF9lcnJvciA9IE5VTEw7CglzdG9yZWRfaGFzX2Vycm9yID0gMDsKfQoKc3Rh
+dGljIGNoYXIgTmViTUxNQ1N0cmVhbV91c2Vfc2ltdWxhdGlvblsxNl07CnN0YXRpYyB2b2lkIE5l
+Yk1MTUNTdHJlYW1fZGVmX3VzZV9zaW11bGF0aW9uKHZvaWQpCnsKCWxvbmcgcGlkID0gKChsb25n
+KSBnZXRwaWQoKSkgJSAxMDAwMDA7CglzbnByaW50ZihOZWJNTE1DU3RyZWFtX3VzZV9zaW11bGF0
+aW9uLCAxNiwgIk5lYk1MTUNTXyUwNWxkXyIsIHBpZCk7Cn0Kc3RhdGljIGNvbnN0IGNoYXIgKk5l
+Yk1MTUNTdHJlYW1fY2hlY2tfdXNlX3NpbXVsYXRpb24odm9pZCkKewoJTmViTUxNQ1N0cmVhbV9k
+ZWZfdXNlX3NpbXVsYXRpb24oKTsKCWNvbnN0IGNoYXIgKnVzZV9zaW0gPSBtYXhfY29uZmlnX2dl
+dF9zdHJpbmcoTUFYX0NPTkZJR19VU0VfU0lNVUxBVElPTik7CglpZiAodXNlX3NpbSA9PSBOVUxM
+KSB7CgkJdXNlX3NpbSA9IE5lYk1MTUNTdHJlYW1fdXNlX3NpbXVsYXRpb247CgkJbWF4X2NvbmZp
+Z19zZXRfc3RyaW5nKE1BWF9DT05GSUdfVVNFX1NJTVVMQVRJT04sIHVzZV9zaW0pOwoJfQoJcmV0
+dXJuIHVzZV9zaW07Cn0KCnN0YXRpYyBpbnQgTmViTUxNQ1N0cmVhbV9zaW11bGF0aW9uX2xhdW5j
+aCA9IDA7CmludCBOZWJNTE1DU3RyZWFtX3NpbXVsYXRvcl9zdGFydCh2b2lkKQp7CglpbnQgcmV0
+dmFsID0gMDsKCWNvbnN0IGNoYXIgKnVzZV9zaW0gPSBOZWJNTE1DU3RyZWFtX2NoZWNrX3VzZV9z
+aW11bGF0aW9uKCk7CgljaGFyIGJ1ZmZbMTAyNF07CglzbnByaW50ZihidWZmLCAxMDI0LCAiUEFU
+SD1zaW11dGlsczokUEFUSCBtYXhjb21waWxlcnNpbSAtZCAxIC1uICVzIC1jIE1BWDM0MjRBIC1T
+IHNpbXV0aWxzIHJlc3RhcnQiLCB1c2Vfc2ltKTsKCUZJTEUgKnBpcGVfZnAgPSBwb3BlbihidWZm
+LCAiciIpOwoJaWYgKHBpcGVfZnAgPT0gTlVMTCkgewoJCXN0cm5jYXQoYnVmZiwgIiA6IGZhaWxl
+ZCB0byBleGVjdXRlLiIsICgxMDI0IC0gc3RybGVuKGJ1ZmYpKSk7CgkJc2V0X2Vycm9yKGJ1ZmYp
+OwoJCXJldHVybiAtMTsKCX0KCXdoaWxlIChmZ2V0cyhidWZmLCAxMDI0LCBwaXBlX2ZwKSAhPSBO
+VUxMKSB7CgkJLyogVW5jb21tZW50IHRoaXMgdG8gZ2V0IHNpbXVsYXRvciBjb21tYW5kIG91dHB1
+dCAqLwoJCS8qIGZwcmludGYoc3RkZXJyLCBidWZmKTsgKi8KCQlpZiAoc3Ryc3RyKGJ1ZmYsICJF
+cnJvciIpKSB7CgkJCXNldF9lcnJvcihidWZmKTsKCQkJcmV0dmFsID0gLTE7CgkJfQoJfQoJcGNs
+b3NlKHBpcGVfZnApOwoJcmV0dXJuIHJldHZhbDsKfQoKaW50IE5lYk1MTUNTdHJlYW1fc2ltdWxh
+dG9yX3N0b3Aodm9pZCkKewoJY29uc3QgY2hhciAqdXNlX3NpbSA9IE5lYk1MTUNTdHJlYW1fY2hl
+Y2tfdXNlX3NpbXVsYXRpb24oKTsKCWNoYXIgYnVmZlsxMDI0XTsKCXNucHJpbnRmKGJ1ZmYsIDEw
+MjQsICJQQVRIPXNpbXV0aWxzOiRQQVRIIG1heGNvbXBpbGVyc2ltIC1kIDEgLW4gJXMgLWMgTUFY
+MzQyNEEgLVMgc2ltdXRpbHMgc3RvcCIsIHVzZV9zaW0pOwoJRklMRSAqcGlwZV9mcCA9IHBvcGVu
+KGJ1ZmYsICJyIik7CglpZiAocGlwZV9mcCA9PSBOVUxMKSB7CgkJc3RybmNhdChidWZmLCAiIDog
+ZmFpbGVkIHRvIGV4ZWN1dGUuIiwgKDEwMjQgLSBzdHJsZW4oYnVmZikpKTsKCQlzZXRfZXJyb3Io
+YnVmZik7CgkJcmV0dXJuIC0xOwoJfQoJd2hpbGUgKGZnZXRzKGJ1ZmYsIDEwMjQsIHBpcGVfZnAp
+ICE9IE5VTEwpIHsKCQkvKiBVbmNvbW1lbnQgdGhpcyB0byBnZXQgc2ltdWxhdG9yIGNvbW1hbmQg
+b3V0cHV0ICovCgkJLyogZnByaW50ZihzdGRlcnIsIGJ1ZmYpOyAqLwoJCTsKCX0KCXBjbG9zZShw
+aXBlX2ZwKTsKCXJldHVybiAwOwp9CgpzdGF0aWMgdm9pZCBOZWJNTE1DU3RyZWFtX3N0YXRpY19p
+bml0KHZvaWQpIAp7CglzdG9yZWRfbWF4ZmlsZSA9IE5lYk1MTUNTdHJlYW1faW5pdCgpOwoJaWYg
+KHN0b3JlZF9tYXhmaWxlID09IE5VTEwgfHwgIW1heF9vayhzdG9yZWRfbWF4ZmlsZS0+ZXJyb3Jz
+KSkgewoJCXN0b3JlZF9tYXhmaWxlID0gTlVMTDsKCQlpZihtYXhfY29uZmlnX2dldF9ib29sKE1B
+WF9DT05GSUdfU1RBVElDX0lOVEVSRkFDRV9BQk9SVF9PTl9FUlJPUikpIGFib3J0KCk7CgkJZWxz
+ZSB7IHNldF9lcnJvcigiVW5hYmxlIHRvIGxvYWQgbWF4ZmlsZSIpOyByZXR1cm47IH0KCX0KCWlm
+KCFtYXhfb2sobWF4X2dsb2JhbF9lcnJvcnMoKSkpIHsKCQlzZXRfZXJyb3JfYW5kX2ZyZWUobWF4
+X2Vycm9yc190cmFjZShtYXhfZ2xvYmFsX2Vycm9ycygpKSk7CgkJcmV0dXJuOwoJfQoJaWYoIW1h
+eF9jb25maWdfZ2V0X2Jvb2woTUFYX0NPTkZJR19TVEFUSUNfSU5URVJGQUNFX0FCT1JUX09OX0VS
+Uk9SKSkKCQltYXhfZXJyb3JzX21vZGUoc3RvcmVkX21heGZpbGUtPmVycm9ycywgMCk7Cgl0aW1l
+X3QgdGltZW91dF9wcmV2aW91cyA9IG1heF9sb2FkX3RpbWVvdXQoc3RvcmVkX21heGZpbGUsIDMw
+KTsKCWNvbnN0IGNoYXIgKnVzZV9zaW0gPSBOZWJNTE1DU3RyZWFtX2NoZWNrX3VzZV9zaW11bGF0
+aW9uKCk7CglpZiAobWF4X3BpbmdfZGFlbW9uKHN0b3JlZF9tYXhmaWxlLCB1c2Vfc2ltKSA9PSAw
+KSB7CgkJaW50IHNpbV9zdGF0ID0gTmViTUxNQ1N0cmVhbV9zaW11bGF0b3Jfc3RhcnQoKTsKCQlp
+ZiAoKHNpbV9zdGF0ID09IDApICYmIChtYXhfcGluZ19kYWVtb24oc3RvcmVkX21heGZpbGUsIHVz
+ZV9zaW0pID09IDEpKSB7CgkJCU5lYk1MTUNTdHJlYW1fc2ltdWxhdGlvbl9sYXVuY2ggPSAxOwoJ
+CX0gZWxzZSB7CgkJCXNldF9lcnJvcigiRXJyb3I6IHVuYWJsZSB0byBsYXVuY2ggc2ltdWxhdG9y
+LiIpOwoJCQltYXhfZmlsZV9mcmVlKHN0b3JlZF9tYXhmaWxlKTsKCQkJc3RvcmVkX21heGZpbGUg
+PSBOVUxMOwoJCQlyZXR1cm47CgkJfQoJfQoJc3RvcmVkX2VuZ2luZSA9IG1heF9sb2FkKHN0b3Jl
+ZF9tYXhmaWxlLCAiKiIpOwoJaWYgKCFtYXhfb2soc3RvcmVkX21heGZpbGUtPmVycm9ycykpIHsK
+CQlpZihtYXhfY29uZmlnX2dldF9ib29sKE1BWF9DT05GSUdfU1RBVElDX0lOVEVSRkFDRV9BQk9S
+VF9PTl9FUlJPUikpIHsKCQkJZnByaW50ZihzdGRlcnIsICJcblVuYWJsZSB0byBsb2FkIGVuZ2lu
+ZTogYWJvcnRpbmcgbm93LlxuXG4iKTsKCQkJZmZsdXNoKHN0ZGVycik7CgkJCWFib3J0KCk7CgkJ
+fSBlbHNlIHsKCQkJc2V0X2Vycm9yX2FuZF9mcmVlKG1heF9lcnJvcnNfdHJhY2Uoc3RvcmVkX21h
+eGZpbGUtPmVycm9ycykpOwoJCQltYXhfZmlsZV9mcmVlKHN0b3JlZF9tYXhmaWxlKTsKCQkJc3Rv
+cmVkX21heGZpbGUgPSBOVUxMOwoJCQlyZXR1cm47CgkJfSAKCX0gCgltYXhfbG9hZF90aW1lb3V0
+KHN0b3JlZF9tYXhmaWxlLCB0aW1lb3V0X3ByZXZpb3VzKTsKfQp2b2lkIE5lYk1MTUNTdHJlYW1f
+ZnJlZSh2b2lkKQp7CglpZiAoc3RvcmVkX2VuZ2luZSAhPSBOVUxMKSB7CgkJbWF4X3VubG9hZChz
+dG9yZWRfZW5naW5lKTsKCQlzdG9yZWRfZW5naW5lID0gTlVMTDsKCX0KCWlmIChzdG9yZWRfbWF4
+ZmlsZSAhPSBOVUxMKSB7CgkJbWF4X2ZpbGVfZnJlZShzdG9yZWRfbWF4ZmlsZSk7CgkJc3RvcmVk
+X21heGZpbGUgPSBOVUxMOwoJfQoJaWYgKHN0b3JlZF9lcnJvciAhPSBOVUxMKSB7CgkJZnJlZShz
+dG9yZWRfZXJyb3IpOwoJCXN0b3JlZF9lcnJvciA9IE5VTEw7Cgl9CglpZiAoTmViTUxNQ1N0cmVh
+bV9zaW11bGF0aW9uX2xhdW5jaCA9PSAxKSB7CgkJaW50IHNpbV9zdGF0ID0gTmViTUxNQ1N0cmVh
+bV9zaW11bGF0b3Jfc3RvcCgpOwoJCWlmIChzaW1fc3RhdCAhPSAwICkgewoJCQlmcHJpbnRmKHN0
+ZGVyciwgIkVycm9yIHN0b3BwaW5nIHNpbXVsYXRvci4iKTsKCQl9CgkJTmViTUxNQ1N0cmVhbV9z
+aW11bGF0aW9uX2xhdW5jaCA9IDA7Cgl9Cn0KCgoKLyotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tKi8KLyot
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tIEludGVyZmFjZSBkZWZhdWx0IC0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tKi8KLyotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tKi8KCgojZGVmaW5lIENI
+RUNLX0VSUk9SU19TVChTVCwgUkVUKSBpZighbWF4X29rKFNULT5lcnJvcnMpKSB7IGlmKG1heF9j
+b25maWdfZ2V0X2Jvb2woTUFYX0NPTkZJR19TVEFUSUNfSU5URVJGQUNFX0FCT1JUX09OX0VSUk9S
+KSkgYWJvcnQoKTsgc2V0X2Vycm9yX2FuZF9mcmVlKG1heF9lcnJvcnNfdHJhY2UoU1QtPmVycm9y
+cykpOyByZXR1cm4gUkVUOyB9IAojZGVmaW5lIENIRUNLX05VTEwoVkFMVUUsIE1FU1NBR0UsIFJF
+VCkgaWYoVkFMVUUgPT0gTlVMTCkgeyBpZiAobWF4X2NvbmZpZ19nZXRfYm9vbChNQVhfQ09ORklH
+X1NUQVRJQ19JTlRFUkZBQ0VfQUJPUlRfT05fRVJST1IpKSBhYm9ydCgpOyBzZXRfZXJyb3IoTUVT
+U0FHRSk7IHJldHVybiBSRVQ7IH0KCiAKc3RhdGljIG1heF9hY3Rpb25zX3QqIE5lYk1MTUNTdHJl
+YW1fY29udmVydF9pbnRlcm5hbChtYXhfZmlsZV90ICptYXhmaWxlLCBOZWJNTE1DU3RyZWFtX2Fj
+dGlvbnNfdCAqaW50ZXJmYWNlX2FjdGlvbnMsIGludCBpc19pbnRlcm5hbF9jYWxsKQp7CgltYXhf
+YWN0aW9uc190ICphY3Rpb25zID0gbWF4X2FjdGlvbnNfaW5pdChtYXhmaWxlLCBOVUxMKTsKCWlm
+KGFjdGlvbnMgPT0gTlVMTCkgcmV0dXJuIE5VTEw7CgojZGVmaW5lIENIRUNLX0VSUk9SUyBpZigh
+bWF4X29rKGFjdGlvbnMtPmVycm9ycykpIHsgc2V0X2Vycm9yX2FuZF9mcmVlKG1heF9lcnJvcnNf
+dHJhY2UoYWN0aW9ucy0+ZXJyb3JzKSk7IHJldHVybiBOVUxMOyB9IAoJdWludDMyX3QgcGFyYW1f
+TiA9IGludGVyZmFjZV9hY3Rpb25zLT5wYXJhbV9OOwoJCglpbnQzMl90IHBhcmFtX2wgPSBpbnRl
+cmZhY2VfYWN0aW9ucy0+cGFyYW1fbDsKCQoJdWludDMyX3QgcGFyYW1fbmMgPSBpbnRlcmZhY2Vf
+YWN0aW9ucy0+cGFyYW1fbmM7CgkKCWludDMyX3QgcGFyYW1fTmViTUxNQ1N0cmVhbUtlcm5lbF9s
+b29wTGVuZ3RoID0gbWF4X2dldF9vZmZzZXRfYXV0b19sb29wX3NpemUoIGFjdGlvbnMsICJOZWJN
+TE1DU3RyZWFtS2VybmVsIiwgImxvb3BMZW5ndGgiICk7CgkKCgkvKiB0ZW1wb3JhcnkgdmFyaWFi
+bGVzICovCglpbnQ2NF90IHRtcF8wID0gKChwYXJhbV9OICogcGFyYW1fbmMpICogNCk7CglpbnQ2
+NF90IHRtcF8xID0gKChwYXJhbV9OICogcGFyYW1fbmMpICogNCk7CglpbnQ2NF90IHRtcF8yID0g
+KHBhcmFtX04gKiA0KTsKCWludDY0X3QgdG1wXzMgPSAocGFyYW1fTiAqIDQpOwoJaW50NjRfdCB0
+bXBfNCA9ICgoKHBhcmFtX04gKiBwYXJhbV9uYykgKiBwYXJhbV9OZWJNTE1DU3RyZWFtS2VybmVs
+X2xvb3BMZW5ndGgpICogMik7CgoJLyogY29kZSBmb3Igc2NhbGFyIE5lYk1MTUNTdHJlYW1LZXJu
+ZWwucnVuX2N5Y2xlX2NvdW50ICovCgl1aW50NjRfdCB0aWNrc19OZWJNTE1DU3RyZWFtS2VybmVs
+ID0gdG1wXzQ7CgltYXhfc2V0X3RpY2tzKGFjdGlvbnMsICJOZWJNTE1DU3RyZWFtS2VybmVsIiwg
+dG1wXzQpOwoJQ0hFQ0tfRVJST1JTOwoJLyogZW5kIG9mIGNvZGUgZm9yIHNjYWxhciBOZWJNTE1D
+U3RyZWFtS2VybmVsLnJ1bl9jeWNsZV9jb3VudCovCgkKCS8qIGNvZGUgZm9yIHNjYWxhciBOZWJN
+TE1DU3RyZWFtS2VybmVsLk4gKi8KCXVpbnQ2NF90IGluc2NhbGFyX05lYk1MTUNTdHJlYW1LZXJu
+ZWxfTiA9IHBhcmFtX047CgltYXhfc2V0X3VpbnQ2NHQoYWN0aW9ucywgIk5lYk1MTUNTdHJlYW1L
+ZXJuZWwiLCAiTiIsIGluc2NhbGFyX05lYk1MTUNTdHJlYW1LZXJuZWxfTik7CglDSEVDS19FUlJP
+UlM7CgkvKiBlbmQgb2YgY29kZSBmb3Igc2NhbGFyIE5lYk1MTUNTdHJlYW1LZXJuZWwuTiovCgkK
+CS8qIGNvZGUgZm9yIHNjYWxhciBOZWJNTE1DU3RyZWFtS2VybmVsLmwgKi8KCXVpbnQ2NF90IGlu
+c2NhbGFyX05lYk1MTUNTdHJlYW1LZXJuZWxfbCA9IHBhcmFtX2w7CgltYXhfc2V0X3VpbnQ2NHQo
+YWN0aW9ucywgIk5lYk1MTUNTdHJlYW1LZXJuZWwiLCAibCIsIGluc2NhbGFyX05lYk1MTUNTdHJl
+YW1LZXJuZWxfbCk7CglDSEVDS19FUlJPUlM7CgkvKiBlbmQgb2YgY29kZSBmb3Igc2NhbGFyIE5l
+Yk1MTUNTdHJlYW1LZXJuZWwubCovCgkKCS8qIGNvZGUgZm9yIHNjYWxhciBOZWJNTE1DU3RyZWFt
+S2VybmVsLm5jICovCgl1aW50NjRfdCBpbnNjYWxhcl9OZWJNTE1DU3RyZWFtS2VybmVsX25jID0g
+cGFyYW1fbmM7CgltYXhfc2V0X3VpbnQ2NHQoYWN0aW9ucywgIk5lYk1MTUNTdHJlYW1LZXJuZWwi
+LCAibmMiLCBpbnNjYWxhcl9OZWJNTE1DU3RyZWFtS2VybmVsX25jKTsKCUNIRUNLX0VSUk9SUzsK
+CS8qIGVuZCBvZiBjb2RlIGZvciBzY2FsYXIgTmViTUxNQ1N0cmVhbUtlcm5lbC5uYyovCgkKCS8q
+IGNvZGUgZm9yIHN0cmVhbSByMSAqLwoJc2l6ZV90IGluc3RyZWFtX3NpemVfcjEgPSB0bXBfMDsK
+CWlmIChpbnN0cmVhbV9zaXplX3IxID4gMCkgewoJCW1heF9xdWV1ZV9pbnB1dChhY3Rpb25zLCAi
+cjEiLCBpbnRlcmZhY2VfYWN0aW9ucy0+aW5zdHJlYW1fcjEsaW5zdHJlYW1fc2l6ZV9yMSk7CgkJ
+Q0hFQ0tfRVJST1JTOwoJfQoJLyogZW5kIG9mIGNvZGUgZm9yIHN0cmVhbSByMSAqLwoJCgkvKiBj
+b2RlIGZvciBzdHJlYW0gcjIgKi8KCXNpemVfdCBpbnN0cmVhbV9zaXplX3IyID0gdG1wXzE7Cglp
+ZiAoaW5zdHJlYW1fc2l6ZV9yMiA+IDApIHsKCQltYXhfcXVldWVfaW5wdXQoYWN0aW9ucywgInIy
+IiwgaW50ZXJmYWNlX2FjdGlvbnMtPmluc3RyZWFtX3IyLGluc3RyZWFtX3NpemVfcjIpOwoJCUNI
+RUNLX0VSUk9SUzsKCX0KCS8qIGVuZCBvZiBjb2RlIGZvciBzdHJlYW0gcjIgKi8KCQoJLyogY29k
+ZSBmb3Igc3RyZWFtIGRpZmYgKi8KCXNpemVfdCBvdXRzdHJlYW1fc2l6ZV9kaWZmID0gdG1wXzI7
+CglpZiAob3V0c3RyZWFtX3NpemVfZGlmZiA+IDApIHsKCQltYXhfcXVldWVfb3V0cHV0KGFjdGlv
+bnMsICJkaWZmIiwgaW50ZXJmYWNlX2FjdGlvbnMtPm91dHN0cmVhbV9kaWZmLG91dHN0cmVhbV9z
+aXplX2RpZmYpOwoJCUNIRUNLX0VSUk9SUzsKCX0KCS8qIGVuZCBvZiBjb2RlIGZvciBzdHJlYW0g
+ZGlmZiAqLwoJCgkvKiBjb2RlIGZvciBzdHJlYW0gZmluZSAqLwoJc2l6ZV90IG91dHN0cmVhbV9z
+aXplX2ZpbmUgPSB0bXBfMzsKCWlmIChvdXRzdHJlYW1fc2l6ZV9maW5lID4gMCkgewoJCW1heF9x
+dWV1ZV9vdXRwdXQoYWN0aW9ucywgImZpbmUiLCBpbnRlcmZhY2VfYWN0aW9ucy0+b3V0c3RyZWFt
+X2ZpbmUsb3V0c3RyZWFtX3NpemVfZmluZSk7CgkJQ0hFQ0tfRVJST1JTOwoJfQoJLyogZW5kIG9m
+IGNvZGUgZm9yIHN0cmVhbSBmaW5lICovCgkKCXJldHVybiBhY3Rpb25zOwojdW5kZWYgQ0hFQ0tf
+RVJST1JTCn0KCnZvaWQgTmViTUxNQ1N0cmVhbSgKCXVpbnQzMl90IHBhcmFtX04sCglpbnQzMl90
+IHBhcmFtX2wsCgl1aW50MzJfdCBwYXJhbV9uYywKCWNvbnN0IGZsb2F0ICppbnN0cmVhbV9yMSwK
+CWNvbnN0IGZsb2F0ICppbnN0cmVhbV9yMiwKCWZsb2F0ICpvdXRzdHJlYW1fZGlmZiwKCWZsb2F0
+ICpvdXRzdHJlYW1fZmluZSkKewoJKHZvaWQpIHB0aHJlYWRfb25jZSgmc2xpY19ic19pc19pbml0
+aWFsaXNlZCwgTmViTUxNQ1N0cmVhbV9zdGF0aWNfaW5pdCk7CglDSEVDS19OVUxMKHN0b3JlZF9t
+YXhmaWxlLCAiTWF4ZmlsZSB3YXMgbm90IGxvYWRlZCIsICk7CgltYXhfcnVuX3QgKnJ1biA9IE5l
+Yk1MTUNTdHJlYW1fbm9uYmxvY2socGFyYW1fTiwgcGFyYW1fbCwgcGFyYW1fbmMsIGluc3RyZWFt
+X3IxLCBpbnN0cmVhbV9yMiwgb3V0c3RyZWFtX2RpZmYsIG91dHN0cmVhbV9maW5lKTsKCUNIRUNL
+X05VTEwocnVuLCAiVW5hYmxlIHRvIHJ1biBhY3Rpb25zIiwgKTsKCW1heF93YWl0KHJ1bik7Cn0K
+Cm1heF9ydW5fdCAqTmViTUxNQ1N0cmVhbV9ub25ibG9jaygKCXVpbnQzMl90IHBhcmFtX04sCglp
+bnQzMl90IHBhcmFtX2wsCgl1aW50MzJfdCBwYXJhbV9uYywKCWNvbnN0IGZsb2F0ICppbnN0cmVh
+bV9yMSwKCWNvbnN0IGZsb2F0ICppbnN0cmVhbV9yMiwKCWZsb2F0ICpvdXRzdHJlYW1fZGlmZiwK
+CWZsb2F0ICpvdXRzdHJlYW1fZmluZSkKewoJTmViTUxNQ1N0cmVhbV9hY3Rpb25zX3QgaW50ZXJm
+YWNlX2FjdGlvbnM7CglpbnRlcmZhY2VfYWN0aW9ucy5wYXJhbV9OID0gcGFyYW1fTjsKCWludGVy
+ZmFjZV9hY3Rpb25zLnBhcmFtX2wgPSBwYXJhbV9sOwoJaW50ZXJmYWNlX2FjdGlvbnMucGFyYW1f
+bmMgPSBwYXJhbV9uYzsKCWludGVyZmFjZV9hY3Rpb25zLmluc3RyZWFtX3IxID0gaW5zdHJlYW1f
+cjE7CglpbnRlcmZhY2VfYWN0aW9ucy5pbnN0cmVhbV9yMiA9IGluc3RyZWFtX3IyOwoJaW50ZXJm
+YWNlX2FjdGlvbnMub3V0c3RyZWFtX2RpZmYgPSBvdXRzdHJlYW1fZGlmZjsKCWludGVyZmFjZV9h
+Y3Rpb25zLm91dHN0cmVhbV9maW5lID0gb3V0c3RyZWFtX2ZpbmU7Cgkodm9pZCkgcHRocmVhZF9v
+bmNlKCZzbGljX2JzX2lzX2luaXRpYWxpc2VkLCBOZWJNTE1DU3RyZWFtX3N0YXRpY19pbml0KTsK
+CUNIRUNLX05VTEwoc3RvcmVkX21heGZpbGUsICJNYXhmaWxlIHdhcyBub3QgbG9hZGVkIiwgTlVM
+TCk7CgltYXhfYWN0aW9uc190ICphY3Rpb25zWzFdOwoJYWN0aW9uc1swXSA9IE5lYk1MTUNTdHJl
+YW1fY29udmVydF9pbnRlcm5hbChzdG9yZWRfbWF4ZmlsZSwgJmludGVyZmFjZV9hY3Rpb25zLCAx
+KTsKCUNIRUNLX05VTEwoYWN0aW9uc1swXSwgIlVuYWJsZSB0byBidWlsZCBhY3Rpb25zIiwgTlVM
+TCk7CgltYXhfdmFsaWRhdGUoYWN0aW9uc1swXSk7CglDSEVDS19FUlJPUlNfU1QoYWN0aW9uc1sw
+XSwgTlVMTCk7CglDSEVDS19FUlJPUlNfU1Qoc3RvcmVkX2VuZ2luZSwgTlVMTCk7CgltYXhfcnVu
+X3QgKnJ1biA9IG1heF9ydW5fbXVsdGlfbm9uYmxvY2soc3RvcmVkX2VuZ2luZSwgYWN0aW9ucywg
+MSk7CglDSEVDS19OVUxMKHJ1biwgIlVuYWJsZSB0byBydW4gYWN0aW9ucyIsIE5VTEwpOwoJQ0hF
+Q0tfRVJST1JTX1NUKGFjdGlvbnNbMF0sIE5VTEwpOwoJbWF4X2FjdGlvbnNfZnJlZShhY3Rpb25z
+WzBdKTsKCXJldHVybiBydW47Cn0KCnZvaWQgTmViTUxNQ1N0cmVhbV9ydW4oCgltYXhfZW5naW5l
+X3QgKmVuZ2luZSwKCU5lYk1MTUNTdHJlYW1fYWN0aW9uc190ICppbnRlcmZhY2VfYWN0aW9ucykK
+ewoJbWF4X3J1bl90ICpydW4gPSBOZWJNTE1DU3RyZWFtX3J1bl9ub25ibG9jayhlbmdpbmUsIGlu
+dGVyZmFjZV9hY3Rpb25zKTsKCUNIRUNLX05VTEwocnVuLCAiVW5hYmxlIHRvIHJ1biBhY3Rpb25z
+IiwgKTsKCW1heF93YWl0KHJ1bik7Cn0KCm1heF9ydW5fdCAqTmViTUxNQ1N0cmVhbV9ydW5fbm9u
+YmxvY2soCgltYXhfZW5naW5lX3QgKmVuZ2luZSwKCU5lYk1MTUNTdHJlYW1fYWN0aW9uc190ICpp
+bnRlcmZhY2VfYWN0aW9ucykKewoJbWF4X2ZpbGVfdCAqbWF4ZmlsZSA9IG1heF9lbmdpbmVfZ2V0
+X21heF9maWxlKGVuZ2luZSk7IAoJbWF4X2FjdGlvbnNfdCAqYWN0aW9uc1sxXTsKCWFjdGlvbnNb
+MF0gPSBOZWJNTE1DU3RyZWFtX2NvbnZlcnQobWF4ZmlsZSwgaW50ZXJmYWNlX2FjdGlvbnMpOwoJ
+Q0hFQ0tfRVJST1JTX1NUKGFjdGlvbnNbMF0sIE5VTEwpOwoJbWF4X3J1bl90ICpydW4gPSBtYXhf
+cnVuX211bHRpX25vbmJsb2NrKGVuZ2luZSwgYWN0aW9ucywgMSk7CglDSEVDS19OVUxMKHJ1biwg
+IlVuYWJsZSB0byBydW4gYWN0aW9ucyIsIE5VTEwpOwoJbWF4X2FjdGlvbnNfZnJlZShhY3Rpb25z
+WzBdKTsKCXJldHVybiBydW47Cn0KCgovKioKICogXGJyaWVmIEdyb3VwIHJ1biBhZHZhbmNlZCBz
+dGF0aWMgZnVuY3Rpb24gZm9yIHRoZSBpbnRlcmZhY2UgJ2RlZmF1bHQnLgogKiAKICogXHBhcmFt
+IFtpbl0gZ3JvdXAgR3JvdXAgdG8gdXNlLgogKiBccGFyYW0gW2luLG91dF0gaW50ZXJmYWNlX2Fj
+dGlvbnMgQWN0aW9ucyB0byBydW4uCiAqCiAqIFJ1biB0aGUgYWN0aW9ucyBvbiB0aGUgZmlyc3Qg
+ZGV2aWNlIGF2YWlsYWJsZSBpbiB0aGUgZ3JvdXAuCiAqLwp2b2lkIE5lYk1MTUNTdHJlYW1fcnVu
+X2dyb3VwKG1heF9ncm91cF90ICpncm91cCwgTmViTUxNQ1N0cmVhbV9hY3Rpb25zX3QgKmludGVy
+ZmFjZV9hY3Rpb25zKQp7CgkvKiBOb3Qgc3RyaWN0bHkgY29ycmVjdCwgYmVjYXVzZSBleHBsaWNp
+dGx5IGxvY2tpbmcgYW4gZW5naW5lIGhlcmUuICovCgltYXhfZW5naW5lX3QgKmVuZ2luZSA9IG1h
+eF9sb2NrX2FueShncm91cCk7CglpZihlbmdpbmUgPT0gTlVMTCkgcmV0dXJuOwoJTmViTUxNQ1N0
+cmVhbV9ydW4oZW5naW5lLCBpbnRlcmZhY2VfYWN0aW9ucyk7CgltYXhfdW5sb2NrKGVuZ2luZSk7
+Cn0KCgovKioKICogXGJyaWVmIEdyb3VwIHJ1biBhZHZhbmNlZCBzdGF0aWMgbm9uLWJsb2NraW5n
+IGZ1bmN0aW9uIGZvciB0aGUgaW50ZXJmYWNlICdkZWZhdWx0Jy4KICogCiAqCiAqIFNjaGVkdWxl
+IHRoZSBhY3Rpb25zIHRvIHJ1biBvbiB0aGUgZmlyc3QgZGV2aWNlIGF2YWlsYWJsZSBpbiB0aGUg
+Z3JvdXAgYW5kIHJldHVybiBpbW1lZGlhdGVseS4KICogVGhlIHN0YXR1cyBvZiB0aGUgcnVuIG11
+c3QgYmUgY2hlY2tlZCB3aXRoIDo6bWF4X3dhaXQuIAogKiBOb3RlIHRoYXQgdXNlIG9mIDo6bWF4
+X25vd2FpdCBpcyBwcm9oaWJpdGVkIHdpdGggbm9uLWJsb2NraW5nIHJ1bm5pbmcgb24gZ3JvdXBz
+OgogKiBzZWUgdGhlIDo6bWF4X3J1bl9ncm91cF9ub25ibG9jayBkb2N1bWVudGF0aW9uIGZvciBt
+b3JlIGV4cGxhbmF0aW9uLgogKgogKiBccGFyYW0gW2luXSBncm91cCBHcm91cCB0byB1c2UuCiAq
+IFxwYXJhbSBbaW5dIGludGVyZmFjZV9hY3Rpb25zIEFjdGlvbnMgdG8gcnVuLgogKiBccmV0dXJu
+IEEgaGFuZGxlIG9uIHRoZSBleGVjdXRpb24gc3RhdHVzIG9mIHRoZSBhY3Rpb25zLCBvciBOVUxM
+IGluIGNhc2Ugb2YgZXJyb3IuCiAqLwptYXhfcnVuX3QgKk5lYk1MTUNTdHJlYW1fcnVuX2dyb3Vw
+X25vbmJsb2NrKG1heF9ncm91cF90ICpncm91cCwgTmViTUxNQ1N0cmVhbV9hY3Rpb25zX3QgKmlu
+dGVyZmFjZV9hY3Rpb25zKQp7CgltYXhfZmlsZV90ICptYXhmaWxlID0gbWF4X2dyb3VwX2dldF9t
+YXhfZmlsZShncm91cCk7CgltYXhfYWN0aW9uc190ICphY3Rpb25zID0gTmViTUxNQ1N0cmVhbV9j
+b252ZXJ0KG1heGZpbGUsIGludGVyZmFjZV9hY3Rpb25zKTsKCWlmKGFjdGlvbnMgPT0gTlVMTCkg
+cmV0dXJuIE5VTEw7CglpZighbWF4X29rKGFjdGlvbnMtPmVycm9ycykpIHJldHVybiBOVUxMOwoJ
+bWF4X3ZhbGlkYXRlKGFjdGlvbnMpOwoJbWF4X3J1bl90ICpydW4gPSBtYXhfcnVuX2dyb3VwX25v
+bmJsb2NrKGdyb3VwLCBhY3Rpb25zKTsKCW1heF9hY3Rpb25zX2ZyZWUoYWN0aW9ucyk7CglyZXR1
+cm4gcnVuOwp9CgoKLyoqCiAqIFxicmllZiBBcnJheSBydW4gYWR2YW5jZWQgc3RhdGljIGZ1bmN0
+aW9uIGZvciB0aGUgaW50ZXJmYWNlICdkZWZhdWx0Jy4KICogCiAqIFxwYXJhbSBbaW5dIGVuZ2Fy
+cmF5IFRoZSBhcnJheSBvZiBkZXZpY2VzIHRvIHVzZS4KICogXHBhcmFtIFtpbixvdXRdIGludGVy
+ZmFjZV9hY3Rpb25zIFRoZSBhcnJheSBvZiBhY3Rpb25zIHRvIHJ1bi4KICoKICogUnVuIHRoZSBh
+cnJheSBvZiBhY3Rpb25zIG9uIHRoZSBhcnJheSBvZiBlbmdpbmVzLiAgVGhlIGxlbmd0aCBvZiBp
+bnRlcmZhY2VfYWN0aW9ucwogKiBtdXN0IG1hdGNoIHRoZSBzaXplIG9mIGVuZ2FycmF5LgogKi8K
+dm9pZCBOZWJNTE1DU3RyZWFtX3J1bl9hcnJheShtYXhfZW5nYXJyYXlfdCAqZW5nYXJyYXksIE5l
+Yk1MTUNTdHJlYW1fYWN0aW9uc190ICppbnRlcmZhY2VfYWN0aW9uc1tdKQp7CgltYXhfcnVuX3Qg
+KnJ1biA9IE5lYk1MTUNTdHJlYW1fcnVuX2FycmF5X25vbmJsb2NrKGVuZ2FycmF5LCBpbnRlcmZh
+Y2VfYWN0aW9ucyk7CglDSEVDS19OVUxMKHJ1biwgIlVuYWJsZSB0byBydW4gYWN0aW9ucyIsICk7
+CgltYXhfd2FpdChydW4pOwp9CgoKLyoqCiAqIFxicmllZiBBcnJheSBydW4gYWR2YW5jZWQgc3Rh
+dGljIG5vbi1ibG9ja2luZyBmdW5jdGlvbiBmb3IgdGhlIGludGVyZmFjZSAnZGVmYXVsdCcuCiAq
+IAogKgogKiBTY2hlZHVsZSB0byBydW4gdGhlIGFycmF5IG9mIGFjdGlvbnMgb24gdGhlIGFycmF5
+IG9mIGVuZ2luZXMsIGFuZCByZXR1cm4gaW1tZWRpYXRlbHkuCiAqIFRoZSBsZW5ndGggb2YgaW50
+ZXJmYWNlX2FjdGlvbnMgbXVzdCBtYXRjaCB0aGUgc2l6ZSBvZiBlbmdhcnJheS4KICogVGhlIHN0
+YXR1cyBvZiB0aGUgcnVuIGNhbiBiZSBjaGVja2VkIGVpdGhlciBieSA6Om1heF93YWl0IG9yIDo6
+bWF4X25vd2FpdDsKICogbm90ZSB0aGF0IG9uZSBvZiB0aGVzZSAqbXVzdCogYmUgY2FsbGVkLCBz
+byB0aGF0IGFzc29jaWF0ZWQgbWVtb3J5IGNhbiBiZSByZWxlYXNlZC4KICoKICogXHBhcmFtIFtp
+bl0gZW5nYXJyYXkgVGhlIGFycmF5IG9mIGRldmljZXMgdG8gdXNlLgogKiBccGFyYW0gW2luXSBp
+bnRlcmZhY2VfYWN0aW9ucyBUaGUgYXJyYXkgb2YgYWN0aW9ucyB0byBydW4uCiAqIFxyZXR1cm4g
+QSBoYW5kbGUgb24gdGhlIGV4ZWN1dGlvbiBzdGF0dXMgb2YgdGhlIGFjdGlvbnMsIG9yIE5VTEwg
+aW4gY2FzZSBvZiBlcnJvci4KICovCm1heF9ydW5fdCAqTmViTUxNQ1N0cmVhbV9ydW5fYXJyYXlf
+bm9uYmxvY2sobWF4X2VuZ2FycmF5X3QgKmVuZ2FycmF5LCBOZWJNTE1DU3RyZWFtX2FjdGlvbnNf
+dCAqaW50ZXJmYWNlX2FjdGlvbnNbXSkKewoJbWF4X2ZpbGVfdCAqbWF4ZmlsZSA9IG1heF9lbmdh
+cnJheV9nZXRfbWF4X2ZpbGUoZW5nYXJyYXkpOwoJaW50IGk7CgltYXhfYWN0YXJyYXlfdCAqYXJy
+X2FjdGFycmF5WzFdOwoJbWF4X2FjdGlvbnNfdCAqKmFycl9hY3Rpb25zWzFdOwoJYXJyX2FjdGFy
+cmF5WzBdID0gbWF4X2FjdGFycmF5X2luaXQobWF4ZmlsZSwgZW5nYXJyYXktPnNpemUpOwoJaWYo
+YXJyX2FjdGFycmF5WzBdID09IE5VTEwpIHJldHVybiBOVUxMOwoJYXJyX2FjdGlvbnNbMF0gPSBt
+YWxsb2MoZW5nYXJyYXktPnNpemUgKiBzaXplb2YobWF4X2FjdGlvbnNfdCopKTsKCWZvcihpPTA7
+IGkgPCBhcnJfYWN0YXJyYXlbMF0tPnNpemU7IGkrKykgewoJCW1heF9hY3Rpb25zX3QgKmFjdGlv
+bnMgPSBOZWJNTE1DU3RyZWFtX2NvbnZlcnQobWF4ZmlsZSwgaW50ZXJmYWNlX2FjdGlvbnNbaV0p
+OwoJCWlmKGFjdGlvbnMgPT0gTlVMTCkgcmV0dXJuIE5VTEw7CgkJYXJyX2FjdGlvbnNbMF1baV0g
+PSBhY3Rpb25zOwoJCW1heF9zZXRfYWN0aW9uKGFycl9hY3RhcnJheVswXSwgaSwgYWN0aW9ucyk7
+Cgl9CgltYXhfcnVuX3QgKnJ1biA9IG1heF9ydW5fYXJyYXlfbXVsdGlfbm9uYmxvY2soZW5nYXJy
+YXksIGFycl9hY3RhcnJheSwgMSApOwoJZm9yIChpPTA7IGkgPCBhcnJfYWN0YXJyYXlbMF0tPnNp
+emU7IGkrKykgeyBtYXhfYWN0aW9uc19mcmVlKGFycl9hY3Rpb25zWzBdW2ldKTsgfQoJbWF4X2Fj
+dGFycmF5X2ZyZWUoYXJyX2FjdGFycmF5WzBdKTsKCWZyZWUoYXJyX2FjdGlvbnNbMF0pOwoJcmV0
+dXJuIHJ1bjsKfQoKCi8qKgogKiBcYnJpZWYgQ29udmVydHMgYSBzdGF0aWMtaW50ZXJmYWNlIGFj
+dGlvbiBzdHJ1Y3QgaW50byBhIGR5bmFtaWMtaW50ZXJmYWNlIG1heF9hY3Rpb25zX3Qgc3RydWN0
+LgogKgogKiBOb3RlIHRoYXQgdGhpcyBpcyBhbiBpbnRlcm5hbCB1dGlsaXR5IGZ1bmN0aW9uIHVz
+ZWQgYnkgb3RoZXIgZnVuY3Rpb25zIGluIHRoZSBzdGF0aWMgaW50ZXJmYWNlLgogKgogKiBccGFy
+YW0gW2luXSBtYXhmaWxlIFRoZSBtYXhmaWxlIHRvIHVzZS4KICogXHBhcmFtIFtpbl0gaW50ZXJm
+YWNlX2FjdGlvbnMgVGhlIGludGVyZmFjZS1zcGVjaWZpYyBhY3Rpb25zIHRvIHJ1bi4KICogXHJl
+dHVybiBUaGUgZHluYW1pYy1pbnRlcmZhY2UgYWN0aW9ucyB0byBydW4sIG9yIE5VTEwgaW4gY2Fz
+ZSBvZiBlcnJvci4KICovCm1heF9hY3Rpb25zX3QqIE5lYk1MTUNTdHJlYW1fY29udmVydChtYXhf
+ZmlsZV90ICptYXhmaWxlLCBOZWJNTE1DU3RyZWFtX2FjdGlvbnNfdCAqaW50ZXJmYWNlX2FjdGlv
+bnMpCnsKCXJldHVybiBOZWJNTE1DU3RyZWFtX2NvbnZlcnRfaW50ZXJuYWwobWF4ZmlsZSwgaW50
+ZXJmYWNlX2FjdGlvbnMsIDApOwp9CgojdW5kZWYgQ0hFQ0tfRVJST1JTX1NUCiN1bmRlZiBDSEVD
+S19OVUxMCgoK
+#endif /* SLIC_B64_DEFINITIONS */
+
+#ifdef SLIC_EXTRA_FILES
+PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHVz
+ZXJmaWxlcyBmb3JtYXQtdmVyc2lvbj0iMjAxMjAyMDAiLz4=
+#endif /* SLIC_EXTRA_FILES */
+
+#ifdef PHOTON_NODE_ADD_DATA
+#define PHOTON_NODE_ADD_DATA_PRESENT 1
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 14, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 250, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 19, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 284, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 18, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 203, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 3, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 16, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 4, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 15, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 283, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 135, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 136, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 140, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 204, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 282, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 138, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 141, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 139, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 142, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 147, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 205, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 281, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 144, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 145, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 206, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 148, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 146, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 149, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 153, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 150, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 151, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 154, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 152, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 155, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 239, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 2, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 280, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 131, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 279, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 194, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 278, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 82, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 277, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 60, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 207, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 201, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 276, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 114, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 180, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 61, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 62, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 209, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 244, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 275, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 68, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 274, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 195, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 196, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 7, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 9, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 69, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 70, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 273, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 72, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 272, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 21, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 26, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 271, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 23, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 24, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 27, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 25, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 28, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 32, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 29, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 30, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 33, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 31, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 34, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 35, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 52, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 54, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 212, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 73, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 74, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 270, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 76, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 214, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 77, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 78, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 79, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 80, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 216, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 245, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 269, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 84, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 85, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 86, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 268, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 88, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 267, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 37, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 42, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 266, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 39, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 40, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 43, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 41, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 44, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 48, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 45, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 46, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 49, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 47, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 50, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 219, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 51, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 55, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 57, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 220, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 89, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 221, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 90, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 265, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 246, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 92, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 93, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 94, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 95, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 96, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 247, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 97, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 264, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 119, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 120, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 226, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 121, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 123, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 263, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 262, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 64, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 228, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 202, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 261, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 117, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 181, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 65, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 66, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 229, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 248, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 249, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 260, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 99, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 259, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 10, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 12, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 100, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 101, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 258, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 103, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 58, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 104, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 105, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 235, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 257, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 107, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 234, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 108, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 109, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 110, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 111, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 227, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 256, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 125, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 126, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 237, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 127, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 129, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 132, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 238, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 133, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 156, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 255, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 158, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 159, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 163, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 254, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 161, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 164, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 162, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 165, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 170, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 253, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 167, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 168, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 242, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 171, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 169, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 172, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 176, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 173, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 174, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 177, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 175, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 178, "SquashFactor", 1.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 243, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 179, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 186, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 252, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 183, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 184, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 185, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 187, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 251, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 189, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 190, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 192, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 193, "SquashFactor", 0.0)
+PHOTON_NODE_ADD_DATA(NebMLMCStreamKernel, 191, "SquashFactor", 0.0)
+#endif
+

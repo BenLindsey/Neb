@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ManagerGraph version="2013.2.2" design_name="Manager_NebMLMCStream" compilation_phase="Original" hardwareBuild="false">
+	<Node id="2" instanceName="r1" type="InputFlexibleClock">
+		<Output clock="STREAM" name="r1" type="PULL el=1 ael=8" width="128">
+			<Stream name="Stream_3" sink="0" />
+		</Output>
+	</Node>
+	<Node id="5" instanceName="r2" type="InputFlexibleClock">
+		<Output clock="STREAM" name="r2" type="PULL el=1 ael=8" width="128">
+			<Stream name="Stream_6" sink="0" />
+		</Output>
+	</Node>
+	<Node id="0" instanceName="NebMLMCStreamKernel" type="Kernel">
+		<PxgFile phase="original">NebMLMCStream_NebMLMCStreamKernel_original.pxg</PxgFile>
+		<PxgFile phase="final-simulation">NebMLMCStream_NebMLMCStreamKernel_final-simulation.pxg</PxgFile>
+		<Input clock="STREAM" name="r1" type="PULL el=1 ael=2" width="32">
+			<Stream name="Stream_1" source="2" />
+		</Input>
+		<Input clock="STREAM" name="r2" type="PULL el=1 ael=2" width="32">
+			<Stream name="Stream_4" source="5" />
+		</Input>
+		<Output clock="STREAM" name="diff" type="PUSH 5" width="32">
+			<Stream name="Stream_7" sink="8" />
+		</Output>
+		<Output clock="STREAM" name="fine" type="PUSH 5" width="32">
+			<Stream name="Stream_10" sink="11" />
+		</Output>
+	</Node>
+	<Node id="8" instanceName="diff" type="OutputFlexibleClock">
+		<Input clock="STREAM" name="diff" type="PUSH 64" width="128">
+			<Stream name="Stream_9" source="0" />
+		</Input>
+	</Node>
+	<Node id="11" instanceName="fine" type="OutputFlexibleClock">
+		<Input clock="STREAM" name="fine" type="PUSH 64" width="128">
+			<Stream name="Stream_12" source="0" />
+		</Input>
+	</Node>
+</ManagerGraph>

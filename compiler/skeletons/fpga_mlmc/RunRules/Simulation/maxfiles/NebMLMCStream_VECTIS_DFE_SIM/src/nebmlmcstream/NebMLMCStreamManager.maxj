@@ -1,0 +1,70 @@
+package nebmlmcstream;
+
+import static com.maxeler.maxcompiler.v2.managers.standard.Manager.link;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
+import com.maxeler.maxcompiler.v2.managers.BuildConfig;
+import com.maxeler.maxcompiler.v2.managers.engine_interfaces.CPUTypes;
+import com.maxeler.maxcompiler.v2.managers.engine_interfaces.EngineInterface;
+import com.maxeler.maxcompiler.v2.managers.engine_interfaces.InterfaceParam;
+import com.maxeler.maxcompiler.v2.managers.standard.IOLink.IODestination;
+import com.maxeler.maxcompiler.v2.managers.standard.Manager;
+
+public class NebMLMCStreamManager {
+
+  private static final String s_kernelName = "NebMLMCStreamKernel";
+
+  public static final int nMin = (int) Math.pow(2, 15);
+  public static final int nMax = (int) Math.pow(2, 16);
+
+  public static void main(String[] args) {
+    NebMLMCStreamEngineParameters params = new NebMLMCStreamEngineParameters(args);
+    Manager manager = new Manager(params);
+    Kernel kernel = new NebMLMCStreamKernel(manager.makeKernelParameters(s_kernelName), nMin, nMax);
+    manager.setKernel(kernel);
+    manager.setIO(
+      link("r1",       IODestination.CPU),
+      link("r2",       IODestination.CPU),
+      link("diff",     IODestination.CPU),
+      link("fine",     IODestination.CPU));
+
+    manager.createSLiCinterface(interfaceDefault());
+
+    configBuild(manager, params);
+
+    manager.build();
+  }
+
+  private static EngineInterface interfaceDefault() {
+    EngineInterface engine_interface = new EngineInterface();
+
+    InterfaceParam l = engine_interface.addParam("l", CPUTypes.INT32);
+    InterfaceParam N = engine_interface.addParam("N", CPUTypes.UINT32);
+    InterfaceParam nc = engine_interface.addParam("nc", CPUTypes.UINT32);
+
+    engine_interface.setScalar(s_kernelName, "l", l);
+    engine_interface.setScalar(s_kernelName, "nc", nc);
+    engine_interface.setScalar(s_kernelName, "N", N);
+
+    engine_interface.setStream("r1", CPUTypes.FLOAT, N * nc * CPUTypes.FLOAT.sizeInBytes());
+    engine_interface.setStream("r2", CPUTypes.FLOAT, N * nc * CPUTypes.FLOAT.sizeInBytes());
+    engine_interface.setStream("diff", CPUTypes.FLOAT, N * CPUTypes.FLOAT.sizeInBytes());
+    engine_interface.setStream("fine", CPUTypes.FLOAT, N * CPUTypes.FLOAT.sizeInBytes());
+
+    InterfaceParam loopLength = engine_interface.getAutoLoopOffset(s_kernelName, "loopLength");
+   
+    engine_interface.setTicks(s_kernelName, N * nc * loopLength * 2);
+  
+    engine_interface.ignoreAutoLoopOffset(s_kernelName, "loopLength");
+
+    return engine_interface;
+  }
+
+  private static void configBuild(Manager manager, NebMLMCStreamEngineParameters params) {
+    manager.setEnableStreamStatusBlocks(false);
+    BuildConfig buildConfig = manager.getBuildConfig();
+    buildConfig.setMPPRCostTableSearchRange(params.getMPPRStartCT(), params.getMPPREndCT());
+    buildConfig.setMPPRParallelism(params.getMPPRThreads());
+    buildConfig.setMPPRRetryNearMissesThreshold(params.getMPPRRetryThreshold());
+  }
+}

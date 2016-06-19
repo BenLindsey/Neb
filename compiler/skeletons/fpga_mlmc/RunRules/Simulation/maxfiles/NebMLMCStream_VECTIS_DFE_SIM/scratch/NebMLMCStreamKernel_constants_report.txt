@@ -1,0 +1,18 @@
+Warning (CONSTANT_ENCODING):
+Constant with value 0.9512294237919928 does not fit exactly into type {HWFloat:8, 24}:
+PRECISION_LOSS: not all of the constant's bits fit into new type, resulting value: 0.951229453086853
+Origin of related node:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:869)
+nebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:73)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+
+Warning (CONSTANT_ENCODING):
+Constant with value 0.9512294237919928 does not fit exactly into type {HWFloat:8, 24}:
+PRECISION_LOSS: not all of the constant's bits fit into new type, resulting value: 0.951229453086853
+Origin of related node:
+com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.mulAsRHS(DFEVar.java:869)
+nebmlmcstream.NebMLMCStreamKernel.payoff(NebMLMCStreamKernel.maxj:26)
+nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:72)
+nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+

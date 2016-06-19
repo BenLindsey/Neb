@@ -1,0 +1,31 @@
+% State Variables
+logspot
+variance
+
+% State Initialisation
+logspot_{0} = 100.0
+variance_{0} = 5.0
+
+% Model Parameters
+Simulations = 65536
+Steps = 1024
+kappa = [0.2, 0.3, 0.6, 0.7]
+theta = [-0.2, 0.8, 0.0, -0.3]
+epsilon = [0.1, 0.5, 0.3, 0.2]
+dt = [0.1, 0.9, 0.3, 0.4]
+minVar = 0.0
+
+% State Index
+t \in [1..Steps]
+
+% Random Source
+r \sim N[0,1]
+r2 \sim N[0,1]
+
+% State Update
+logspot_{t + 1} = logspot_{t} + 0.5 * dt_{t} * variance_{t} + \sqrt{\max{variance_{t}}{minVar}} * \sqrt{dt_{t}} * r_{t}
+
+variance_{t + 1} = variance_{t} +  0.5 * kappa_{t} * (theta_{t} - \max{variance_{t}}{minVar}) + epsilon_{t} * \sqrt{\max{variance_{t}}{minVar}} * \sqrt{dt_{t}} * r2_{t}
+
+% Output
+logspot_{t}

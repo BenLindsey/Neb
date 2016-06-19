@@ -1,0 +1,76 @@
+*** After kernel graph-pass 'Init Graph' ***
+node "Scalar input (l)" (ID 2) has unconnected outputs: [l]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:992)
+	nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:29)
+	nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	
+node "/" (ID 12) has unconnected outputs: [result]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.divAsRHS(DFEVar.java:910)
+	nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:36)
+	nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	
+*** After kernel graph-pass 'Init Graph' ***
+node "Scalar input (l)" (ID 2) has unconnected outputs: [l]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:992)
+	nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:29)
+	nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	
+*** After kernel graph-pass 'FoldConstantsPass' ***
+node "Scalar input (l)" (ID 2) has unconnected outputs: [l]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:992)
+	nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:29)
+	nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	
+*** After kernel graph-pass 'OptimiseNodesPass' ***
+node "Scalar input (l)" (ID 2) has unconnected outputs: [l]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:992)
+	nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:29)
+	nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	
+*** After kernel graph-pass 'SubstituteEqPlaceholders' ***
+node "Scalar input (l)" (ID 2) has unconnected outputs: [l]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:992)
+	nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:29)
+	nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	
+*** After kernel graph-pass 'SubstituteEqPlaceholders' ***
+node "Scalar input (l)" (ID 2) has unconnected outputs: [l]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:992)
+	nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:29)
+	nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	
+*** After kernel graph-pass 'ScheduleApplier' ***
+node "Scalar input (l)" (ID 2) has unconnected outputs: [l]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:992)
+	nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:29)
+	nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	
+*** After kernel graph-pass 'TapFIFOsPass' ***
+node "Scalar input (l)" (ID 2) has unconnected outputs: [l]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:992)
+	nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:29)
+	nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	
+*** After kernel graph-pass 'ReplaceEvalStreamOffsetNodes' ***
+node "Scalar input (l)" (ID 2) has unconnected outputs: [l]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:992)
+	nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:29)
+	nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	
+*** After kernel graph-pass 'RemoveUntypedConstants' ***
+node "Scalar input (l)" (ID 2) has unconnected outputs: [l]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.scalarInput(IO.java:992)
+	nebmlmcstream.NebMLMCStreamKernel.<init>(NebMLMCStreamKernel.maxj:29)
+	nebmlmcstream.NebMLMCStreamManager.main(NebMLMCStreamManager.maxj:23)
+	
